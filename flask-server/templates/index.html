@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Flask App</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='logo-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='logo-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Live Camera Stream</h1>
+
+    <button onclick="startStream()">▶️ Старт</button>
+    <button onclick="stopStream()">⏹ Стоп</button>
+    <button onclick="startVoice()">🎤 Говорить</button>
+
+    <br><br>
+
+    <img src="{{ url_for('video_feed') }}" width="640" height="480">
+</body>
+</html>
