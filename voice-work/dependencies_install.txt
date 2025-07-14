@@ -1,1 +1,12 @@
+pip install sounddevice vosk 
+#TTS
+#pip install git+https://github.com/coqui-ai/TTS
 
+pip install coqui-tts
+
+
+----------------
+2
+pip install vosk sounddevice torch torchaudio
+pip install git+https://github.com/alphacep/vosk-tts.git
+pip install num2words
