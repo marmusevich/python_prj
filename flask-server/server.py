@@ -10,7 +10,7 @@ camera = cv2.VideoCapture(0)
 isVideo = True
 
 
-def gen_frames():
+def gen_frames1():
     global camera
     while True:
         success, frame = camera.read()
@@ -25,12 +25,24 @@ def gen_frames():
                 b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 
+def gen_frames():
+    global camera
+    while camera is not None:
+        success, frame = camera.read()
+        if not success:
+            break
+        ret, buffer = cv2.imencode('.jpg', frame)
+        yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
+
+
+
+
 @app.route('/start', methods=['POST'])
 def start():
-    global isVideo
-    isVideo = True
-    print('started')
-    return 'started'
+    #global isVideo
+    #isVideo = True
+    #print('started')
+    #return 'started'
     #do not run
     global camera
     if camera is None:
@@ -40,10 +52,10 @@ def start():
 
 @app.route('/stop', methods=['POST'])
 def stop():
-    global isVideo
-    isVideo = False
-    print('stopped')
-    return 'stopped'
+    #global isVideo
+    #isVideo = False
+    #print('stopped')
+    #return 'stopped'
     #do not run
     global camera
     if camera:
@@ -60,13 +72,8 @@ def index():
 
 
 @app.route('/video_feed')
-
 def video_feed():
-    global isVideo
-    if isVideo:
-        return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-    else:
-        return Response(None, mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 
