@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Joystick Button Viewer</title>
+  <style>
+    .button {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+      background-color: #eee;
+      transition: background-color 0.2s;
+    }
+    .pressed {
+      background-color: #4caf50;
+      color: white;
+    }
+    #axes {
+      margin-top: 20px;
+      font-family: monospace;
+    }
+    #log {
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Joystick Button Viewer</h1>
+  <p>Подключите геймпад и нажимайте кнопки</p>
+
+  <div id="buttons"></div>
+
+  <div id="axes">
+    <h3>Axes:</h3>
+    <pre id="axes-values">Ожидание геймпада...</pre>
+  </div>
+
+<div id="stick">
+  <h3>Left Stick Visualization:</h3>
+  <canvas id="stick-canvas" width="200" height="200" style="border:1px solid #ccc;"></canvas>
+</div>
+
+  <div id="log">
+    <h3>Log:</h3>
+    <ul id="log-list"></ul>
+  </div>
+
+  <script type="module" src="/static/joystick.js"></script>
+</body>
+</html>
