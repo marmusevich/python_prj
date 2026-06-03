@@ -1,0 +1,123 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+#demo:
+
+logger:
+  default: info
+
+
+# синтаксис смотри https://www.home-assistant.io/integrations/modbus/?spm=a2ty_o01.29997173.0.0.40e855fbHw7rl7#configuring-switch-entities 
+# настройка модбас устройств
+modbus:
+  - name: cs8_hub
+    type: serial
+    method: rtu
+    port: "/dev/ttyUSB0" # адаптер
+    baudrate: 9600       # не менять
+    bytesize: 8          # не менять
+    parity: N            # не менять
+    stopbits: 2   # ← Важно! Не 1, а 2  не менять 
+    timeout: 3
+    delay: 5     # Задержка между запросами для стабильности
+    scan_interval: 1 # Опрос каждые 1 секунды
+    
+# описываем релюшки
+    switches:
+      - name: "CS8 Реле 1"
+        slave: 2      # адрес реле
+        address: 0    # номер порта  0 -- 1 и т.д
+        unique_id: "cs8_hub_2_0_coil_rele_1" # важно!!! без этого не добавляется в пространство, должно быть уникально
+        write_type: coil   # битовые данные -- вклю/выкл.
+        verify:  # достаточно просто указать это для речтения
+
+
+      - name: "CS8 Реле 2"
+        slave: 2
+        address: 1
+        unique_id: "cs8_hub_2_1_coil_rele_2"
+        write_type: coil
+        #verify:
+
+      - name: "CS8 Реле 3"
+        slave: 2
+        address: 2
+        unique_id: "cs8_hub_2_2_coil_rele_3"
+        write_type: coil
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+          address: 2
+          state_on: 1
+          state_off: 0
+
+    # Управление реле ТР-101 (если нужно ручное управление)
+      - name: "TR101 Реле канал 1"
+        slave: 1
+        address: 8
+        write_type: holding
+        unique_id: "cs8_hub_1_8_rele_ch1"
+
+
+        
+# здесь просто опрос состояния
+    binary_sensors:
+    - name: "CS8 Relay4 State"
+      slave: 2
+      address: 3
+      unique_id: "cs8_hub_2_3_coil_Relay_4_State"
+      input_type: coil
+
+    - name: "CS8 Relay5 State"
+      slave: 2
+      address: 4
+      unique_id: "cs8_hub_2_4_coil_Relay_5_State"
+      input_type: coil          
+
+
+    # === НОВЫЕ сущности для ТР-101 (slave: 1) ===
+    sensors:
+      - name: "TR101 Температура канал 1"
+        slave: 1                          # ← Адрес ТР-101 по умолчанию
+        address: 4                        # ← Адрес регистра температуры
+        input_type: holding
+        data_type: int16
+        scale: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "cs8_hub_1_4_temp_ch1"  # ← Уникальный ID
+
+      - name: "TR101 Температура канал 2"
+        slave: 1
+        address: 5
+        input_type: holding
+        data_type: int16
+        scale: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "cs8_hub_1_5_temp_ch2"
+
+      # ... добавьте каналы 3 и 4 при необходимости ...
+
+    # Уставки температуры (для настройки из HA)
+    numbers:
+      - name: "TR101 Уставка канал 1"
+        slave: 1
+        address: 32
+        input_type: holding
+        data_type: int16
+        min: -50
+        max: 200
+        step: 1
+        unit_of_measurement: "°C"
+        mode: box
+        unique_id: "cs8_hub_1_32_setpoint_ch1"      
