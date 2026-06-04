@@ -1,0 +1,192 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+  default: info
+
+# синтаксис смотри https://www.home-assistant.io/integrations/modbus/?spm=a2ty_o01.29997173.0.0.40e855fbHw7rl7#configuring-switch-entities
+# настройка модбас устройств
+modbus:
+  - name: cs8_hub
+    type: serial
+    method: rtu
+    #port: "/dev/ttyUSB1" # адаптер
+    port: "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0" # попытка использовать постоянное имя
+    # взято от сюда, вывод команды
+    #[core-ssh ~]$ ls -l /dev/serial/by-id/
+    #total 0
+    #lrwxrwxrwx    1 root     root            13 Jun  3 19:52 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB1
+    #lrwxrwxrwx    1 root     root            13 Jun 25  2025 usb-SONOFF_SONOFF_Dongle_Max_MG24_283ab00a00f1ef1185e6c50a6d9880ab-if00-port0 -> ../../ttyUSB0
+    baudrate: 9600 # не менять
+    bytesize: 8 # не менять
+    parity: N # не менять
+    stopbits: 2 # ← Важно! Не 1, а 2  не менять
+    timeout: 3
+    delay: 5 # Задержка между запросами для стабильности
+    #scan_interval: 5 # Опрос каждые x секунды
+
+    # описываем релюшки
+    switches:
+      - name: "CS8 Реле 1"
+        slave: 2 # адрес реле
+        address: 0 # номер порта  0 -- 1 и т.д
+        unique_id: "cs8_hub_2_0_coil_rele_1" # важно!!! без этого не добавляется в пространство, должно быть уникально
+        write_type: coil # битовые данные -- вклю/выкл.
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+          #address: 2
+          #state_on: 1
+          #state_off: 0
+
+      - name: "CS8 Реле 2"
+        slave: 2
+        address: 1
+        unique_id: "cs8_hub_2_1_coil_rele_2"
+        write_type: coil
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+          #address: 2
+          #state_on: 1
+          #state_off: 0
+
+      - name: "CS8 Реле 3"
+        slave: 2
+        address: 2
+        unique_id: "cs8_hub_2_2_coil_rele_3"
+        write_type: coil
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+          #address: 2
+          #state_on: 1
+          #state_off: 0
+
+      - name: "CS8 Реле 4"
+        slave: 2
+        address: 3
+        unique_id: "cs8_hub_2_3_coil_rele_4"
+        write_type: coil
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+
+      - name: "CS8 Реле 5"
+        slave: 2
+        address: 4
+        unique_id: "cs8_hub_2_4_coil_rele_5"
+        write_type: coil
+        verify: #  детали не обязательно и так работает
+          input_type: coil
+
+    # здесь просто опрос состояния
+    binary_sensors:
+      - name: "CS8 Relay3 State"
+        slave: 2
+        address: 2
+        unique_id: "cs8_hub_2_2_coil_Relay_3_State"
+        input_type: coil
+
+      - name: "CS8 Relay4 State"
+        slave: 2
+        address: 3
+        unique_id: "cs8_hub_2_3_coil_Relay_4_State"
+        input_type: coil
+
+      - name: "CS8 Relay5 State"
+        slave: 2
+        address: 4
+        unique_id: "cs8_hub_2_4_coil_Relay_5_State"
+        input_type: coil
+
+    # === 🌡️ Датчики температуры NT18B07 (7 каналов) ===
+    # Регистры 0x0000–0x0006 → адреса 0–6, значение ×10 → делим на 10 (scale: 0.1)
+    sensors:
+      - name: "NT18B07 Температура канал 1"
+        slave: 1 # ← Адрес NT18B07 (по умолчанию)
+        address: 0 # Регистр 0x0000
+        input_type: holding
+        data_type: int16
+        scale: 0.1 # Преобразование: 225 → 22.5 °C
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_0_temp_ch1"
+
+      - name: "NT18B07 Температура канал 2"
+        slave: 1
+        address: 1
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_1_temp_ch2"
+
+      - name: "NT18B07 Температура канал 3"
+        slave: 1
+        address: 2
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_2_temp_ch3"
+
+      - name: "NT18B07 Температура канал 4"
+        slave: 1
+        address: 3
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_3_temp_ch4"
+
+      - name: "NT18B07 Температура канал 5"
+        slave: 1
+        address: 4
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_4_temp_ch5"
+
+      - name: "NT18B07 Температура канал 6"
+        slave: 1
+        address: 5
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_5_temp_ch6"
+
+      - name: "NT18B07 Температура канал 7"
+        slave: 1
+        address: 6
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_6_temp_ch7"
