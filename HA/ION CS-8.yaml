@@ -1,0 +1,41 @@
+# ION CS-8
+# Изменить Slave ID
+service: modbus.write_register
+data:
+  address: 256        # 0x0100 в десятичной системе
+  slave: 7            # ТЕКУЩИЙ slave ID устройства
+  hub: modbus_hub     # Имя вашего modbus хаба (из configuration.yaml)
+  value: 10           # НОВЫЙ slave ID (замените на нужный)
+  
+  
+#Как проверить текущий Slave ID  
+service: modbus.read_holding_registers
+data:
+  hub: modbus_hub
+  slave: 7          # переберите возможные адреса 1-247
+  address: 256
+  count: 1  
+  
+######################################################################################
+# NT18B07
+# Изменить Slave ID
+service: modbus.write_register
+data:
+  address: 254          # АДРЕС РЕГИСТРА (См. важное примечание ниже!)
+  slave: 1            # ТЕКУЩИЙ slave ID устройства (заводской обычно 1)
+  hub: modbus_hub     # Имя вашего modbus хаба (из configuration.yaml)
+  value: 5            # НОВЫЙ slave ID (замените на нужный, обычно от 1 до 247)  
+  
+  
+#Как проверить текущий Slave ID  
+service: modbus.read_holding_registers
+data:
+  hub: modbus_hub
+  slave: 7          # переберите возможные адреса 1-247
+  address: 2544
+  count: 1  
+
+
+http://homeassistant.local:8123/
+
+http://100.77.105.123:8123/
