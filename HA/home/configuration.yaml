@@ -12,6 +12,13 @@ scene: !include scenes.yaml
 logger:
   default: info
 
+####################################################################################################################################
+# конфигурация модбас
+####################################################################################################################################
+# в сушнастях описываем устройства, в поле NAME на английском уникальный индификатор,
+#   так как НА воспринимает это поля как ENTITY_ID
+# имена и иконки назначить в секции ниже (homeassistant: customize: ) или через UI (интерфейс пользователя
+#
 # синтаксис смотри https://www.home-assistant.io/integrations/modbus/?spm=a2ty_o01.29997173.0.0.40e855fbHw7rl7#configuring-switch-entities
 # настройка модбас устройств
 modbus:
@@ -19,7 +26,7 @@ modbus:
     type: serial
     method: rtu
     port: "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
-    # взято от сюда, вывод команды
+    # взято от сюда, вывод команды :
     # ls -l /dev/serial/by-id/
     #total 0
     #lrwxrwxrwx    1 root     root            13 Jun  3 19:52 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB1
@@ -29,561 +36,697 @@ modbus:
     parity: N # не менять
     stopbits: 2 # ← Важно! Не 1, а 2  не менять
     timeout: 3
-    delay: 5 # Задержка между запросами для стабильности
+    delay:
+      5 # Задержка между запросами для стабильности
 
-    # эта часть будет переконфигурироватся по месту
-    # описываем релюшки
-    switches:
+
+      ###########################
+      # примеры для реле
+      ###########################
+      # переключать
+      # lights:      или
+      # fans:        или
+      # switches:
       # - name: "CS8 Реле 7"
       #   slave: 7 # адрес реле
       #   address: 0 # номер порта  0 -- 1 и т.д
-      #   unique_id: "cs8_7_0_rele" # важно!!! без этого не добавляется в пространство, должно быть уникально
+      #   unique_id: "_cs8_7_0_rele" # важно!!! без этого не добавляется в пространство, должно быть уникально
       #   write_type: coil # битовые данные -- вклю/выкл.
       #   verify: #  детали не обязательно и так работает
       #     input_type: coil
       #     #address: 2
       #     #state_on: 1
       #     #state_off: 0
+      #
+      #
+      # здесь просто опрос состояния
+      # binary_sensors:
+      #   - name: "CS8 Relay 11_0 State"
+      #     slave: 11
+      #     address: 0
+      #     unique_id: "_cs8_11_0_Relay"
+      #     input_type: coil
+      ###########################
 
-      ######################################
+    ####################################################################################################################################
+    # вентиляторы вентеляции
+    fans:
+      - name: "rele_17_3"
+        slave: 17
+        address: 2
+        unique_id: "_cs8_17_2"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_17_6"
+        slave: 17
+        address: 5
+        unique_id: "_cs8_17_5"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_17_8"
+        slave: 17
+        address: 7
+        unique_id: "_cs8_17_7"
+        write_type: coil
+        verify:
+          input_type: coil
+
+    ####################################################################################################################################
+    # свет
+    lights:
+      #######################################
       #  Реле, ID 11
-      - name: "Холл - люстра"
+      - name: "rele_11_1"
         slave: 11
         address: 0
-        unique_id: "cs8_11_0"
+        unique_id: "_cs8_11_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Холл - подвес"
+      - name: "rele_11_2"
         slave: 11
         address: 1
-        unique_id: "cs8_11_1"
+        unique_id: "_cs8_11_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Холл + коридор - LED-лента"
+      - name: "rele_11_3"
         slave: 11
         address: 2
-        unique_id: "cs8_11_2"
+        unique_id: "_cs8_11_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Холл - трек"
+      - name: "rele_11_4"
         slave: 11
         address: 3
-        unique_id: "cs8_11_3"
+        unique_id: "_cs8_11_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Коридор - трек"
+      - name: "rele_11_5"
         slave: 11
         address: 4
-        unique_id: "cs8_11_4"
+        unique_id: "_cs8_11_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Холл - зеркало"
+      - name: "rele_11_6"
         slave: 11
         address: 5
-        unique_id: "cs8_11_5"
+        unique_id: "_cs8_11_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостиная - люстра 1"
+      - name: "rele_11_7"
         slave: 11
         address: 6
-        unique_id: "cs8_11_6"
+        unique_id: "_cs8_11_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостиная - люстра 2"
+      - name: "rele_11_8"
         slave: 11
         address: 7
-        unique_id: "cs8_11_7"
+        unique_id: "_cs8_11_7"
         write_type: coil
         verify:
           input_type: coil
 
       #######################################
       #  Реле, ID 12
-      - name: "Гостиная -  LED-лента"
+      - name: "rele_12_1"
         slave: 12
         address: 0
-        unique_id: "cs8_12_0"
+        unique_id: "_cs8_12_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостиная - бра"
+      - name: "rele_12_2"
         slave: 12
         address: 1
-        unique_id: "cs8_12_1"
+        unique_id: "_cs8_12_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - потолок  LED-лента"
+      - name: "rele_12_3"
         slave: 12
         address: 2
-        unique_id: "cs8_12_2"
+        unique_id: "_cs8_12_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - трек"
+      - name: "rele_12_4"
         slave: 12
         address: 3
-        unique_id: "cs8_12_3"
+        unique_id: "_cs8_12_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - люстра "
+      - name: "rele_12_5"
         slave: 12
         address: 4
-        unique_id: "cs8_12_4"
+        unique_id: "_cs8_12_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - полки LED-лента"
+      - name: "rele_12_6"
         slave: 12
         address: 5
-        unique_id: "cs8_12_5"
+        unique_id: "_cs8_12_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостиная - трек"
+      - name: "rele_12_7"
         slave: 12
         address: 6
-        unique_id: "cs8_12_6"
+        unique_id: "_cs8_12_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - балкон  LED-лента"
+      - name: "rele_12_8"
         slave: 12
         address: 7
-        unique_id: "cs8_12_7"
+        unique_id: "_cs8_12_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #   Реле, ID 13
-      - name: "Кухня - люстра"
+      - name: "rele_13_1"
         slave: 13
         address: 0
-        unique_id: "cs8_13_0"
+        unique_id: "_cs8_13_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - вход подвесы"
+      - name: "rele_13_2"
         slave: 13
         address: 1
-        unique_id: "cs8_13_1"
+        unique_id: "_cs8_13_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - окно подвесы"
+      - name: "rele_13_3"
         slave: 13
         address: 2
-        unique_id: "cs8_13_2"
+        unique_id: "_cs8_13_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - потолок LED-лента"
+      - name: "rele_13_4"
         slave: 13
         address: 3
-        unique_id: "cs8_13_3"
+        unique_id: "_cs8_13_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - полки LED-лента 1"
+      - name: "rele_13_5"
         slave: 13
         address: 4
-        unique_id: "cs8_13_4"
+        unique_id: "_cs8_13_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - полки LED-лента 2"
+      - name: "rele_13_6"
         slave: 13
         address: 5
-        unique_id: "cs8_13_5"
+        unique_id: "_cs8_13_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Постирочная -  трек"
+      - name: "rele_13_7"
         slave: 13
         address: 6
-        unique_id: "cs8_13_6"
+        unique_id: "_cs8_13_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Постирочная -  LED-лента"
+      - name: "rele_13_8"
         slave: 13
         address: 7
-        unique_id: "cs8_13_7"
+        unique_id: "_cs8_13_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #    Реле, ID 14
-      - name: "Кабинет - люстра"
+      - name: "rele_14_1"
         slave: 14
         address: 0
-        unique_id: "cs8_14_0"
+        unique_id: "_cs8_14_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кабинет - бра"
-        slave: 14
-        address: 1
-        unique_id: "cs8_14_1"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "Кабинет - трек"
+      - name: "rele_14_3"
         slave: 14
         address: 2
-        unique_id: "cs8_14_2"
+        unique_id: "_cs8_14_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кабинет - потолок LED-лента"
+      - name: "rele_14_4"
         slave: 14
         address: 3
-        unique_id: "cs8_14_3"
+        unique_id: "_cs8_14_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кабинет - полки LED-лента"
+      - name: "rele_14_5"
         slave: 14
         address: 4
-        unique_id: "cs8_14_4"
+        unique_id: "_cs8_14_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гардероб гостевой - трек"
+      - name: "rele_14_6"
         slave: 14
         address: 5
-        unique_id: "cs8_14_5"
+        unique_id: "_cs8_14_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостевые полки - LED-лента"
+      - name: "rele_14_7"
         slave: 14
         address: 6
-        unique_id: "cs8_14_6"
+        unique_id: "_cs8_14_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кабинет - балкон"
+      - name: "rele_14_8"
         slave: 14
         address: 7
-        unique_id: "cs8_14_7"
+        unique_id: "_cs8_14_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #    Реле, ID 15
-      - name: "Санузел гостевой - точки"
+      - name: "rele_15_1"
         slave: 15
         address: 0
-        unique_id: "cs8_15_0"
+        unique_id: "_cs8_15_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Санузел гостевой - подвесы"
+      - name: "rele_15_2"
         slave: 15
         address: 1
-        unique_id: "cs8_15_1"
+        unique_id: "_cs8_15_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Санузел гостевой"
-        slave: 15
-        address: 2
-        unique_id: "cs8_15_2"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "Спальня - зеркало"
+      - name: "rele_15_4"
         slave: 15
         address: 3
-        unique_id: "cs8_15_3"
+        unique_id: "_cs8_15_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня - люстра"
+      - name: "rele_15_5"
         slave: 15
         address: 4
-        unique_id: "cs8_15_4"
+        unique_id: "_cs8_15_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня вход - бра"
+      - name: "rele_15_6"
         slave: 15
         address: 5
-        unique_id: "cs8_15_5"
+        unique_id: "_cs8_15_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня кровать - бра 1"
+      - name: "rele_15_7"
         slave: 15
         address: 6
-        unique_id: "cs8_15_6"
+        unique_id: "_cs8_15_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня кровать - бра 2"
+      - name: "rele_15_8"
         slave: 15
         address: 7
-        unique_id: "cs8_15_7"
+        unique_id: "_cs8_15_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #    Реле, ID 16
-      - name: " Спальня - потолок LED-лента"
+      - name: "rele_16_1"
         slave: 16
         address: 0
-        unique_id: "cs8_16_0"
+        unique_id: "_cs8_16_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня - полки LED-лента"
+      - name: "rele_16_2"
         slave: 16
         address: 1
-        unique_id: "cs8_16_1"
+        unique_id: "_cs8_16_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел - люстра"
+      - name: "rele_16_3"
         slave: 16
         address: 2
-        unique_id: "cs8_16_2"
+        unique_id: "_cs8_16_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел - полки LED-лента"
+      - name: "rele_16_4"
         slave: 16
         address: 3
-        unique_id: "cs8_16_3"
+        unique_id: "_cs8_16_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел- точки"
+      - name: "rele_16_5"
         slave: 16
         address: 4
-        unique_id: "cs8_16_4"
+        unique_id: "_cs8_16_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел - полки  LED-лента"
+      - name: "rele_16_6"
         slave: 16
         address: 5
-        unique_id: "cs8_16_5"
+        unique_id: "_cs8_16_5"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел - зеркало"
+      - name: "rele_16_7"
         slave: 16
         address: 6
-        unique_id: "cs8_16_6"
+        unique_id: "_cs8_16_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Спальня - трек  "
+      - name: "rele_16_8"
         slave: 16
         address: 7
-        unique_id: "cs8_16_7"
+        unique_id: "_cs8_16_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #    Реле, ID 17
-      - name: "Мастер гардероб - люстра"
-        slave: 17
-        address: 0
-        unique_id: "cs8_17_0"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "Мастер гардероб - трек "
+      - name: "rele_17_2"
         slave: 17
         address: 1
-        unique_id: "cs8_17_1"
+        unique_id: "_cs8_17_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер гардероб - LED-лента 1"
-        slave: 17
-        address: 2
-        unique_id: "cs8_17_2"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "Мастер гардероб - трек"
+      - name: "rele_17_4"
         slave: 17
         address: 3
-        unique_id: "cs8_17_3"
+        unique_id: "_cs8_17_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер гардероб - LED-лента 2"
+      - name: "rele_17_5"
         slave: 17
         address: 4
-        unique_id: "cs8_17_4"
+        unique_id: "_cs8_17_4"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер балкон - уличное освещение "
-        slave: 17
-        address: 5
-        unique_id: "cs8_17_5"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "Гостевой санузел - вентиляция"
+      - name: "rele_17_7"
         slave: 17
         address: 6
-        unique_id: "cs8_17_6"
+        unique_id: "_cs8_17_6"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Мастер санузел - вентиляция"
-        slave: 17
-        address: 7
-        unique_id: "cs8_17_7"
-        write_type: coil
-        verify:
-          input_type: coil
-
+    ####################################################################################################################################
+    # другое
+    switches:
+      #########################################
+      #   тёплый пол
       #########################################
       #    Реле, ID 18
-      - name: "Мастер санузел - тёплый пол "
+      - name: "rele_18_1"
         slave: 18
         address: 0
-        unique_id: "cs8_18_0"
+        unique_id: "_cs8_18_0"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Гостевой санузел - тёплый пол "
+      - name: "rele_18_2"
         slave: 18
         address: 1
-        unique_id: "cs8_18_1"
+        unique_id: "_cs8_18_1"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Постирочная - тёплый пол"
+      - name: "rele_18_3"
         slave: 18
         address: 2
-        unique_id: "cs8_18_2"
+        unique_id: "_cs8_18_2"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Кухня - тёплый пол "
+      - name: "rele_18_4"
         slave: 18
         address: 3
-        unique_id: "cs8_18_3"
+        unique_id: "_cs8_18_3"
         write_type: coil
         verify:
           input_type: coil
 
-      - name: "Столовая - тёплый пол "
+      - name: "rele_18_5"
         slave: 18
         address: 4
-        unique_id: "cs8_18_4"
+        unique_id: "_cs8_18_4"
         write_type: coil
         verify:
           input_type: coil
+
+      #  неиспользуются (неподключены) 6-8 (ID: 5, 6, 7)
+
+      #########################################
+      #   радиаторы / конверторы
 
       #########################################
       #    Реле, ID 19
-
-      - name: "CS8 Реле 19-0"
+      - name: "rele_19_1"
         slave: 19
         address: 0
-        unique_id: "cs8_19_0_rele"
+        unique_id: "_cs8_19_0"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_2"
+        slave: 19
+        address: 1
+        unique_id: "_cs8_19_1"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_3"
+        slave: 19
+        address: 2
+        unique_id: "_cs8_19_2"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_4"
+        slave: 19
+        address: 3
+        unique_id: "_cs8_19_3"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_5"
+        slave: 19
+        address: 4
+        unique_id: "_cs8_19_4"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_6"
+        slave: 19
+        address: 5
+        unique_id: "_cs8_19_5"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_7"
+        slave: 19
+        address: 6
+        unique_id: "_cs8_19_6"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_19_8"
+        slave: 19
+        address: 7
+        unique_id: "_cs8_19_7"
         write_type: coil
         verify:
           input_type: coil
 
       #########################################
       #    Реле, ID 20
-
-      - name: "CS8 Реле 20-0"
+      - name: "rele_20_1"
         slave: 20
         address: 0
-        unique_id: "cs8_20_0_rele"
+        unique_id: "_cs8_20_0"
         write_type: coil
         verify:
           input_type: coil
 
-    # здесь просто опрос состояния
-    #   - name: "CS8 Relay 11_0 State"
-    #     slave: 11
-    #     address: 0
-    #     unique_id: "cs8_11_0_Relay"
-    #     input_type: coil
+      - name: "rele_20_2"
+        slave: 20
+        address: 1
+        unique_id: "_cs8_20_1"
+        write_type: coil
+        verify:
+          input_type: coil
 
-    ##########################################################################################################
+      - name: "rele_20_3"
+        slave: 20
+        address: 2
+        unique_id: "_cs8_20_2"
+        write_type: coil
+        verify:
+          input_type: coil
 
-    # === 🌡️ Датчики температуры NT18B07 (7 каналов) ===
+      - name: "rele_20_4"
+        slave: 20
+        address: 3
+        unique_id: "_cs8_20_3"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_20_5"
+        slave: 20
+        address: 4
+        unique_id: "_cs8_20_4"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_20_6"
+        slave: 20
+        address: 5
+        unique_id: "_cs8_20_5"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_20_7"
+        slave: 20
+        address: 6
+        unique_id: "_cs8_20_6"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_20_8"
+        slave: 20
+        address: 7
+        unique_id: "_cs8_20_7"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      ####################################################################################################################################
+      # уточнить используется ли ?
+      - name: "rele_17_1"
+        slave: 17
+        address: 0
+        unique_id: "_cs8_17_0"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_15_3"
+        slave: 15
+        address: 2
+        unique_id: "_cs8_15_2"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "rele_14_2"
+        slave: 14
+        address: 1
+        unique_id: "_cs8_14_1"
+        write_type: coil
+        verify:
+          input_type: coil
+
+    ####################################################################################################################################
+    # === Датчики температуры NT18B07 (7 каналов) ===
     # Регистры 0x0000–0x0006 → адреса 0–6, значение ×10 → делим на 10 (scale: 0.1)
     sensors:
-      - name: "Мастер санузел - тёплый пол"
+      - name: "termopara_100_1"
         slave: 100 # ← Адрес
         address: 0 # Регистр 0x0000
         input_type: holding
@@ -593,9 +736,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_100_0"
+        unique_id: "_nt18b07_100_0"
 
-      - name: "Гостевой санузел - тёплый пол"
+      - name: "termopara_100_2"
         slave: 100
         address: 1
         input_type: holding
@@ -605,9 +748,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_100_1"
+        unique_id: "_nt18b07_100_1"
 
-      - name: "Постирочная - тёплый пол"
+      - name: "termopara_100_3"
         slave: 100
         address: 2
         input_type: holding
@@ -617,9 +760,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_100_2"
+        unique_id: "_nt18b07_100_2"
 
-      - name: "Кухня - тёплый пол"
+      - name: "termopara_100_4"
         slave: 100
         address: 3
         input_type: holding
@@ -629,9 +772,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_hub_18_3"
+        unique_id: "_nt18b07_hub_18_3"
 
-      - name: "Столовая - тёплый пол"
+      - name: "termopara_100_5"
         slave: 100
         address: 4
         input_type: holding
@@ -641,9 +784,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_100_4"
+        unique_id: "_nt18b07_100_4"
 
-      - name: "Температура щита с блоками питаниями"
+      - name: "termopara_100_6"
         slave: 100
         address: 5
         input_type: holding
@@ -653,9 +796,9 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_hub_1_5_temp_ch6"
+        unique_id: "_nt18b07_100_5"
 
-      - name: "Температура айти щита"
+      - name: "termopara_100_7"
         slave: 100
         address: 6
         input_type: holding
@@ -665,4 +808,361 @@ modbus:
         unit_of_measurement: "°C"
         device_class: temperature
         state_class: measurement
-        unique_id: "nt18b07_hub_1_6_temp_ch7"
+        unique_id: "_nt18b07_100_6"
+
+####################################################################################################################################
+# понятные имена и иконки по умолчанию
+####################################################################################################################################
+homeassistant:
+  customize:
+    fan.rele_17_3:
+      #friendly_name: "Вентилятор" #Гостевой санузел
+      icon: mdi:fan
+
+    fan.rele_17_6:
+      #friendly_name: "Вентилятор" #Мастер санузел
+      icon: mdi:fan
+
+    fan.rele_17_8:
+      #friendly_name: "Вентилятор" #Мастер гардероб
+      icon: mdi:fan
+
+    ####################################################################################################################
+    light.rele_11_1:
+      #friendly_name: "Люстра" #Холл
+      icon: mdi:chandelier
+
+    light.rele_11_2:
+      #friendly_name: "Подвесы" #Холл
+      icon: mdi:ceiling-light-multiple
+
+    light.rele_11_3:
+      #friendly_name: "LED-лента" #Холл + Коридор
+      icon: mdi:led-strip-variant
+
+    light.rele_11_4:
+      #friendly_name: "Трэк (Холл)" #Холл
+      icon: mdi:track-light
+
+    light.rele_11_5:
+      #friendly_name: "Трэк (Коридор)" #Коридор
+      icon: mdi:track-light
+
+    light.rele_11_6:
+      #friendly_name: "Зеркало" #Холл
+      icon: mdi:mirror
+
+    light.rele_11_7:
+      #friendly_name: "Люстра 1" #Гостиная
+      icon: mdi:chandelier
+
+    light.rele_11_8:
+      #friendly_name: "Люстра 2" #Гостиная
+      icon: mdi:chandelier
+
+    #-------------------------------------------------------
+    light.rele_12_1:
+      #friendly_name: "LED-лента" #Гостиная
+      icon: mdi:led-strip-variant
+
+    light.rele_12_2:
+      #friendly_name: "Бра" #Гостиная
+      icon: mdi:wall-sconce
+
+    light.rele_12_3:
+      #friendly_name: "LED-лента - потолок" #Столовая
+      icon: mdi:led-strip-variant
+
+    light.rele_12_4:
+      #friendly_name: "Трэк" #Столовая
+      icon: mdi:track-light
+
+    light.rele_12_5:
+      #friendly_name: "Люстра" #Столовая
+      icon: mdi:chandelier
+
+    light.rele_12_6:
+      #friendly_name: "LED-лента - полки" #Столовая
+      icon: mdi:led-strip-variant
+
+    light.rele_12_7:
+      #friendly_name: "Трэк" #Гостиная
+      icon: mdi:track-light
+
+    light.rele_12_8:
+      #friendly_name: "Балкон - Столовая" #Столовая
+      icon: mdi:balcony
+
+    #-------------------------------------------------------
+    light.rele_13_1:
+      #friendly_name: "Люстра" #Кухня
+      icon: mdi:chandelier
+
+    light.rele_13_2:
+      #friendly_name: "Точки - вход" #Кухня
+      icon: mdi:spotlight-beam
+
+    light.rele_13_3:
+      #friendly_name: "Подвесы - окно" #Кухня
+      icon: mdi:ceiling-light-multiple
+
+    light.rele_13_4:
+      #friendly_name: "LED-лента - потолок" #Кухня
+      icon: mdi:led-strip-variant
+
+    light.rele_13_5:
+      #friendly_name: "LED-лента - полки" #Кухня
+      icon: mdi:led-strip-variant
+
+    light.rele_13_6:
+      #friendly_name: "LED-лента - столешница" #Кухня
+      icon: mdi:led-strip-variant
+
+    light.rele_13_7:
+      #friendly_name: "Трэк" #Постирочная
+      icon: mdi:track-light
+
+    light.rele_13_8:
+      #friendly_name: "LED-лента" #Постирочная
+      icon: mdi:led-strip-variant
+
+    #---
+    light.rele_14_1:
+      #friendly_name: "Люстра" #Кабинет
+      icon: mdi:chandelier
+
+    light.rele_14_3:
+      #friendly_name: "Трэк" #Кабинет
+      icon: mdi:track-light
+
+    light.rele_14_4:
+      #friendly_name: "LED-лента - потолок" #Кабинет
+      icon: mdi:led-strip-variant
+
+    light.rele_14_5:
+      #friendly_name: "LED-лента - полки" #Кабинет
+      icon: mdi:led-strip-variant
+
+    light.rele_14_6:
+      #friendly_name: "Трэк" #Гостевой гардероб
+      icon: mdi:track-light
+
+    light.rele_14_7:
+      #friendly_name: "LED-лента" #Гостевой гардероб
+      icon: mdi:led-strip-variant
+
+    light.rele_14_8:
+      #friendly_name: "Балкон" #Кабинет
+      icon: mdi:balcony
+
+    #---
+    light.rele_15_1:
+      #friendly_name: "Точки" #Гостевой санузел
+      icon: mdi:spotlight-beam
+
+    light.rele_15_2:
+      #friendly_name: "Подвесы" #Гостевой санузел
+      icon: mdi:ceiling-light-multiple
+
+    light.rele_15_4:
+      #friendly_name: "Зеркало" #Спальня
+      icon: mdi:mirror
+
+    light.rele_15_5:
+      #friendly_name: "Люстра" #Спальня
+      icon: mdi:chandelier
+
+    light.rele_15_6:
+      #friendly_name: "Бра - вход" #Спальня
+      icon: mdi:wall-sconce
+
+    light.rele_15_7:
+      #friendly_name: "Бра кровать 1" #Спальня
+      icon: mdi:wall-sconce
+
+    light.rele_15_8:
+      #friendly_name: "Бра кровать 2" #Спальня
+      icon: mdi:wall-sconce
+
+    #---
+    light.rele_16_1:
+      #friendly_name: "LED-лента - потолок" #Спальня
+      icon: mdi:led-strip-variant
+
+    light.rele_16_2:
+      #friendly_name: "LED-лента - полки" #Спальня
+      icon: mdi:led-strip-variant
+
+    light.rele_16_3:
+      #friendly_name: "Люстра" #Мастер санузел
+      icon: mdi:chandelier
+
+    light.rele_16_4:
+      #friendly_name: "LED-лента - полки" #Мастер санузел
+      icon: mdi:led-strip-variant
+
+    light.rele_16_5:
+      #friendly_name: "Точки" #Мастер санузел
+      icon: mdi:spotlight-beam
+
+    light.rele_16_6:
+      #friendly_name: "LED-лента - подсветка душа и туалета" #Мастер санузел
+      icon: mdi:led-strip-variant
+
+    light.rele_16_7:
+      #friendly_name: "Зеркало" #Мастер санузел
+      icon: mdi:mirror
+
+    light.rele_16_8:
+      #friendly_name: "Трэк" #Спальня
+      icon: mdi:track-light
+
+    #---
+    #light.rele_17_1"
+
+    light.rele_17_2:
+      #friendly_name: "Трэк" #Мастер гардероб
+      icon: mdi:track-light
+
+    light.rele_17_4:
+      #friendly_name: "Трэк" #Мастер гардероб
+      icon: mdi:track-light
+
+    light.rele_17_5:
+      #friendly_name: "LED-лента" #Мастер гардероб
+      icon: mdi:led-strip-variant
+
+    light.rele_17_7:
+      #friendly_name: "Бра - вход" #Кухня
+      icon: mdi:wall-sconce
+
+    ####################################################################################################################
+    #    Тёплый пол
+    switch.rele_18_1:
+      #friendly_name: "Тёплый пол" #Мастер санузел
+      icon: mdi:heating-coil
+
+    switch.rele_18_2:
+      #friendly_name: "Тёплый пол" #Гостевой санузел
+      icon: mdi:heating-coil
+
+    switch.rele_18_3:
+      #friendly_name: "Тёплый пол" #Постирочная
+      icon: mdi:heating-coil
+
+    switch.rele_18_4:
+      #friendly_name: "Тёплый пол" #Кухня
+      icon: mdi:heating-coil
+
+    switch.rele_18_5:
+      #friendly_name: "Тёплый пол" #Столовая
+      icon: mdi:heating-coil
+
+    #########################################
+    #   радиаторы / конверторы
+    switch.rele_19_1:
+      #friendly_name: "Радиатор - окно" #Спальня
+      icon: mdi:radiator
+
+    switch.rele_19_2:
+      #friendly_name: "Радиатор - балкон" #Спальня
+      icon: mdi:radiator
+
+    switch.rele_19_3:
+      #friendly_name: "Конвертер (низ) - окно" #Спальня
+      icon: mdi:heat-wave
+
+    switch.rele_19_4:
+      #friendly_name: "Радиатор (правый и левый)" #Столовая
+      icon: mdi:radiator
+
+    switch.rele_19_5:
+      #friendly_name: "Конвертер (низ) - балкон" #Столовая
+      icon: mdi:heat-wave
+
+    switch.rele_19_6:
+      #friendly_name: "Конвертер (низ) - балкон" #Спальня
+      icon: mdi:heat-wave
+
+    switch.rele_19_7:
+      #friendly_name: "Конвертер (низ)" #Столовая
+      icon: mdi:heat-wave
+
+    switch.rele_19_8:
+      #friendly_name: "Вентилятор радиатора" #Мастер санузел
+      icon: mdi:fan-plus
+
+    #---
+    switch.rele_20_1:
+      #friendly_name: "Радиатор" #Кухня
+      icon: mdi:radiator
+
+    switch.rele_20_2:
+      #friendly_name: "Конвертер (низ)" #Кабинет
+      icon: mdi:heat-wave
+
+    switch.rele_20_3:
+      #friendly_name: "Конвертер (низ)" #Мастер санузел
+      icon: mdi:heat-wave
+
+    switch.rele_20_4:
+      #friendly_name: "Радиатор" #Мастер санузел
+      icon: mdi:radiator
+
+    switch.rele_20_5:
+      #friendly_name: "Радиатор" #Кабинет
+      icon: mdi:radiator
+
+    switch.rele_20_6:
+      #friendly_name: "Конвертер (низ)" #Гостинная
+      icon: mdi:heat-wave
+
+    switch.rele_20_7:
+      #friendly_name: "Конвертер (низ)" #Кухня
+      icon: mdi:heat-wave
+
+    switch.rele_20_8:
+      #friendly_name: "Радиатор - (правый и левый)" #Гостинная
+      icon: mdi:radiator
+
+    ####################################################################################################################
+    sensor.termopara_100_1:
+      #friendly_name: "Tёплый пол" #Мастер санузел
+      icon: mdi:thermometer-lines
+
+    sensor.termopara_100_2:
+      #friendly_name: "Tёплый пол" #Гостевой санузел
+      icon: mdi:thermometer-lines
+
+    sensor.termopara_100_3:
+      #friendly_name: "Tёплый пол" #Постирочная
+      icon: mdi:thermometer-lines
+
+    sensor.termopara_100_4:
+      #friendly_name: "Tёплый пол" #Кухня
+      icon: mdi:thermometer-lines
+
+    sensor.termopara_100_5:
+      #friendly_name: "Tёплый пол" #Столовая
+      icon: mdi:thermometer-lines
+
+    sensor.termopara_100_6:
+      #friendly_name: "Температура щита с блоками питаниями"
+      icon: mdi:alpha-t-box
+
+    sensor.termopara_100_7:
+      #friendly_name: "Температура айти щита"
+      icon: mdi:alpha-t-box
+
+    # уточнить используется ли ?
+    switch.rele_17_1:
+      friendly_name: "rele_17_1 - не используется ?"
+      icon: mdi:progress-question
+
+    switch.rele_15_3:
+      friendly_name: "rele_15_3 - не используется ?"
+      icon: mdi:progress-question
+
+    switch.rele_14_2:
+      friendly_name: "rele_14_2 - не используется ?"
+      icon: mdi:progress-question
