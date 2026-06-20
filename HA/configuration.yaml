@@ -1,0 +1,304 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+  default: info
+
+# синтаксис смотри https://www.home-assistant.io/integrations/modbus/?spm=a2ty_o01.29997173.0.0.40e855fbHw7rl7#configuring-switch-entities
+# настройка модбас устройств
+modbus:
+  - name: modbus_hub
+    type: serial
+    method: rtu
+    port: "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
+    # взято от сюда, вывод команды
+    #[core-ssh ~]$ ls -l /dev/serial/by-id/
+    #total 0
+    #lrwxrwxrwx    1 root     root            13 Jun  3 19:52 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB1
+    #lrwxrwxrwx    1 root     root            13 Jun 25  2025 usb-SONOFF_SONOFF_Dongle_Max_MG24_283ab00a00f1ef1185e6c50a6d9880ab-if00-port0 -> ../../ttyUSB0
+    baudrate: 9600 # не менять
+    bytesize: 8 # не менять
+    parity: N # не менять
+    stopbits: 2 # ← Важно! Не 1, а 2  не менять
+    timeout: 3
+    delay: 5 # Задержка между запросами для стабильности
+
+    # эта часть будет переконфигурироватся по месту
+    # описываем релюшки
+    switches:
+      # - name: "CS8 Реле 7"
+      #   slave: 7 # адрес реле
+      #   address: 0 # номер порта  0 -- 1 и т.д
+      #   unique_id: "cs8_7_0_rele" # важно!!! без этого не добавляется в пространство, должно быть уникально
+      #   write_type: coil # битовые данные -- вклю/выкл.
+      #   verify: #  детали не обязательно и так работает
+      #     input_type: coil
+      #     #address: 2
+      #     #state_on: 1
+      #     #state_off: 0
+
+      - name: "CS8 Реле 11-0"
+        slave: 11
+        address: 0
+        unique_id: "cs8_11_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 12-0"
+        slave: 12
+        address: 0
+        unique_id: "cs8_12_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 13-0"
+        slave: 13
+        address: 0
+        unique_id: "cs8_13_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 14-0"
+        slave: 14
+        address: 0
+        unique_id: "cs8_14_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 15-0"
+        slave: 15
+        address: 0
+        unique_id: "cs8_15_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 16-0"
+        slave: 16
+        address: 0
+        unique_id: "cs8_16_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 17-0"
+        slave: 17
+        address: 0
+        unique_id: "cs8_17_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      - name: "CS8 Реле 18-0"
+        slave: 18
+        address: 0
+        unique_id: "cs8_18_0_rele"
+        write_type: coil
+        verify:
+          input_type: coil
+
+      # - name: "CS8 Реле 19-0"
+      #   slave: 19
+      #   address: 0
+      #   unique_id: "cs8_19_0_rele"
+      #   write_type: coil
+      #   verify:
+      #     input_type: coil
+
+      # - name: "CS8 Реле 20-0"
+      #   slave: 20
+      #   address: 0
+      #   unique_id: "cs8_20_0_rele"
+      #   write_type: coil
+      #   verify:
+      #     input_type: coil
+
+    # # здесь просто опрос состояния
+    #   - name: "CS8 Relay 11_0 State"
+    #     slave: 11
+    #     address: 0
+    #     unique_id: "cs8_11_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 12_0 State"
+    #     slave: 12
+    #     address: 0
+    #     unique_id: "cs8_12_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 13_0 State"
+    #     slave: 13
+    #     address: 0
+    #     unique_id: "cs8_13_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 14_0 State"
+    #     slave: 14
+    #     address: 0
+    #     unique_id: "cs8_14_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 15_0 State"
+    #     slave: 15
+    #     address: 0
+    #     unique_id: "cs8_15_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 16_0 State"
+    #     slave: 16
+    #     address: 0
+    #     unique_id: "cs8_16_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 17_0 State"
+    #     slave: 17
+    #     address: 0
+    #     unique_id: "cs8_17_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 18_0 State"
+    #     slave: 18
+    #     address: 0
+    #     unique_id: "cs8_18_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 19_0 State"
+    #     slave: 19
+    #     address: 0
+    #     unique_id: "cs8_19_0_Relay"
+    #     input_type: coil
+
+    #   - name: "CS8 Relay 20_0 State"
+    #     slave: 20
+    #     address: 0
+    #     unique_id: "cs8_20_0_Relay"
+    #     input_type: coil
+
+    ##########################################################################################################
+
+    # === 🌡️ Датчики температуры NT18B07 (7 каналов) ===
+    # Регистры 0x0000–0x0006 → адреса 0–6, значение ×10 → делим на 10 (scale: 0.1)
+    sensors:
+      - name: "NT18B07 Температура канал 1"
+        slave: 100 # ← Адрес
+        address: 0 # Регистр 0x0000
+        input_type: holding
+        data_type: int16
+        scale: 0.1 # Преобразование: 225 → 22.5 °C
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_0_temp_ch1"
+
+      - name: "NT18B07 Температура канал 2"
+        slave: 100
+        address: 1
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_1_temp_ch2"
+
+      - name: "NT18B07 Температура канал 3"
+        slave: 100
+        address: 2
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_2_temp_ch3"
+
+      - name: "NT18B07 Температура канал 4"
+        slave: 100
+        address: 3
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_3_temp_ch4"
+
+      - name: "NT18B07 Температура канал 5"
+        slave: 100
+        address: 4
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_4_temp_ch5"
+
+      - name: "NT18B07 Температура канал 6"
+        slave: 100
+        address: 5
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_5_temp_ch6"
+
+      - name: "NT18B07 Температура канал 7"
+        slave: 100
+        address: 6
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        unique_id: "nt18b07_hub_1_6_temp_ch7"
+
+      - name: "NT18B07 Slave ID"
+        slave: 100
+        address: 254
+        input_type: holding
+        data_type: uint16
+        unique_id: "nt18b07_hub_1_slave_id"
+
+      - name: "NT18B07 Baudrate"
+        slave: 100
+        address: 255
+        input_type: holding
+        data_type: uint16
+        unique_id: "nt18b07_hub_1_Baudrate"
+
+      # - name: "CS8 Slave ID = 7"
+      #   slave: 7
+      #   address: 256
+      #   input_type: holding
+      #   data_type: uint16
+      #   unique_id: "CS8_7_slave_id"
+
+#      - name: "CS8 Baudrate 7"
+#        slave: 7
+#        address: 257
+#        input_type: holding
+#        data_type: uint16
+#        unique_id: "CS8_7_Baudrate"

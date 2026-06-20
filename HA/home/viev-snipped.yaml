@@ -1,0 +1,106 @@
+type: picture-elements
+image: /local/plan.svg
+elements:
+
+
+
+# условия
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: climate.ecobee
+        state: "off"
+    elements:
+      - type: image
+        image: /local/bedroom_off.svg
+        style:
+          left: 40%
+          top: 40%
+          width: 50%
+          transform: translate(-50%, -50%)
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          service_data:
+            entity_id: climate.ecobee
+        hold_action:
+          action: more-info
+#---          
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: climate.ecobee
+        state: "on"
+    elements:
+      - type: image
+        image: /local/bedroom.svg
+        style:
+          left: 40%
+          top: 40%
+          width: 50%
+          transform: translate(-50%, -50%)
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          service_data:
+            entity_id: climate.ecobee
+        hold_action:
+          action: more-info
+          
+#---
+#  подмена картинки при переключении
+  - type: state-icon
+    style:
+      left: 85%
+      top: 70%
+    entity: switch.rele_2
+    tap_action:
+      action: toggle
+    title: Реле 2
+#---          
+  - type: image
+    style:
+      left: 80%
+      top: 80%
+    entity: switch.rele_2
+    title: реле 2
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    state_image:
+      "off": /local/bedroom_off.svg
+      "on": /local/bedroom.svg
+    image: /local/bedroom.svg
+
+
+#---
+#  изменение параметров картинки (яркость и т.д.) при переключении
+  - type: state-icon
+    style:
+      left: 85%
+      top: 20%
+    entity: switch.rele_3
+    tap_action:
+      action: toggle
+    title: Реле 3
+#---
+  - type: image
+    style:
+      left: 80%
+      top: 30%
+    entity: switch.rele_3
+    title: реле 3
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    state_filter:
+      "on": brightness(120%) saturate(1.2)
+      "off": brightness(80%) saturate(0.8) grayscale(50%) opacity(25%)
+    image:
+      media_content_id: /local/bedroom_1.svg
+      
+      
+
+

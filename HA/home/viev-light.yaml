@@ -1,0 +1,332 @@
+views:
+  - type: panel
+    path: plan
+    title: План
+    cards:
+      - type: picture-elements
+        image: /local/plan/plan_.svg
+        elements:
+          - type: state-icon
+            style:
+              left: 48%
+              top: 25%
+            entity: switch.gostinaia_liustra_1
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 48%
+              top: 50%
+            entity: switch.gostinaia_liustra_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 41%
+              top: 50%
+            entity: switch.gostinaia_bra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 41%
+              top: 30%
+            entity: switch.gostinaia_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 47%
+              top: 73%
+            entity: switch.gostinaia_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 77%
+              top: 50%
+            entity: switch.kukhnia_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 73%
+              top: 59%
+            entity: switch.kukhnia_vkhod_podvesy
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 86%
+              top: 40%
+            entity: switch.kukhnia_okno_podvesy
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 83%
+              top: 50%
+            entity: switch.kukhnia_potolok_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 81%
+              top: 39%
+            entity: switch.kukhnia_polki_led_lenta_1
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 75%
+              top: 45%
+            entity: switch.kukhnia_polki_led_lenta_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 25%
+              top: 26%
+            entity: switch.spalnia_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 37%
+              top: 44%
+            entity: switch.spalnia_vkhod_bra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 20%
+              top: 30%
+            entity: switch.spalnia_krovat_bra_1
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 30%
+              top: 40%
+            entity: switch.spalnia_krovat_bra_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 30%
+              top: 28%
+            entity: switch.spalnia_polki_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 30%
+              top: 18%
+            entity: switch.spalnia_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 20%
+              top: 20%
+            entity: switch.spalnia_zerkalo
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 67%
+              top: 80%
+            entity: switch.master_garderob_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 63%
+              top: 76%
+            entity: switch.garderob_gostevoi_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 30%
+              top: 60%
+            entity: switch.master_garderob_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 30%
+              top: 52%
+            entity: switch.master_garderob_led_lenta_1
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 35%
+              top: 60%
+            entity: switch.master_garderob_trek_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 25%
+              top: 60%
+            entity: switch.master_garderob_led_lenta_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 17%
+              top: 45%
+            entity: switch.master_sanuzel_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 10%
+              top: 40%
+            entity: switch.master_sanuzel_tochki
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 13%
+              top: 49%
+            entity: switch.master_sanuzel_zerkalo
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 10%
+              top: 34%
+            entity: switch.master_sanuzel_polki_led_lenta_2
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 20%
+              top: 43%
+            entity: switch.master_sanuzel_polki_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 50%
+              top: 84%
+            entity: switch.kholl_zerkalo
+          - type: state-icon
+            style:
+              left: 47%
+              top: 80%
+            entity: switch.kholl_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 43%
+              top: 80%
+            entity: switch.kholl_podves
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 67%
+              top: 56%
+            entity: switch.postirochnaia_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 66%
+              top: 53%
+            entity: switch.postirochnaia_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 60%
+              top: 63%
+            entity: switch.sanuzel_gostevoi
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 60%
+              top: 58%
+            entity: switch.master_sanuzel_tochki
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 70%
+              top: 30%
+            entity: switch.stolovaia_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 77%
+              top: 30%
+            entity: switch.stolovaia_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 60%
+              top: 30%
+            entity: switch.stolovaia_polki_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 70%
+              top: 38%
+            entity: switch.stolovaia_potolok_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 78%
+              top: 70%
+            entity: switch.kabinet_liustra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 80%
+              top: 78%
+            entity: switch.kabinet_bra
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 89%
+              top: 70%
+            entity: switch.kabinet_trek
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 84%
+              top: 70%
+            entity: switch.kabinet_polki_led_lenta
+            tap_action:
+              action: toggle
+          - type: state-icon
+            style:
+              left: 78%
+              top: 65%
+            entity: switch.kabinet_potolok_led_lenta
+            tap_action:
+              action: toggle
+  - type: sections
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Новый раздел
+    max_columns: 4
+    title: Оборудование
+    icon: mdi:cog
+    cards: []
+    show_icon_and_title: true

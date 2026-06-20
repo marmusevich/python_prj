@@ -1,0 +1,131 @@
+views:
+  - type: panel
+    path: plan
+    title: План
+    cards:
+      - type: picture-elements
+        image: /local/plan/plan_.svg
+        elements:
+          - type: state-label
+            style:
+              left: 78%
+              top: 50%
+              ransform: translate(-50%, -50%)
+              color: "#ffffff"
+              font-size: 14px
+              font-weight: bold
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
+            entity: sensor.kukhnia_teplyi_pol
+            prefix: "Пол "
+          - type: state-icon
+            style:
+              left: 78%
+              top: 48%
+              ransform: translate(-50%, -50%)
+            entity: climate.kukhnia_termostat
+            icon: mdi:heating-coil
+            tap_action:
+              action: more-info
+          - type: state-label
+            style:
+              left: 58%
+              top: 61%
+              ransform: translate(-50%, -50%)
+              color: "#ffffff"
+              font-size: 14px
+              font-weight: bold
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
+            entity: sensor.gostevoi_sanuzel_teplyi_pol
+            prefix: "Пол "
+          - type: state-icon
+            style:
+              left: 58%
+              top: 59%
+              ransform: translate(-50%, -50%)
+            entity: climate.gostevoi_sanuzel_termostat
+            icon: mdi:heating-coil
+            tap_action:
+              action: more-info
+          - type: state-label
+            style:
+              left: 15%
+              top: 44%
+              ransform: translate(-50%, -50%)
+              color: "#ffffff"
+              font-size: 14px
+              font-weight: bold
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
+            entity: sensor.master_sanuzel_teplyi_pol
+            prefix: "Пол "
+          - type: state-icon
+            style:
+              left: 15%
+              top: 42%
+              ransform: translate(-50%, -50%)
+            entity: climate.master_sanuzel_termostat
+            icon: mdi:heating-coil
+            tap_action:
+              action: more-info
+          - type: state-label
+            style:
+              left: 67%
+              top: 56%
+              ransform: translate(-50%, -50%)
+              color: "#ffffff"
+              font-size: 14px
+              font-weight: bold
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
+            entity: sensor.postirochnaia_teplyi_pol
+            prefix: "Пол "
+          - type: state-icon
+            style:
+              left: 67%
+              top: 54%
+              ransform: translate(-50%, -50%)
+            entity: climate.postirochnaia_termostat
+            icon: mdi:heating-coil
+            tap_action:
+              action: more-info
+          - type: state-label
+            style:
+              left: 70%
+              top: 30%
+              ransform: translate(-50%, -50%)
+              color: "#ffffff"
+              font-size: 14px
+              font-weight: bold
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
+            entity: sensor.stolovaia_teplyi_pol
+            prefix: "Пол "
+          - type: state-icon
+            style:
+              left: 70%
+              top: 28%
+              ransform: translate(-50%, -50%)
+            entity: climate.stolovaia_termostat
+            icon: mdi:heating-coil
+            tap_action:
+              action: more-info
+  - type: sections
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: Теплый пол
+          - type: thermostat
+            entity: climate.master_sanuzel_termostat
+          - type: thermostat
+            entity: climate.gostevoi_sanuzel_termostat
+          - type: thermostat
+            entity: climate.postirochnaia_termostat
+          - type: thermostat
+            entity: climate.stolovaia_termostat
+          - type: thermostat
+            entity: climate.kukhnia_termostat
+        column_span: 4
+    max_columns: 4
+    title: Оборудование
+    icon: mdi:cog
+    cards: []
+    show_icon_and_title: true

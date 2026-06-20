@@ -1,0 +1,71 @@
+#   http://homeassistant.local:8123/
+
+
+######################################################################################
+# ION CS-8
+######################################################################################
+
+# Изменить Slave ID
+service: modbus.write_register
+data:
+  address: 256		# 0x0100 в десятичной системе
+  slave: 7          # ТЕКУЩИЙ slave ID устройства
+  hub: modbus_hub   # Имя вашего modbus хаба (из configuration.yaml)
+  value: 20         # НОВЫЙ slave ID (замените на нужный)
+  
+  
+#Как проверить текущий Slave ID  
+service: modbus.read_holding_registers
+data:
+  hub: modbus_hub
+  slave: 7          # переберите возможные адреса 1-247
+  address: 256
+  count: 1  
+
+
+#сброс програмно
+action: modbus.write_register
+data:
+  hub: modbus_hub 	# то имя, которое вы задали в configuration.yaml при настройке Modbus
+  slave: 7 		# Slave ID вашего реле (или 0, если хотите отправить широковещательный запрос)
+  address: 170 		# Это 0x00AA в десятичном виде
+  value: 1 			# Можно писать любое число, устройство все равно перезагрузится
+  
+# задать время авто отключения реле
+#   время x0301 - 1 час  (03 - час, 01 - 1) еденицы измерения, 01 сек, 02 мин, 03 час, 
+#   address: 0x0422 - перфикс регистра 0x042,   значения 1,,,8
+
+action: modbus.write_register
+data:
+  hub: modbus_hub
+  slave: 18
+  address: 0x0421 
+  value: 0x0105
+
+
+
+
+
+  
+######################################################################################
+# NT18B07
+######################################################################################
+
+# Изменить Slave ID
+service: modbus.write_register
+data:
+  address: 254      # АДРЕС РЕГИСТРА (См. важное примечание ниже!)
+  slave: 1          # ТЕКУЩИЙ slave ID устройства (заводской обычно 1)
+  hub: modbus_hub   # Имя вашего modbus хаба (из configuration.yaml)
+  value: 5          # НОВЫЙ slave ID (замените на нужный, обычно от 1 до 247)  
+  
+  
+#Как проверить текущий Slave ID  
+service: modbus.read_holding_registers
+data:
+  hub: modbus_hub
+  slave: 7          # переберите возможные адреса 1-247
+  address: 2544
+  count: 1  
+
+
