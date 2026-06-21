@@ -71,14 +71,6 @@ modbus:
     ####################################################################################################################################
     # вентиляторы вентеляции
     fans:
-      - name: "rele_17_3"
-        slave: 17
-        address: 2
-        unique_id: "_cs8_17_2"
-        write_type: coil
-        verify:
-          input_type: coil
-
       - name: "rele_17_6"
         slave: 17
         address: 5
@@ -488,6 +480,14 @@ modbus:
         verify:
           input_type: coil
 
+      - name: "rele_17_3"
+        slave: 17
+        address: 2
+        unique_id: "_cs8_17_2"
+        write_type: coil
+        verify:
+          input_type: coil
+
       - name: "rele_17_4"
         slave: 17
         address: 3
@@ -815,10 +815,6 @@ modbus:
 ####################################################################################################################################
 homeassistant:
   customize:
-    fan.rele_17_3:
-      #friendly_name: "Вентилятор" #Гостевой санузел
-      icon: mdi:fan
-
     fan.rele_17_6:
       #friendly_name: "Вентилятор" #Мастер санузел
       icon: mdi:fan
@@ -862,7 +858,7 @@ homeassistant:
 
     #-------------------------------------------------------
     light.rele_12_1:
-      #friendly_name: "LED-лента" #Гостиная
+      #friendly_name: "LED-лента Подсветка мебели гостинной" #Гостиная
       icon: mdi:led-strip-variant
 
     light.rele_12_2:
@@ -882,7 +878,7 @@ homeassistant:
       icon: mdi:chandelier
 
     light.rele_12_6:
-      #friendly_name: "LED-лента - полки" #Столовая
+      #friendly_name: "LED-лента - Подсветка мебели сталовой" #Столовая
       icon: mdi:led-strip-variant
 
     light.rele_12_7:
@@ -1023,6 +1019,10 @@ homeassistant:
     light.rele_17_2:
       #friendly_name: "Трэк" #Мастер гардероб
       icon: mdi:track-light
+
+    light.rele_17_3:
+      #friendly_name: "LED-лента" #Мастер гардероб
+      icon: mdi:led-strip-variant
 
     light.rele_17_4:
       #friendly_name: "Трэк" #Мастер гардероб
