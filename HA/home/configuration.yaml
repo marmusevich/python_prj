@@ -71,6 +71,14 @@ modbus:
     ####################################################################################################################################
     # вентиляторы вентеляции
     fans:
+      - name: "rele_17_5"
+        slave: 17
+        address: 4
+        unique_id: "_cs8_17_4"
+        write_type: coil
+        verify:
+          input_type: coil
+
       - name: "rele_17_6"
         slave: 17
         address: 5
@@ -472,6 +480,14 @@ modbus:
 
       #########################################
       #    Реле, ID 17
+      - name: "rele_17_1"
+        slave: 17
+        address: 0
+        unique_id: "_cs8_17_0"
+        write_type: coil
+        verify:
+          input_type: coil
+
       - name: "rele_17_2"
         slave: 17
         address: 1
@@ -492,14 +508,6 @@ modbus:
         slave: 17
         address: 3
         unique_id: "_cs8_17_3"
-        write_type: coil
-        verify:
-          input_type: coil
-
-      - name: "rele_17_5"
-        slave: 17
-        address: 4
-        unique_id: "_cs8_17_4"
         write_type: coil
         verify:
           input_type: coil
@@ -698,29 +706,29 @@ modbus:
 
       ####################################################################################################################################
       # уточнить используется ли ?
-      - name: "rele_17_1"
-        slave: 17
-        address: 0
-        unique_id: "_cs8_17_0"
-        write_type: coil
-        verify:
-          input_type: coil
+      # - name: "rele_17_1"
+      #   slave: 17
+      #   address: 0
+      #   unique_id: "_cs8_17_0"
+      #   write_type: coil
+      #   verify:
+      #     input_type: coil
 
-      - name: "rele_15_3"
-        slave: 15
-        address: 2
-        unique_id: "_cs8_15_2"
-        write_type: coil
-        verify:
-          input_type: coil
+      # - name: "rele_15_3"
+      #   slave: 15
+      #   address: 2
+      #   unique_id: "_cs8_15_2"
+      #   write_type: coil
+      #   verify:
+      #     input_type: coil
 
-      - name: "rele_14_2"
-        slave: 14
-        address: 1
-        unique_id: "_cs8_14_1"
-        write_type: coil
-        verify:
-          input_type: coil
+      # - name: "rele_14_2"
+      #   slave: 14
+      #   address: 1
+      #   unique_id: "_cs8_14_1"
+      #   write_type: coil
+      #   verify:
+      #     input_type: coil
 
     ####################################################################################################################################
     # === Датчики температуры NT18B07 (7 каналов) ===
@@ -815,6 +823,10 @@ modbus:
 ####################################################################################################################################
 homeassistant:
   customize:
+    light.rele_17_5:
+      #friendly_name: "Вентилятор" #Гостевой санузел
+      icon: mdi:fan
+
     fan.rele_17_6:
       #friendly_name: "Вентилятор" #Мастер санузел
       icon: mdi:fan
@@ -1014,7 +1026,9 @@ homeassistant:
       icon: mdi:track-light
 
     #---
-    #light.rele_17_1"
+    light.rele_17_1:
+      friendly_name: "Электрощитовая - свет"
+      icon: mdi:lightbulb
 
     light.rele_17_2:
       #friendly_name: "Трэк" #Мастер гардероб
@@ -1027,10 +1041,6 @@ homeassistant:
     light.rele_17_4:
       #friendly_name: "Трэк" #Мастер гардероб
       icon: mdi:track-light
-
-    light.rele_17_5:
-      #friendly_name: "LED-лента" #Мастер гардероб
-      icon: mdi:led-strip-variant
 
     light.rele_17_7:
       #friendly_name: "Бра - вход" #Кухня
@@ -1155,14 +1165,24 @@ homeassistant:
       icon: mdi:alpha-t-box
 
     # уточнить используется ли ?
-    switch.rele_17_1:
-      friendly_name: "rele_17_1 - не используется ?"
-      icon: mdi:progress-question
+    # switch.rele_15_3:
+    #   friendly_name: "rele_15_3 - не используется ?"
+    #   icon: mdi:progress-question
 
-    switch.rele_15_3:
-      friendly_name: "rele_15_3 - не используется ?"
-      icon: mdi:progress-question
+    # switch.rele_14_2:
+    #   friendly_name: "rele_14_2 - не используется ?"
+    #   icon: mdi:progress-question
 
-    switch.rele_14_2:
-      friendly_name: "rele_14_2 - не используется ?"
-      icon: mdi:progress-question
+####################################################################################################################################
+# вспомогательные объекты
+####################################################################################################################################
+template:
+  - light:
+      - name: "Выключить весь свет"
+        unique_id: all_lights_off_button
+        state: "off"
+        icon: mdi:lightbulb-group-off
+        turn_off:
+          - service: script.vykliuchit_ves_svet
+        turn_on:
+          - service: script.vykliuchit_ves_svet
