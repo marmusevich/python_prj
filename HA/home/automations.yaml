@@ -1403,7 +1403,7 @@
             - condition: template
               value_template: "{{ trigger.payload == '1_double' }}"
           sequence:
-            - action: cover.open_cover
+            - action: cover.close_cover
               target:
                 entity_id:
                   - cover.0xa4c138f426eb0ecc
@@ -1495,7 +1495,7 @@
             - condition: template
               value_template: "{{ trigger.payload == '2_double' }}"
           sequence:
-            - action: cover.open_cover
+            - action: cover.close_cover
               target:
                 entity_id:
                   - cover.0xa4c138aa59545859
@@ -1683,7 +1683,7 @@
             - condition: template
               value_template: "{{ trigger.payload == '1_double' }}"
           sequence:
-            - action: cover.open_cover
+            - action: cover.close_cover
               target:
                 entity_id:
                   - cover.0xa4c138f426eb0ecc
@@ -1775,7 +1775,7 @@
             - condition: template
               value_template: "{{ trigger.payload == '2_double' }}"
           sequence:
-            - action: cover.open_cover
+            - action: cover.close_cover
               target:
                 entity_id:
                   - cover.0xa4c138aa59545859
