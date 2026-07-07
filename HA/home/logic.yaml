@@ -1,0 +1,186 @@
+# здесь универсальные скрипты для управления одной шторой
+# без зашиты / с защитой  или книверсальный для одной шторы
+# по циклу
+# вызов сцены
+
+
+    
+# cover_control:
+#   alias: упр шторой
+#   fields:
+#     covers:
+#       name: Covers
+#       selector:
+#         entity:
+#           domain: cover
+#           multiple: true
+#     command:
+#       name: Command
+#       selector:
+#         select:
+#           options:
+#           - open
+#           - close
+#           - stop
+#   sequence:
+#   - choose:
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ command == ''open'' }}'
+#       sequence:
+#       - action: cover.open_cover
+#         target:
+#           entity_id: '{{ covers }}'
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ command == ''close'' }}'
+#       sequence:
+#       - action: cover.close_cover
+#         target:
+#           entity_id: '{{ covers }}'
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ command == ''stop'' }}'
+#       sequence:
+#       - action: cover.stop_cover
+#         target:
+#           entity_id: '{{ covers }}'
+
+# cover_execute:
+#   alias: Универсальное управление шторами
+#   mode: parallel
+#   fields:
+#     covers:
+#       name: Covers
+#     action:
+#       name: Action
+#     sensor:
+#       name: Door sensor
+#   sequence:
+#     - choose:
+#         #
+#         # OPEN
+#         #
+#         - conditions: "{{ action == 'open' }}"
+#           sequence:
+#             - action: cover.open_cover
+#               target:
+#                 entity_id: "{{ covers }}"
+#         #
+#         # STOP
+#         #
+#         - conditions: "{{ action == 'stop' }}"
+#           sequence:
+#             - action: cover.stop_cover
+#               target:
+#                 entity_id: "{{ covers }}"
+#         #
+#         # CLOSE
+#         #
+#         - conditions: "{{ action == 'close' }}"
+#           sequence:
+#             - if:
+#                 - condition: template
+#                   value_template: >
+#                     {{ sensor == '' or is_state(sensor, 'off') }}
+#               then:
+#                 - action: cover.close_cover
+#                   target:
+#                     entity_id: "{{ covers }}"
+
+#               else:
+#                 - action: persistent_notification.create
+#                   data:
+#                     title: Жалюзи11
+#                     message: Дверь открыта. Закрытие запрещено.11
+
+# cover_cycle:
+#   alias: Универсальный цикл управления шторами
+#   mode: parallel
+#   fields:
+#     covers:
+#       name: Шторы
+#     sensor:
+#       name: Датчик двери
+#       default: null
+#   sequence:
+#     #
+#     # Определяем состояние группы
+#     #
+#     - variables:
+#         moving: >
+#           {{
+#             expand(covers)
+#             | selectattr('state', 'in', ['opening', 'closing'])
+#             | list
+#             | count > 0
+#           }}
+#         all_closed: >
+#           {{
+#             expand(covers)
+#             | selectattr('state', 'eq', 'closed')
+#             | list
+#             | count == expand(covers) | list | count
+#           }}
+
+#     - action: persistent_notification.create
+#       data:
+#         title: отладка moving
+#         message: "moving={{ moving }}, all_closed={{ all_closed }}"
+#     - action: persistent_notification.create
+#       data:
+#         title: отладка sensor
+#         message: "sensor={{ sensor }}"
+              
+#     - choose:
+#         #
+#         # Движутся -> STOP
+#         #
+#         - conditions: "{{ moving }}"
+#           sequence:
+#             - action: cover.stop_cover
+#               target:
+#                 entity_id: "{{ covers }}"
+#             - action: persistent_notification.create
+#               data:
+#                 title: отладка
+#                 message: "stop_cover."
+
+#         #
+#         # Все закрыты -> OPEN
+#         #
+#         - conditions: "{{ all_closed }}"
+#           sequence:
+#             - action: cover.open_cover
+#               target:
+#                 entity_id: "{{ covers }}"
+#             - action: persistent_notification.create
+#               data:
+#                 title: отладка
+#                 message: "open_cover."
+#       default:
+#         #
+#         # Иначе пытаемся закрыть
+#         #
+#         - if:
+#             - condition: template
+#               value_template: >
+#                 {{
+#                   not sensor or is_state(sensor, "off")
+#                 }}
+
+#           then:
+#             - action: cover.close_cover
+#               target:
+#                 entity_id: "{{ covers }}"
+#             - action: persistent_notification.create
+#               data:
+#                 title: отладка
+#                 message: "close_cover."
+
+#           else:
+#             - action: persistent_notification.create
+#               data:
+#                 title: Жалюзи - отладка
+#                 message: "value_template={{value_template}} s( {{sensor}} ) ns( {{not sensor}} )  отладка  Закрытие запрещено — дверь открыта."
+

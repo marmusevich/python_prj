@@ -822,8 +822,10 @@ modbus:
 # понятные имена и иконки по умолчанию
 ####################################################################################################################################
 homeassistant:
+  packages: !include_dir_named packages
+  
   customize:
-    light.rele_17_5:
+    fan.rele_17_5:
       #friendly_name: "Вентилятор" #Гостевой санузел
       icon: mdi:fan
 
@@ -1027,7 +1029,7 @@ homeassistant:
 
     #---
     light.rele_17_1:
-      friendly_name: "Электрощитовая - свет"
+      #friendly_name: "Электрощитовая - свет"
       icon: mdi:lightbulb
 
     light.rele_17_2:

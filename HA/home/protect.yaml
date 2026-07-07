@@ -1,0 +1,86 @@
+# защита штор, объеденить защищаемые шторы в группы
+#
+#
+
+automation:
+  - id: 2000-cover_cabinet_when_door_open
+    alias: "Защита: Кабинет - остановить штору при открытии двери"
+    triggers:
+      - entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+        from: "off"
+        to: "on"
+        trigger: state
+    conditions: []
+    actions:
+      - target:
+          entity_id:
+            - cover.kabinet_s_zashchioi_ot_otkrytiia_dveri
+        action: cover.stop_cover
+        data: {}
+    mode: single
+
+  - id: 2000-cover_spalnya_when_door_open
+    alias: "Защита: Спальня - остановить штору при открытии двери"
+    triggers:
+      - entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+        from: "off"
+        to: "on"
+        trigger: state
+    conditions: []
+    actions:
+      - target:
+          entity_id:
+            - cover.spalnia_s_zashchioi_ot_otkrytiia_dveri
+        action: cover.stop_cover
+        data: {}
+    mode: single
+
+  - id: 2000-cover_stolovaya_when_door_open
+    alias: "Защита: Столовая - остановить штору при открытии двери"
+    triggers:
+      - entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+        from: "off"
+        to: "on"
+        trigger: state
+    conditions: []
+    actions:
+      - target:
+          entity_id:
+            - cover.stolovaia_s_zashchioi_ot_otkrytiia_dveri
+        action: cover.stop_cover
+        data: {}
+    mode: single
+
+  # для вентиляции сделаем независимо два тригера с разными группами или одной
+  #    там донастроим
+  - id: 2000-cover_gostinnaya_when_vent_1_open
+    alias: "Защита: Гостинная - остановить штору при открытии вентиляции 1"
+    triggers:
+      - entity_id: binary_sensor.0xa4c138d34bfe20a6_contact
+        from: "off"
+        to: "on"
+        trigger: state
+    conditions: []
+    actions:
+      - target:
+          entity_id:
+            - cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_pravo
+        action: cover.stop_cover
+        data: {}
+    mode: single
+
+  - id: 2000-cover_gostinnaya_when_vent_2_open
+    alias: "Защита: Гостинная - остановить штору при открытии вентиляции 2"
+    triggers:
+      - entity_id: binary_sensor.0xa4c13847decdbe51_contact
+        from: "off"
+        to: "on"
+        trigger: state
+    conditions: []
+    actions:
+      - target:
+          entity_id:
+            - cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_levo
+        action: cover.stop_cover
+        data: {}
+    mode: single
