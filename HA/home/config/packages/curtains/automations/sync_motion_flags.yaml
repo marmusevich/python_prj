@@ -1,0 +1,441 @@
+# /config/packages/curtains/automations/sync_motion_flags.yaml
+
+# ============================================================================
+# СИНХРОНИЗАЦИЯ ФЛАГОВ ДВИЖЕНИЯ
+# Когда физическое устройство сообщает "остановилось" (running: false),
+# сбрасываем логический флаг input_boolean в off.
+# ============================================================================
+automation:
+  # 1. Мастер санузел жалюзи
+  - id: 3000-sync_motion_master_bath_blind
+    alias: "Sync: Мастер санузел жалюзи - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.master_sanuzel_zhaliuzi_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.master_bath_blind_is_moving
+    mode: single
+
+  # 2. Кухня тюль
+  - id: 3000-sync_motion_kitchen_tulle
+    alias: "Sync: Кухня тюль - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kukhnia_tiul_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kitchen_tulle_is_moving
+    mode: single
+
+  # 3. Столовая шторы балкон
+  - id: 3000-sync_motion_stolovaya_shtory_balkon
+    alias: "Sync: Столовая шторы балкон - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_shtory_balkon_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_shtory_balkon_is_moving
+    mode: single
+
+  # 4. Столовая тюль балкон
+  - id: 3000-sync_motion_stolovaya_tyul_balkon
+    alias: "Sync: Столовая тюль балкон - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_tiul_balkon_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_tyul_balkon_is_moving
+    mode: single
+
+  # 5. Столовая тюль угловая
+  - id: 3000-sync_motion_stolovaya_tyul_uglovaya
+    alias: "Sync: Столовая тюль угловая - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_tiul_uglovaia_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_tyul_uglovaya_is_moving
+    mode: single
+
+  # 6. Кухня штора
+  - id: 3000-sync_motion_kitchen_curtain
+    alias: "Sync: Кухня штора - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kukhnia_shtora_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kitchen_curtain_is_moving
+    mode: single
+
+  # 7. Гостиная штора
+  - id: 3000-sync_motion_gostinaya_shtora
+    alias: "Sync: Гостиная штора - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_shtora_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_shtora_is_moving
+    mode: single
+
+  # 8. Кабинет штора
+  - id: 3000-sync_motion_kabinet_shtora
+    alias: "Sync: Кабинет штора - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_shtora_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_shtora_is_moving
+    mode: single
+
+  # 9. Гостиная жалюзи центр
+  - id: 3000-sync_motion_gostinaya_zhaluzi_tsentr
+    alias: "Sync: Гостиная жалюзи центр - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_zhaliuzi_tsentr_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_zhaluzi_tsentr_is_moving
+    mode: single
+
+  # 10. Гостиная жалюзи лево
+  - id: 3000-sync_motion_gostinaya_zhaluzi_levo
+    alias: "Sync: Гостиная жалюзи лево - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_zhaliuzi_levo_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_zhaluzi_levo_is_moving
+    mode: single
+
+  # 11. Спальня тюль угол
+  - id: 3000-sync_motion_spalnya_tyul_ugol
+    alias: "Sync: Спальня тюль угол - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_tiul_ugol_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_tyul_ugol_is_moving
+    mode: single
+
+  # 12. Спальня балкон тюль
+  - id: 3000-sync_motion_spalnya_balkon_tyul
+    alias: "Sync: Спальня балкон тюль - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_balkon_tiul_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_balkon_tyul_is_moving
+    mode: single
+
+  # 13. Спальня балкон штора
+  - id: 3000-sync_motion_spalnya_balkon_shtora
+    alias: "Sync: Спальня балкон штора - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_balkon_shtora_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_balkon_shtora_is_moving
+    mode: single
+
+  # 14. Спальня штора угол
+  - id: 3000-sync_motion_spalnya_shtora_ugol
+    alias: "Sync: Спальня штора угол - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_shtora_ugol_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_shtora_ugol_is_moving
+    mode: single
+
+  # 15. Гостиная жалюзи право
+  - id: 3000-sync_motion_gostinaya_zhaluzi_pravo
+    alias: "Sync: Гостиная жалюзи право - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_zhaliuzi_pravo_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_zhaluzi_pravo_is_moving
+    mode: single
+
+  # 16. Мастер санузел штора
+  - id: 3000-sync_motion_master_bath_curtain
+    alias: "Sync: Мастер санузел штора - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.master_sanuzel_shtora_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.master_bath_curtain_is_moving
+    mode: single
+
+  # 17. Мастер санузел тюль
+  - id: 3000-sync_motion_master_bath_tulle
+    alias: "Sync: Мастер санузел тюль - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.master_sanuzel_tiul_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.master_bath_tulle_is_moving
+    mode: single
+
+  # 18. Столовая жалюзи балкон дверь
+  - id: 3000-sync_motion_stolovaya_zhaluzi_balkon_dver
+    alias: "Sync: Столовая жалюзи балкон дверь - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_zhaliuzi_balkon_dver_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_zhaluzi_balkon_dver_is_moving
+    mode: single
+
+  # 19. Столовая жалюзи балкон большой
+  - id: 3000-sync_motion_stolovaya_zhaluzi_balkon_bolshoy
+    alias: "Sync: Столовая жалюзи балкон большой - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_zhaliuzi_balkon_bolshoi_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_zhaluzi_balkon_bolshoy_is_moving
+    mode: single
+
+  # 20. Столовая жалюзи окно левое
+  - id: 3000-sync_motion_stolovaya_zhaluzi_okno_levoe
+    alias: "Sync: Столовая жалюзи окно левое - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_zhaliuzi_okno_levoe_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_zhaluzi_okno_levoe_is_moving
+    mode: single
+
+  # 21. Столовая жалюзи окно правое
+  - id: 3000-sync_motion_stolovaya_zhaluzi_okno_pravoe
+    alias: "Sync: Столовая жалюзи окно правое - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_zhaliuzi_okno_pravoe_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_zhaluzi_okno_pravoe_is_moving
+    mode: single
+
+  # 22. Кухня жалюзи
+  - id: 3000-sync_motion_kitchen_blind
+    alias: "Sync: Кухня жалюзи - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kukhnia_zhaliuzi_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kitchen_blind_is_moving
+    mode: single
+
+  # 23. Кабинет жалюзи окно
+  - id: 3000-sync_motion_kabinet_zhaluzi_okno
+    alias: "Sync: Кабинет жалюзи окно - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_zhaliuzi_okno_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_zhaluzi_okno_is_moving
+    mode: single
+
+  # 24. Кабинет сонце дверь
+  - id: 3000-sync_motion_kabinet_sontse_dver
+    alias: "Sync: Кабинет сонце дверь - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_sontse_dver_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_sontse_dver_is_moving
+    mode: single
+
+  # 25. Спальня балкон окно
+  - id: 3000-sync_motion_spalnya_balkon_okno
+    alias: "Sync: Спальня балкон окно - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_balkon_okno_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_balkon_okno_is_moving
+    mode: single
+
+  # 26. Спальня жалюзи балкон дверь
+  - id: 3000-sync_motion_spalnya_zhaluzi_balkon_dver
+    alias: "Sync: Спальня жалюзи балкон дверь - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_zhaliuzi_balkon_dver_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_zhaluzi_balkon_dver_is_moving
+    mode: single
+
+  # 27. Спальня жалюзи окно правое
+  - id: 3000-sync_motion_spalnya_zhaluzi_okno_pravoe
+    alias: "Sync: Спальня жалюзи окно правое - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_zhaliuzi_okno_pravoe_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving
+    mode: single
+
+  # 28. Спальня жалюзи окно левое
+  - id: 3000-sync_motion_spalnya_zhaluzi_okno_levoe
+    alias: "Sync: Спальня жалюзи окно левое - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.spalnia_zhaliuzi_okno_levoe_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.spalnya_zhaluzi_okno_levoe_is_moving
+    mode: single
+
+  # 29. Гостиная тюль
+  - id: 3000-sync_motion_gostinaya_tyul
+    alias: "Sync: Гостиная тюль - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_tiul_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_tyul_is_moving
+    mode: single
+
+  # 30. Столовая штора угловая
+  - id: 3000-sync_motion_stolovaya_shtora_uglovaya
+    alias: "Sync: Столовая штора угловая - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_shtora_uglovaia_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_shtora_uglovaya_is_moving
+    mode: single
+
+  # 31. Кабинет тюль
+  - id: 3000-sync_motion_kabinet_tyul
+    alias: "Sync: Кабинет тюль - сброс флага движения"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_tiul_dvizhenie
+        to: "off"
+    conditions: []
+    actions:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_tyul_is_moving
+    mode: single

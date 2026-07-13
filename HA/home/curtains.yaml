@@ -1,9 +1,0 @@
-#automation: !include curtains/automations.yaml
-#script: !include curtains/scripts.yaml
-#script: !include curtains/scripts_mapping.yaml
-#script: !include curtains/scripts_logic.yaml
-#group: !include curtains/groups.yaml
-#scene: !include curtains/scenes.yaml
-
-script: !include_dir_merge_named curtains/scripts
-automation: !include_dir_merge_list curtains/automations

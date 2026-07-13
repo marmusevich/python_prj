@@ -1,0 +1,8 @@
+vykliuchit_ves_svet:
+  alias: Выключить весь свет
+  description: Выключить весь свет
+  sequence:
+  - target:
+      entity_id: all
+    action: light.turn_off
+

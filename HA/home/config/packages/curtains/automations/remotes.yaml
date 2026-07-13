@@ -1,0 +1,2982 @@
+# отловить событие - вызвать связаный мапинг
+#
+#
+
+automation:
+
+# /config/packages/curtains/automations/remotes.yaml
+
+  # ============================================================================
+  # ПУЛЬТ 9: Пульт штор кухня (вход)
+  # ============================================================================
+
+  - id: 2000-pult_09-button_1
+    alias: "Пульт штор кухня (9), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня (9)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.kitchen_curtain_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.kitchen_scene_1
+    mode: single
+
+  - id: 2000-pult_09-button_2
+    alias: "Пульт штор кухня (9), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня (9)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.kitchen_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.kitchen_scene_2
+    mode: single
+
+  - id: 2000-pult_09-button_3
+    alias: "Пульт штор кухня (9), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня (9)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.kitchen_blind_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.kitchen_scene_3
+    mode: single
+
+  - id: 2000-pult_09-button_4
+    alias: "Пульт штор кухня (9), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня (9)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.kitchen_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.kitchen_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 9.1: Пульт штор кухня стол
+  # ============================================================================
+
+  - id: 2000-pult_091-button_1
+    alias: "Пульт штор кухня стол (9.1), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня стол (9.1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.kitchen_curtain_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.kitchen_scene_1
+    mode: single
+
+  - id: 2000-pult_091-button_2
+    alias: "Пульт штор кухня стол (9.1), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня стол (9.1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.kitchen_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.kitchen_scene_2
+    mode: single
+
+  - id: 2000-pult_091-button_3
+    alias: "Пульт штор кухня стол (9.1), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня стол (9.1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.kitchen_blind_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.kitchen_scene_3
+    mode: single
+
+  - id: 2000-pult_091-button_4
+    alias: "Пульт штор кухня стол (9.1), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор кухня стол (9.1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.kitchen_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.kitchen_all_close
+    mode: single
+
+
+  # ============================================================================
+  # ПУЛЬТ 1: Пульт штор мастер санузел (1)
+  # ============================================================================
+
+  - id: 2001-pult_01-button_1
+    alias: "Пульт штор мастер санузел (1), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.master_bath_curtain_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.master_bath_scene_1
+    mode: single
+
+  - id: 2001-pult_01-button_2
+    alias: "Пульт штор мастер санузел (1), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.master_bath_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.master_bath_scene_2
+    mode: single
+
+  - id: 2001-pult_01-button_3
+    alias: "Пульт штор мастер санузел (1), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.master_bath_blind_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.master_bath_scene_3
+    mode: single
+
+  - id: 2001-pult_01-button_4
+    alias: "Пульт штор мастер санузел (1), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.master_bath_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.master_bath_all_close
+    mode: single
+
+
+# ============================================================================
+# ПУЛЬТ 1: Мастер санузел
+# ============================================================================
+
+  - id: 2001-pult_01-button_1
+    alias: "Пульт штор мастер санузел (1), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.master_bath_curtain_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.master_bath_scene_1
+    mode: single
+
+  - id: 2001-pult_01-button_2
+    alias: "Пульт штор мастер санузел (1), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.master_bath_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.master_bath_scene_2
+    mode: single
+
+  - id: 2001-pult_01-button_3
+    alias: "Пульт штор мастер санузел (1), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.master_bath_blind_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.master_bath_scene_3
+    mode: single
+
+  - id: 2001-pult_01-button_4
+    alias: "Пульт штор мастер санузел (1), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.master_bath_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.master_bath_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 2: Спальня вход (с защитой)
+  # ============================================================================
+
+  - id: 2002-pult_02-button_1
+    alias: "Пульт штор вход спальня (2), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.spalnya_curtain_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.spalnya_scene_1
+    mode: single
+
+  - id: 2002-pult_02-button_2
+    alias: "Пульт штор вход спальня (2), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.spalnya_tulle_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.spalnya_scene_2
+    mode: single
+
+  - id: 2002-pult_02-button_3
+    alias: "Пульт штор вход спальня (2), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.spalnya_blinds_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.spalnya_scene_3
+    mode: single
+
+  - id: 2002-pult_02-button_4
+    alias: "Пульт штор вход спальня (2), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.spalnya_all_lp_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.spalnya_all_lp_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 3: Спальня кровать слева (с защитой)
+  # ============================================================================
+
+  - id: 2003-pult_03-button_1
+    alias: "Пульт штор спальня кровать слева (3), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.spalnya_curtain_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.spalnya_scene_1
+    mode: single
+
+  - id: 2003-pult_03-button_2
+    alias: "Пульт штор спальня кровать слева (3), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.spalnya_tulle_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.spalnya_scene_2
+    mode: single
+
+  - id: 2003-pult_03-button_3
+    alias: "Пульт штор спальня кровать слева (3), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.spalnya_blinds_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.spalnya_scene_3
+    mode: single
+
+  - id: 2003-pult_03-button_4
+    alias: "Пульт штор спальня кровать слева (3), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.spalnya_all_lp_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.spalnya_all_lp_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 4: Спальня кровать справа (с защитой)
+  # ============================================================================
+
+  - id: 2004-pult_04-button_1
+    alias: "Пульт штор спальня кровать справа (4), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.spalnya_curtain_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.spalnya_scene_1
+    mode: single
+
+  - id: 2004-pult_04-button_2
+    alias: "Пульт штор спальня кровать справа (4), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.spalnya_tulle_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.spalnya_scene_2
+    mode: single
+
+  - id: 2004-pult_04-button_3
+    alias: "Пульт штор спальня кровать справа (4), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.spalnya_blinds_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.spalnya_scene_3
+    mode: single
+
+  - id: 2004-pult_04-button_4
+    alias: "Пульт штор спальня кровать справа (4), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.spalnya_all_lp_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.spalnya_all_lp_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 5: Спальня балкон (с защитой)
+  # ============================================================================
+
+  - id: 2005-pult_05-button_1
+    alias: "Пульт штор балкон спальня (5), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.spalnya_curtain_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.spalnya_scene_1
+    mode: single
+
+  - id: 2005-pult_05-button_2
+    alias: "Пульт штор балкон спальня (5), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.spalnya_tulle_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.spalnya_scene_2
+    mode: single
+
+  - id: 2005-pult_05-button_3
+    alias: "Пульт штор балкон спальня (5), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.spalnya_blinds_lp_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.spalnya_scene_3
+    mode: single
+
+  - id: 2005-pult_05-button_4
+    alias: "Пульт штор балкон спальня (5), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.spalnya_all_lp_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.spalnya_all_lp_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 6: Гостиная (с защитой от вентиляции)
+  # ============================================================================
+
+  - id: 2006-pult_06-button_1
+    alias: "Пульт штор гостиная (6), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.gostinaya_curtain_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.gostinaya_scene_1
+    mode: single
+
+  - id: 2006-pult_06-button_2
+    alias: "Пульт штор гостиная (6), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.gostinaya_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.gostinaya_scene_2
+    mode: single
+
+  - id: 2006-pult_06-button_3
+    alias: "Пульт штор гостиная (6), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.gostinaya_blinds_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.gostinaya_scene_3
+    mode: single
+
+  - id: 2006-pult_06-button_4
+    alias: "Пульт штор гостиная (6), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.gostinaya_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.gostinaya_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 7: Столовая вход (с защитой)
+  # ============================================================================
+
+  - id: 2007-pult_07-button_1
+    alias: "Пульт штор вход столовая (7), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.stolovaya_shtory_balkon_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_1
+    mode: single
+
+  - id: 2007-pult_07-button_2
+    alias: "Пульт штор вход столовая (7), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.stolovaya_tyul_balkon_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_2
+    mode: single
+
+  - id: 2007-pult_07-button_3
+    alias: "Пульт штор вход столовая (7), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.stolovaya_blinds_balkon_dver_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_3
+    mode: single
+
+  - id: 2007-pult_07-button_4
+    alias: "Пульт штор вход столовая (7), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.stolovaya_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.stolovaya_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 8: Столовая балкон (с защитой)
+  # ============================================================================
+
+  - id: 2008-pult_08-button_1
+    alias: "Пульт штор столовая балкон (8), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.stolovaya_shtory_balkon_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_1
+    mode: single
+
+  - id: 2008-pult_08-button_2
+    alias: "Пульт штор столовая балкон (8), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.stolovaya_tyul_balkon_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_2
+    mode: single
+
+  - id: 2008-pult_08-button_3
+    alias: "Пульт штор столовая балкон (8), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.stolovaya_blinds_balkon_dver_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.stolovaya_scene_3
+    mode: single
+
+  - id: 2008-pult_08-button_4
+    alias: "Пульт штор столовая балкон (8), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.stolovaya_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.stolovaya_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 10: Кабинет вход (с защитой)
+  # ============================================================================
+
+  - id: 2010-pult_10-button_1
+    alias: "Пульт штор вход кабинет (10), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.kabinet_shtora_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.kabinet_scene_1
+    mode: single
+
+  - id: 2010-pult_10-button_2
+    alias: "Пульт штор вход кабинет (10), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.kabinet_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.kabinet_scene_2
+    mode: single
+
+  - id: 2010-pult_10-button_3
+    alias: "Пульт штор вход кабинет (10), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.kabinet_blinds_okno_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.kabinet_scene_3
+    mode: single
+
+  - id: 2010-pult_10-button_4
+    alias: "Пульт штор вход кабинет (10), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.kabinet_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.kabinet_all_close
+    mode: single
+
+  # ============================================================================
+  # ПУЛЬТ 11: Кабинет балкон (с защитой)
+  # ============================================================================
+
+  - id: 2011-pult_11-button_1
+    alias: "Пульт штор балкон кабинет (11), кнопка 1"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_single' }}"
+            sequence:
+              - service: script.kabinet_shtora_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '1_double' }}"
+            sequence:
+              - service: script.kabinet_scene_1
+    mode: single
+
+  - id: 2011-pult_11-button_2
+    alias: "Пульт штор балкон кабинет (11), кнопка 2"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_single' }}"
+            sequence:
+              - service: script.kabinet_tulle_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '2_double' }}"
+            sequence:
+              - service: script.kabinet_scene_2
+    mode: single
+
+  - id: 2011-pult_11-button_3
+    alias: "Пульт штор балкон кабинет (11), кнопка 3"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_single' }}"
+            sequence:
+              - service: script.kabinet_blinds_okno_cycle
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '3_double' }}"
+            sequence:
+              - service: script.kabinet_scene_3
+    mode: single
+
+  - id: 2011-pult_11-button_4
+    alias: "Пульт штор балкон кабинет (11), кнопка 4"
+    triggers:
+      - trigger: mqtt
+        topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_single' }}"
+            sequence:
+              - service: script.kabinet_all_open_or_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.payload == '4_double' }}"
+            sequence:
+              - service: script.kabinet_all_close
+    mode: single
+
+
+
+
+
+
+
+
+
+  # - id: 1000-pult_01-button_1
+  #   alias: _old_Пульт штор мастер санузел (1), кнопка 1
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.master_sanuzel_shtora
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id: cover.master_sanuzel_shtora
+  #   mode: single
+  # - id: 1000-pult_01-button_2
+  #   alias: _old_Пульт штор мастер санузел (1), кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.master_sanuzel_tiul
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id: cover.master_sanuzel_tiul
+  #   mode: single
+  # - id: 1000-pult_01-button_3
+  #   alias: _old_Пульт штор мастер санузел (1), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.master_sanuzel_zhaliuzi
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.master_sanuzel_zhaliuzi
+  #   mode: single
+  # - id: 1000-pult_01-button_4
+  #   alias: _old_Пульт штор мастер санузел (1), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор мастер санузел (1)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.master_sanuzel_shtora
+  #                   - cover.master_sanuzel_tiul
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.master_sanuzel_shtora
+  #                   - cover.master_sanuzel_tiul
+  #   mode: single
+
+
+
+  # - id: 1000-pult_02-button_1-L
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 1, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #   mode: single
+  # - id: 1000-pult_02-button_1-R
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 1, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c1384b515e4426
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c1384b515e4426
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_25"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_02-button_2-L
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 2, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #   mode: single
+  # - id: 1000-pult_02-button_2-R
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 2, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138c3e8e4af47
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138c3e8e4af47
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_24"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_02-button_3
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #   mode: single
+  # - id: 1000-pult_02-button_4
+  #   alias: _old_Пульт штор вход спальня (2), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход спальня (2)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe455290
+  #                   - cover.0x70c59cfffe45585b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe455290
+  #                       - cover.0x70c59cfffe45585b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_23"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_03-button_1-L
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 1, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #   mode: single
+  # - id: 1000-pult_03-button_1-R
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 1, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c1384b515e4426
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c1384b515e4426
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_22"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_03-button_2-L
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 2, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #   mode: single
+  # - id: 1000-pult_03-button_2-R
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 2, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138c3e8e4af47
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138c3e8e4af47
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_21"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_03-button_3
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #   mode: single
+  # - id: 1000-pult_03-button_4
+  #   alias: _old_Пульт штор вход спальня (3), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать слева (3)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe455290
+  #                   - cover.0x70c59cfffe45585b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe455290
+  #                       - cover.0x70c59cfffe45585b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_20"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_04-button_1-L
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 1, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #   mode: single
+  # - id: 1000-pult_04-button_1-R
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 1, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c1384b515e4426
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c1384b515e4426
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_19"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_04-button_2-L
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 2, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #   mode: single
+  # - id: 1000-pult_04-button_2-R
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 2, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138c3e8e4af47
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138c3e8e4af47
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_18"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_04-button_3
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #   mode: single
+  # - id: 1000-pult_04-button_4
+  #   alias: _old_Пульт штор вход спальня (4), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор спальня кровать справа (4)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe455290
+  #                   - cover.0x70c59cfffe45585b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe455290
+  #                       - cover.0x70c59cfffe45585b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_17"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_05-button_1
+  #   alias: _old_Пульт штор балкон спальня (5), кнопка 1
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c13811004a07a9
+  #                   - cover.0xa4c1384b515e4426
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c13811004a07a9
+  #                       - cover.0xa4c1384b515e4426
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_16"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_05-button_2
+  #   alias: _old_Пульт штор балкон спальня (5), кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138ae354d52bd
+  #                   - cover.0xa4c138c3e8e4af47
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138ae354d52bd
+  #                       - cover.0xa4c138c3e8e4af47
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_15"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_05-button_3
+  #   alias: _old_Пульт штор балкон спальня (5), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe454f5b
+  #                   - cover.0x70c59cfffe44ec59
+  #   mode: single
+  # - id: 1000-pult_05-button_4
+  #   alias: _old_Пульт штор балкон спальня (5), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон спальня (5)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe455290
+  #                   - cover.0x70c59cfffe45585b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.spalnia_spalnia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_spalnia_1_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe455290
+  #                       - cover.0x70c59cfffe45585b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_14"
+  #                   action: persistent_notification.create
+  #   mode: single
+
+
+
+  # - id: 1000-pult_06-button_1
+  #   alias: _old_Пульт штор гостиная (6), кнопка 1
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138bcf75ef74d
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138bcf75ef74d
+  #   mode: single
+  # - id: 1000-pult_06-button_2
+  #   alias: _old_Пульт штор гостиная (6), кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138d3e7fc0bc6
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138d3e7fc0bc6
+  #   mode: single
+  # - id: 1000-pult_06-button_3
+  #   alias: _old_Пульт штор гостиная (6), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe44ecc4
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe44ecc4
+  #   mode: single
+  # - id: 1000-pult_06-button_4
+  #   alias: _old_Пульт штор гостиная (6), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор гостиная (6)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe356ff1
+  #                   - cover.0x70c59cfffe4552a2
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe356ff1
+  #                   - cover.0x70c59cfffe4552a2
+  #   mode: single
+
+
+
+
+  # - id: 1000-pult_07-button_1-L_
+  #   alias: _old_Пульт штор вход столовая (7), кнопка 1, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c1387689ffae8f
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c1387689ffae8f
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_13"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_07-button_1-R_
+  #   alias: _old_Пульт штор вход столовая (7), кнопка 1, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138f426eb0ecc
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138f426eb0ecc
+  #   mode: single
+  # - id: 1000-pult_07-button_2-L_
+  #   alias: _old_Пульт штор вход столовая (7), управление сЛева, кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138b6a860f9dd
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138b6a860f9dd
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_12"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_07-button_2-R_
+  #   alias: _old_Пульт штор вход столовая (7), кнопка 2, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138aa59545859
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138aa59545859
+  #   mode: single
+  # - id: 1000-pult_07-button_3
+  #   alias: _old_Пульт штор вход столовая (7), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe356c96
+  #                   - cover.0x70c59cfffe45641d
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe356c96
+  #                       - cover.0x70c59cfffe45641d
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_11"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_07-button_4
+  #   alias: _old_Пульт штор вход столовая (7), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход столовая (7)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe4519c6
+  #                   - cover.0x70c59cfffe450fa5
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe4519c6
+  #                   - cover.0x70c59cfffe450fa5
+  #   mode: single
+  # - id: 1000-pult_08-button_1-L
+  #   alias: _old_Пульт штор вход столовая (8), кнопка 1, управление сЛева
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c1387689ffae8f
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c1387689ffae8f
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_10"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_08-button_1-R
+  #   alias: _old_Пульт штор вход столовая (8), кнопка 1, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138f426eb0ecc
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138f426eb0ecc
+  #   mode: single
+  # - id: 1000-pult_08-button_2-L
+  #   alias: _old_Пульт штор вход столовая (8), управление сЛева, кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138b6a860f9dd
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138b6a860f9dd
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_9"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_08-button_2-R
+  #   alias: _old_Пульт штор вход столовая (8), кнопка 2, управление сПрава
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138aa59545859
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138aa59545859
+  #   mode: single
+  # - id: 1000-pult_08-button_3
+  #   alias: _old_Пульт штор вход столовая (8), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe356c96
+  #                   - cover.0x70c59cfffe45641d
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.stolovaia_stolovaia_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe356c96
+  #                       - cover.0x70c59cfffe45641d
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Спальня: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_8"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_08-button_4
+  #   alias: _old_Пульт штор вход столовая (8), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор столовая балкон (8)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe4519c6
+  #                   - cover.0x70c59cfffe450fa5
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe4519c6
+  #                   - cover.0x70c59cfffe450fa5
+  #   mode: single
+  
+  
+  
+  
+  # - id: 1000-pult_10-button_1
+  #   alias: _old_Пульт штор вход кабинет (10), кнопка 1
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.0xa4c138a2b5790910
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138a2b5790910
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_7"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_10-button_2
+  #   alias: _old_Пульт штор вход кабинет (10), кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.0xa4c13833d0cbb7ad
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c13833d0cbb7ad
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_6"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_10-button_3
+  #   alias: _old_Пульт штор вход кабинет (10), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe45589e
+  #                   - cover.0x70c59cfffe45527b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe45589e
+  #                       - cover.0x70c59cfffe45527b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_5"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_10-button_4
+  #   alias: _old_Пульт штор вход кабинет (10), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор вход кабинет (10)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0xa4c138a2b5790910
+  #                   - cover.0xa4c13833d0cbb7ad
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138a2b5790910
+  #                       - cover.0xa4c13833d0cbb7ad
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_4"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_11-button_1
+  #   alias: _old_Пульт штор балкон кабинет (11), кнопка 1
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.0xa4c138a2b5790910
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '1_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c138a2b5790910
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_3"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_11-button_2
+  #   alias: _old_Пульт штор балкон кабинет (11), кнопка 2
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id: cover.0xa4c13833d0cbb7ad
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '2_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0xa4c13833d0cbb7ad
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_2"
+  #                   action: persistent_notification.create
+  #   mode: single
+  # - id: 1000-pult_11-button_3
+  #   alias: _old_Пульт штор балкон кабинет (11), кнопка 3
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe45589e
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '3_double' }}"
+  #           sequence:
+  #             - action: cover.close_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe45589e
+  #   mode: single
+  # - id: 1000-pult_11-button_4
+  #   alias: _old_Пульт штор балкон кабинет (11), кнопка 4
+  #   triggers:
+  #     - trigger: mqtt
+  #       topic: zigbee2mqtt/Пульт штор балкон кабинет (11)/action
+  #   conditions: []
+  #   actions:
+  #     - choose:
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_single' }}"
+  #           sequence:
+  #             - action: cover.open_cover
+  #               target:
+  #                 entity_id:
+  #                   - cover.0x70c59cfffe45527b
+  #         - conditions:
+  #             - condition: template
+  #               value_template: "{{ trigger.payload == '4_double' }}"
+  #           sequence:
+  #             - if:
+  #                 - condition: or
+  #                   conditions:
+  #                     - condition: state
+  #                       entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                       state:
+  #                         - "off"
+  #                     - condition: and
+  #                       conditions:
+  #                         - condition: state
+  #                           entity_id: automation.kabinet_otkryt_shtoru_pri_otkrytii_dveri
+  #                           state:
+  #                             - "on"
+  #                         - condition: state
+  #                           entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+  #                           state: "off"
+  #               then:
+  #                 - action: cover.close_cover
+  #                   target:
+  #                     entity_id:
+  #                       - cover.0x70c59cfffe45527b
+  #               else:
+  #                 - data:
+  #                     title: Жалюзи
+  #                     message: "Кабинет: Закрытие запрещено — дверь открыта."
+  #                     notification_id: "curtain_protection_1"
+  #                   action: persistent_notification.create
+  #   mode: single
+
+
+
+
+

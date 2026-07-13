@@ -1,0 +1,283 @@
+# self path: /config/packages/curtains/mqtt_running.yaml
+
+mqtt:
+    binary_sensor:
+    # 1. Мастер санузел жалюзи
+    - name: "Мастер санузел жалюзи (Движение)"
+      unique_id: master_sanzuel_zhaluzi_running
+      state_topic: "zigbee2mqtt/Мастер санузел жалюзи"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 2. Кухня тюль
+    - name: "Кухня тюль (Движение)"
+      unique_id: kukhnya_tyul_running
+      state_topic: "zigbee2mqtt/Кухня тюль"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 3. Столовая шторы балкон
+    - name: "Столовая шторы балкон (Движение)"
+      unique_id: stolovaya_shtory_balkon_running
+      state_topic: "zigbee2mqtt/Столовая шторы балкон"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 4. Столовая тюль балкон
+    - name: "Столовая тюль балкон (Движение)"
+      unique_id: stolovaya_tyul_balkon_running
+      state_topic: "zigbee2mqtt/Столовая тюль балкон"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 5. Столовая тюль угловая
+    - name: "Столовая тюль угловая (Движение)"
+      unique_id: stolovaya_tyul_uglovaya_running
+      state_topic: "zigbee2mqtt/Столовая тюль угловая"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 6. Кухня штора
+    - name: "Кухня штора (Движение)"
+      unique_id: kukhnya_shtora_running
+      state_topic: "zigbee2mqtt/Кухня штора"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 7. Гостиная штора
+    - name: "Гостиная штора (Движение)"
+      unique_id: gostinaya_shtora_running
+      state_topic: "zigbee2mqtt/Гостиная штора"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 8. Кабинет штора
+    - name: "Кабинет штора (Движение)"
+      unique_id: kabinet_shtora_running
+      state_topic: "zigbee2mqtt/Кабинет штора"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 9. Гостиная жалюзи центр
+    - name: "Гостиная жалюзи центр (Движение)"
+      unique_id: gostinaya_zhaluzi_tsentr_running
+      state_topic: "zigbee2mqtt/Гостиная жалюзи центр"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 10. Гостиная жалюзи лево
+    - name: "Гостиная жалюзи лево (Движение)"
+      unique_id: gostinaya_zhaluzi_levo_running
+      state_topic: "zigbee2mqtt/Гостиная жалюзи лево"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 11. Спальня тюль угол
+    - name: "Спальня тюль угол (Движение)"
+      unique_id: spalnya_tyul_ugol_running
+      state_topic: "zigbee2mqtt/Спальня тюль угол"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 12. Спальня балкон тюль
+    - name: "Спальня балкон тюль (Движение)"
+      unique_id: spalnya_balkon_tyul_running
+      state_topic: "zigbee2mqtt/Спальня балкон тюль"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 13. Спальня балкон штора
+    - name: "Спальня балкон штора (Движение)"
+      unique_id: spalnya_balkon_shtora_running
+      state_topic: "zigbee2mqtt/Спальня балкон штора"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 14. Спальня штора угол (в Z2M два пробела, в state_topic оставил как есть)
+    - name: "Спальня штора угол (Движение)"
+      unique_id: spalnya_shtora_ugol_running
+      state_topic: "zigbee2mqtt/Спальня  штора угол"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 15. Гостиная жалюзи право (в Z2M два пробела)
+    - name: "Гостиная жалюзи право (Движение)"
+      unique_id: gostinaya_zhaluzi_pravo_running
+      state_topic: "zigbee2mqtt/Гостиная  жалюзи право"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 16. Мастер санузел штора
+    - name: "Мастер санузел штора (Движение)"
+      unique_id: master_sanzuel_shtora_running
+      state_topic: "zigbee2mqtt/Мастер санузел штора"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 17. Мастер санузел тюль
+    - name: "Мастер санузел тюль (Движение)"
+      unique_id: master_sanzuel_tyul_running
+      state_topic: "zigbee2mqtt/Мастер санузел тюль"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 18. Столовая жалюзи балкон дверь
+    - name: "Столовая жалюзи балкон дверь (Движение)"
+      unique_id: stolovaya_zhaluzi_balkon_dver_running
+      state_topic: "zigbee2mqtt/Столовая жалюзи балкон дверь"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 19. Столовая жалюзи балкон большой
+    - name: "Столовая жалюзи балкон большой (Движение)"
+      unique_id: stolovaya_zhaluzi_balkon_bolshoy_running
+      state_topic: "zigbee2mqtt/Столовая жалюзи балкон большой"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 20. Столовая жалюзи окно левое
+    - name: "Столовая жалюзи окно левое (Движение)"
+      unique_id: stolovaya_zhaluzi_okno_levoe_running
+      state_topic: "zigbee2mqtt/Столовая жалюзи окно левое"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 21. Столовая жалюзи окно правое
+    - name: "Столовая жалюзи окно правое (Движение)"
+      unique_id: stolovaya_zhaluzi_okno_pravoe_running
+      state_topic: "zigbee2mqtt/Столовая жалюзи окно правое"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 22. Кухня жалюзи
+    - name: "Кухня жалюзи (Движение)"
+      unique_id: kukhnya_zhaluzi_running
+      state_topic: "zigbee2mqtt/Кухня жалюзи"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 23. Кабинет жалюзи окно
+    - name: "Кабинет жалюзи окно (Движение)"
+      unique_id: kabinet_zhaluzi_okno_running
+      state_topic: "zigbee2mqtt/Кабинет жалюзи окно"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 24. Кабинет сонце дверь (опечатка из Z2M сохранена в топике)
+    - name: "Кабинет сонце дверь (Движение)"
+      unique_id: kabinet_sontse_dver_running
+      state_topic: "zigbee2mqtt/Кабинет сонце дверь"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 25. Спальня балкон окно
+    - name: "Спальня балкон окно (Движение)"
+      unique_id: spalnya_balkon_okno_running
+      state_topic: "zigbee2mqtt/Спальня балкон окно"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 26. Спальня жалюзи балкон дверь (в Z2M два пробела)
+    - name: "Спальня жалюзи балкон дверь (Движение)"
+      unique_id: spalnya_zhaluzi_balkon_dver_running
+      state_topic: "zigbee2mqtt/Спальня  жалюзи балкон дверь"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 27. Спальня жалюзи окно правое
+    - name: "Спальня жалюзи окно правое (Движение)"
+      unique_id: spalnya_zhaluzi_okno_pravoe_running
+      state_topic: "zigbee2mqtt/Спальня жалюзи окно правое"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 28. Спальня жалюзи окно левое
+    - name: "Спальня жалюзи окно левое (Движение)"
+      unique_id: spalnya_zhaluzi_okno_levoe_running
+      state_topic: "zigbee2mqtt/Спальня жалюзи окно левое"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 29. Гостиная тюль
+    - name: "Гостиная тюль (Движение)"
+      unique_id: gostinaya_tyul_running
+      state_topic: "zigbee2mqtt/Гостиная тюль"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 30. Столовая штора угловая
+    - name: "Столовая штора угловая (Движение)"
+      unique_id: stolovaya_shtora_uglovaya_running
+      state_topic: "zigbee2mqtt/Столовая штора угловая"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
+    # 31. Кабинет тюль
+    - name: "Кабинет тюль (Движение)"
+      unique_id: kabinet_tyul_running
+      state_topic: "zigbee2mqtt/Кабинет тюль"
+      value_template: "{{ value_json.running == true  }}"
+      device_class: moving
+      payload_on: true
+      payload_off: false
+
