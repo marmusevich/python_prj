@@ -406,3 +406,13 @@ input_boolean:
   spalnya_zhaluzi_okno_levoe_is_moving:
     name: "Спальня жалюзи окно левое - флаг движения"
     initial: off
+
+# 4. Виртуальные датчики (template binary_sensor)
+template:
+  - binary_sensor:
+      - name: "Гостиная вентиляция открыта"
+        unique_id: gostinaya_vent_open
+        state: >
+          {{ is_state('binary_sensor.0xa4c138d34bfe20a6_contact', 'on') 
+          or is_state('binary_sensor.0xa4c13847decdbe51_contact', 'on') }}
+        device_class: opening    
