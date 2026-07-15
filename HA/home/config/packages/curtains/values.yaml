@@ -23,7 +23,7 @@ input_number:
 input_select:
   # Кухня
   kitchen_curtain_last_dir:
-    name: "Кухня штора - направление"
+    name: "Штора - направление: Кухня"
     options:
       - unknown
       - opening
@@ -31,7 +31,7 @@ input_select:
     initial: unknown
     
   kitchen_tulle_last_dir:
-    name: "Кухня тюль - направление"
+    name: "Тюль - направление: Кухня"
     options:
       - unknown
       - opening
@@ -39,7 +39,7 @@ input_select:
     initial: unknown
     
   kitchen_blind_last_dir:
-    name: "Кухня жалюзи - направление"
+    name: "Жалюзи - направление: Кухня"
     options:
       - unknown
       - opening
@@ -48,7 +48,7 @@ input_select:
 
   # Мастер санузел
   master_bath_curtain_last_dir:
-    name: "Мастер санузел штора - направление"
+    name: "Штора - направление: Мастер санузел"
     options:
       - unknown
       - opening
@@ -56,7 +56,7 @@ input_select:
     initial: unknown
     
   master_bath_blind_last_dir:
-    name: "Мастер санузел жалюзи - направление"
+    name: "Жалюзи - направление: Мастер санузел"
     options:
       - unknown
       - opening
@@ -64,7 +64,7 @@ input_select:
     initial: unknown
     
   master_bath_tulle_last_dir:
-    name: "Мастер санузел тюль - направление"
+    name: "Тюль - направление: Мастер санузел"
     options:
       - unknown
       - opening
@@ -73,7 +73,7 @@ input_select:
 
   # Столовая
   stolovaya_shtory_balkon_last_dir:
-    name: "Столовая шторы балкон - направление"
+    name: "Шторы балкон - направление: Столовая"
     options:
       - unknown
       - opening
@@ -81,7 +81,7 @@ input_select:
     initial: unknown
     
   stolovaya_tyul_balkon_last_dir:
-    name: "Столовая тюль балкон - направление"
+    name: "Тюль балкон - направление: Столовая"
     options:
       - unknown
       - opening
@@ -89,7 +89,7 @@ input_select:
     initial: unknown
     
   stolovaya_tyul_uglovaya_last_dir:
-    name: "Столовая тюль угловая - направление"
+    name: "Тюль угловая - направление: Столовая"
     options:
       - unknown
       - opening
@@ -97,7 +97,7 @@ input_select:
     initial: unknown
     
   stolovaya_zhaluzi_balkon_dver_last_dir:
-    name: "Столовая жалюзи балкон дверь - направление"
+    name: "Жалюзи балкон дверь - направление: Столовая"
     options:
       - unknown
       - opening
@@ -105,7 +105,7 @@ input_select:
     initial: unknown
     
   stolovaya_zhaluzi_balkon_bolshoy_last_dir:
-    name: "Столовая жалюзи балкон большой - направление"
+    name: "Жалюзи балкон большой - направление: Столовая"
     options:
       - unknown
       - opening
@@ -113,7 +113,7 @@ input_select:
     initial: unknown
     
   stolovaya_zhaluzi_okno_levoe_last_dir:
-    name: "Столовая жалюзи окно левое - направление"
+    name: "Жалюзи окно левое - направление: Столовая"
     options:
       - unknown
       - opening
@@ -121,7 +121,7 @@ input_select:
     initial: unknown
     
   stolovaya_zhaluzi_okno_pravoe_last_dir:
-    name: "Столовая жалюзи окно правое - направление"
+    name: "Жалюзи окно правое - направление: Столовая"
     options:
       - unknown
       - opening
@@ -129,7 +129,7 @@ input_select:
     initial: unknown
     
   stolovaya_shtora_uglovaya_last_dir:
-    name: "Столовая штора угловая - направление"
+    name: "Штора угловая - направление: Столовая"
     options:
       - unknown
       - opening
@@ -138,7 +138,7 @@ input_select:
 
   # Гостиная
   gostinaya_shtora_last_dir:
-    name: "Гостиная штора - направление"
+    name: "Штора - направление: Гостиная"
     options:
       - unknown
       - opening
@@ -146,7 +146,7 @@ input_select:
     initial: unknown
     
   gostinaya_zhaluzi_tsentr_last_dir:
-    name: "Гостиная жалюзи центр - направление"
+    name: "Жалюзи центр - направление: Гостиная"
     options:
       - unknown
       - opening
@@ -154,7 +154,7 @@ input_select:
     initial: unknown
     
   gostinaya_zhaluzi_levo_last_dir:
-    name: "Гостиная жалюзи лево - направление"
+    name: "Жалюзи лево - направление: Гостиная"
     options:
       - unknown
       - opening
@@ -162,7 +162,7 @@ input_select:
     initial: unknown
     
   gostinaya_zhaluzi_pravo_last_dir:
-    name: "Гостиная жалюзи право - направление"
+    name: "Жалюзи право - направление: Гостиная"
     options:
       - unknown
       - opening
@@ -170,7 +170,7 @@ input_select:
     initial: unknown
     
   gostinaya_tyul_last_dir:
-    name: "Гостиная тюль - направление"
+    name: "Тюль - направление: Гостиная"
     options:
       - unknown
       - opening
@@ -179,7 +179,7 @@ input_select:
 
   # Кабинет
   kabinet_shtora_last_dir:
-    name: "Кабинет штора - направление"
+    name: "Штора - направление: Кабинет"
     options:
       - unknown
       - opening
@@ -187,7 +187,7 @@ input_select:
     initial: unknown
     
   kabinet_zhaluzi_okno_last_dir:
-    name: "Кабинет жалюзи окно - направление"
+    name: "Жалюзи окно - направление: Кабинет"
     options:
       - unknown
       - opening
@@ -195,7 +195,7 @@ input_select:
     initial: unknown
     
   kabinet_sontse_dver_last_dir:
-    name: "Кабинет сонце дверь - направление"
+    name: "Сонце дверь - направление: Кабинет"
     options:
       - unknown
       - opening
@@ -203,7 +203,7 @@ input_select:
     initial: unknown
     
   kabinet_tyul_last_dir:
-    name: "Кабинет тюль - направление"
+    name: "Тюль - направление: Кабинет"
     options:
       - unknown
       - opening
@@ -212,7 +212,7 @@ input_select:
 
   # Спальня
   spalnya_tyul_ugol_last_dir:
-    name: "Спальня тюль угол - направление"
+    name: "Тюль угол - направление: Спальня"
     options:
       - unknown
       - opening
@@ -220,7 +220,7 @@ input_select:
     initial: unknown
     
   spalnya_balkon_tyul_last_dir:
-    name: "Спальня балкон тюль - направление"
+    name: "Балкон тюль - направление: Спальня"
     options:
       - unknown
       - opening
@@ -228,7 +228,7 @@ input_select:
     initial: unknown
     
   spalnya_balkon_shtora_last_dir:
-    name: "Спальня балкон штора - направление"
+    name: "Балкон штора - направление: Спальня"
     options:
       - unknown
       - opening
@@ -236,7 +236,7 @@ input_select:
     initial: unknown
     
   spalnya_shtora_ugol_last_dir:
-    name: "Спальня штора угол - направление"
+    name: "Штора угол - направление: Спальня"
     options:
       - unknown
       - opening
@@ -244,7 +244,7 @@ input_select:
     initial: unknown
     
   spalnya_balkon_okno_last_dir:
-    name: "Спальня балкон окно - направление"
+    name: "Балкон окно - направление: Спальня"
     options:
       - unknown
       - opening
@@ -252,7 +252,7 @@ input_select:
     initial: unknown
     
   spalnya_zhaluzi_balkon_dver_last_dir:
-    name: "Спальня жалюзи балкон дверь - направление"
+    name: "Жалюзи балкон дверь - направление: Спальня"
     options:
       - unknown
       - opening
@@ -260,7 +260,7 @@ input_select:
     initial: unknown
     
   spalnya_zhaluzi_okno_pravoe_last_dir:
-    name: "Спальня жалюзи окно правое - направление"
+    name: "Жалюзи окно правое - направление: Спальня"
     options:
       - unknown
       - opening
@@ -268,7 +268,7 @@ input_select:
     initial: unknown
     
   spalnya_zhaluzi_okno_levoe_last_dir:
-    name: "Спальня жалюзи окно левое - направление"
+    name: "Жалюзи окно левое - направление: Спальня"
     options:
       - unknown
       - opening
@@ -279,140 +279,140 @@ input_select:
 input_boolean:
   # Кухня
   kitchen_curtain_is_moving:
-    name: "Кухня штора - флаг движения"
-    initial: off
+    name: "Штора - флаг движения: Кухня"
+    initial: false
     
   kitchen_tulle_is_moving:
-    name: "Кухня тюль - флаг движения"
-    initial: off
+    name: "Тюль - флаг движения: Кухня"
+    initial: false
     
   kitchen_blind_is_moving:
-    name: "Кухня жалюзи - флаг движения"
-    initial: off
+    name: "Жалюзи - флаг движения: Кухня"
+    initial: false
 
   # Мастер санузел
   master_bath_curtain_is_moving:
-    name: "Мастер санузел штора - флаг движения"
-    initial: off
+    name: "Штора - флаг движения: Мастер санузел"
+    initial: false
     
   master_bath_blind_is_moving:
-    name: "Мастер санузел жалюзи - флаг движения"
-    initial: off
+    name: "Жалюзи - флаг движения: Мастер санузел"
+    initial: false
     
   master_bath_tulle_is_moving:
-    name: "Мастер санузел тюль - флаг движения"
-    initial: off
+    name: "Тюль - флаг движения: Мастер санузел"
+    initial: false
 
   # Столовая
   stolovaya_shtory_balkon_is_moving:
-    name: "Столовая шторы балкон - флаг движения"
-    initial: off
+    name: "Шторы балкон - флаг движения: Столовая"
+    initial: false
     
   stolovaya_tyul_balkon_is_moving:
-    name: "Столовая тюль балкон - флаг движения"
-    initial: off
+    name: "Тюль балкон - флаг движения: Столовая"
+    initial: false
     
   stolovaya_tyul_uglovaya_is_moving:
-    name: "Столовая тюль угловая - флаг движения"
-    initial: off
+    name: "Тюль угловая - флаг движения: Столовая"
+    initial: false
     
   stolovaya_zhaluzi_balkon_dver_is_moving:
-    name: "Столовая жалюзи балкон дверь - флаг движения"
-    initial: off
+    name: "Жалюзи балкон дверь - флаг движения: Столовая"
+    initial: false
     
   stolovaya_zhaluzi_balkon_bolshoy_is_moving:
-    name: "Столовая жалюзи балкон большой - флаг движения"
-    initial: off
+    name: "Жалюзи балкон большой - флаг движения: Столовая"
+    initial: false
     
   stolovaya_zhaluzi_okno_levoe_is_moving:
-    name: "Столовая жалюзи окно левое - флаг движения"
-    initial: off
+    name: "Жалюзи окно левое - флаг движения: Столовая"
+    initial: false
     
   stolovaya_zhaluzi_okno_pravoe_is_moving:
-    name: "Столовая жалюзи окно правое - флаг движения"
-    initial: off
+    name: "Жалюзи окно правое - флаг движения: Столовая"
+    initial: false
     
   stolovaya_shtora_uglovaya_is_moving:
-    name: "Столовая штора угловая - флаг движения"
-    initial: off
+    name: "Штора угловая - флаг движения: Столовая"
+    initial: false
 
   # Гостиная
   gostinaya_shtora_is_moving:
-    name: "Гостиная штора - флаг движения"
-    initial: off
+    name: "Штора - флаг движения: Гостиная"
+    initial: false
     
   gostinaya_zhaluzi_tsentr_is_moving:
-    name: "Гостиная жалюзи центр - флаг движения"
-    initial: off
+    name: "Жалюзи центр - флаг движения: Гостиная"
+    initial: false
     
   gostinaya_zhaluzi_levo_is_moving:
-    name: "Гостиная жалюзи лево - флаг движения"
-    initial: off
+    name: "Жалюзи лево - флаг движения: Гостиная"
+    initial: false
     
   gostinaya_zhaluzi_pravo_is_moving:
-    name: "Гостиная жалюзи право - флаг движения"
-    initial: off
+    name: "Жалюзи право - флаг движения: Гостиная"
+    initial: false
     
   gostinaya_tyul_is_moving:
-    name: "Гостиная тюль - флаг движения"
-    initial: off
+    name: "Тюль - флаг движения: Гостиная"
+    initial: false
 
   # Кабинет
   kabinet_shtora_is_moving:
-    name: "Кабинет штора - флаг движения"
-    initial: off
+    name: "Штора - флаг движения: Кабинет"
+    initial: false
     
   kabinet_zhaluzi_okno_is_moving:
-    name: "Кабинет жалюзи окно - флаг движения"
-    initial: off
+    name: "Жалюзи окно - флаг движения: Кабинет"
+    initial: false
     
   kabinet_sontse_dver_is_moving:
-    name: "Кабинет сонце дверь - флаг движения"
-    initial: off
+    name: "Сонце дверь - флаг движения: Кабинет"
+    initial: false
     
   kabinet_tyul_is_moving:
-    name: "Кабинет тюль - флаг движения"
-    initial: off
+    name: "Тюль - флаг движения: Кабинет"
+    initial: false
 
   # Спальня
   spalnya_tyul_ugol_is_moving:
-    name: "Спальня тюль угол - флаг движения"
-    initial: off
+    name: "Тюль угол - флаг движения: Спальня"
+    initial: false
     
   spalnya_balkon_tyul_is_moving:
-    name: "Спальня балкон тюль - флаг движения"
-    initial: off
+    name: "Балкон тюль - флаг движения: Спальня"
+    initial: false
     
   spalnya_balkon_shtora_is_moving:
-    name: "Спальня балкон штора - флаг движения"
-    initial: off
+    name: "Балкон штора - флаг движения: Спальня"
+    initial: false
     
   spalnya_shtora_ugol_is_moving:
-    name: "Спальня штора угол - флаг движения"
-    initial: off
+    name: "Штора угол - флаг движения: Спальня"
+    initial: false
     
   spalnya_balkon_okno_is_moving:
-    name: "Спальня балкон окно - флаг движения"
-    initial: off
+    name: "Балкон окно - флаг движения: Спальня"
+    initial: false
     
   spalnya_zhaluzi_balkon_dver_is_moving:
-    name: "Спальня жалюзи балкон дверь - флаг движения"
-    initial: off
+    name: "Жалюзи балкон дверь - флаг движения: Спальня"
+    initial: false
     
   spalnya_zhaluzi_okno_pravoe_is_moving:
-    name: "Спальня жалюзи окно правое - флаг движения"
-    initial: off
+    name: "Жалюзи окно правое - флаг движения: Спальня"
+    initial: false
     
   spalnya_zhaluzi_okno_levoe_is_moving:
-    name: "Спальня жалюзи окно левое - флаг движения"
-    initial: off
+    name: "Жалюзи окно левое - флаг движения: Спальня"
+    initial: false
 
 # 4. Виртуальные датчики (template binary_sensor)
 template:
   - binary_sensor:
-      - name: "Гостиная вентиляция открыта"
+      - name: "Вентиляция открыта: Гостиная"
         unique_id: gostinaya_vent_open
         state: >
           {{ is_state('binary_sensor.0xa4c138d34bfe20a6_contact', 'on') 
           or is_state('binary_sensor.0xa4c13847decdbe51_contact', 'on') }}
-        device_class: opening    
+        device_class: opening

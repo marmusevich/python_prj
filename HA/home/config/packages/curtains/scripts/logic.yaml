@@ -2,16 +2,24 @@
 
 script:
   # ============================================================================
-  # 1. БАЗОВЫЕ СКРИПТЫ ДЛЯ ОДНОЙ ШТОРЫ
+  # БАЗОВЫЕ УНИВЕРСАЛЬНЫЕ СКРИПТЫ
   # ============================================================================
 
   curtain_cycle:
     alias: "(не вызывать) Универсальный скрипт цикла для ОДНОЙ шторы"
     fields:
-      target_cover: { description: "Entity ID шторы", required: true }
-      motion_sensor: { description: "Binary sensor движения (MQTT)", required: true }
-      motion_flag: { description: "Input boolean флага движения", required: true }
-      last_dir_select: { description: "Input select для хранения направления", required: true }
+      target_cover:
+        description: "Entity ID шторы (cover.xxx)"
+        required: true
+      motion_sensor:
+        description: "Binary sensor движения (MQTT)"
+        required: true
+      motion_flag:
+        description: "Input boolean флага движения (логика)"
+        required: true
+      last_dir_select:
+        description: "Input select для хранения направления"
+        required: true
     sequence:
       - variables:
           current_pos: "{{ state_attr(target_cover, 'current_position') | int(0) }}"
@@ -31,10 +39,27 @@ script:
 
       - service: system_log.write
         data:
-          message: "DEBUG curtain_cycle: cover={{ target_cover }}, pos={{ current_pos }}, moving={{ is_moving }}, dir={{ last_dir }}"
-          level: warning
+          message: "cover={{ target_cover }}, pos={{ current_pos }}, moving={{ is_moving }}, dir={{ last_dir }}"
+          level: info
+          logger: "curtain_cycle"
 
       - choose:
+          # Если движется -> СТОП (независимо от позиции)
+          - conditions:
+              - condition: template
+                value_template: "{{ is_moving }}"
+            sequence:
+              - service: cover.stop_cover
+                target: { entity_id: "{{ target_cover }}" }
+              - service: input_boolean.turn_off
+                target: { entity_id: "{{ motion_flag }}" }
+              - service: system_log.write
+                data:
+                  message: "STOP: {{ target_cover }} (была в движении)"
+                  level: info
+                  logger: "curtain_cycle"
+
+          # Если стоит и закрыто -> Открываем
           - conditions:
               - condition: template
                 value_template: "{{ current_pos <= closed_threshold }}"
@@ -47,7 +72,13 @@ script:
               - service: input_select.select_option
                 target: { entity_id: "{{ last_dir_select }}" }
                 data: { option: "opening" }
+              - service: system_log.write
+                data:
+                  message: "OPEN -> 100%"
+                  level: info
+                  logger: "curtain_cycle"
 
+          # Если стоит и открыто -> Закрываем
           - conditions:
               - condition: template
                 value_template: "{{ current_pos >= open_threshold }}"
@@ -60,49 +91,56 @@ script:
               - service: input_select.select_option
                 target: { entity_id: "{{ last_dir_select }}" }
                 data: { option: "closing" }
+              - service: system_log.write
+                data:
+                  message: "CLOSE -> 0%"
+                  level: info
+                  logger: "curtain_cycle"
 
+          # Если стоит в промежуточном положении -> Смотрим на last_dir
           - conditions:
               - condition: template
                 value_template: "{{ current_pos > closed_threshold and current_pos < open_threshold }}"
             sequence:
               - choose:
+                  # last_dir == closing или unknown -> Открываем
                   - conditions:
                       - condition: template
-                        value_template: "{{ is_moving }}"
+                        value_template: "{{ last_dir in ['closing', 'unknown'] }}"
                     sequence:
-                      - service: cover.stop_cover
+                      - service: cover.set_cover_position
                         target: { entity_id: "{{ target_cover }}" }
-                      - service: input_boolean.turn_off
+                        data: { position: 100 }
+                      - service: input_boolean.turn_on
                         target: { entity_id: "{{ motion_flag }}" }
+                      - service: input_select.select_option
+                        target: { entity_id: "{{ last_dir_select }}" }
+                        data: { option: "opening" }
+                      - service: system_log.write
+                        data:
+                          message: "OPEN -> 100% (по last_dir={{ last_dir }})"
+                          level: info
+                          logger: "curtain_cycle"
+
+                  # last_dir == opening -> Закрываем
                   - conditions:
                       - condition: template
-                        value_template: "{{ not is_moving }}"
+                        value_template: "{{ last_dir == 'opening' }}"
                     sequence:
-                      - choose:
-                          - conditions:
-                              - condition: template
-                                value_template: "{{ last_dir in ['closing', 'unknown'] }}"
-                            sequence:
-                              - service: cover.set_cover_position
-                                target: { entity_id: "{{ target_cover }}" }
-                                data: { position: 100 }
-                              - service: input_boolean.turn_on
-                                target: { entity_id: "{{ motion_flag }}" }
-                              - service: input_select.select_option
-                                target: { entity_id: "{{ last_dir_select }}" }
-                                data: { option: "opening" }
-                          - conditions:
-                              - condition: template
-                                value_template: "{{ last_dir == 'opening' }}"
-                            sequence:
-                              - service: cover.set_cover_position
-                                target: { entity_id: "{{ target_cover }}" }
-                                data: { position: 0 }
-                              - service: input_boolean.turn_on
-                                target: { entity_id: "{{ motion_flag }}" }
-                              - service: input_select.select_option
-                                target: { entity_id: "{{ last_dir_select }}" }
-                                data: { option: "closing" }
+                      - service: cover.set_cover_position
+                        target: { entity_id: "{{ target_cover }}" }
+                        data: { position: 0 }
+                      - service: input_boolean.turn_on
+                        target: { entity_id: "{{ motion_flag }}" }
+                      - service: input_select.select_option
+                        target: { entity_id: "{{ last_dir_select }}" }
+                        data: { option: "closing" }
+                      - service: system_log.write
+                        data:
+                          message: "CLOSE -> 0% (по last_dir={{ last_dir }})"
+                          level: info
+                          logger: "curtain_cycle"
+
 
   curtain_cycle_protected:
     alias: "(не вызывать) Универсальный скрипт цикла с защитой"
@@ -114,12 +152,13 @@ script:
       protection_sensor: { description: "Датчик открытия двери (защита)", required: false }
     sequence:
       - variables:
-          is_protected: "{{ protection_sensor is defined and is_state(protection_sensor, 'on') }}"
+          is_protected: "{{ protection_sensor is defined and protection_sensor is not none and protection_sensor != '' and is_state(protection_sensor, 'on') }}"
 
       - service: system_log.write
         data:
-          message: "DEBUG protected_cycle: cover={{ target_cover }}, protection={{ protection_sensor | default('none') }}, is_protected={{ is_protected }}"
-          level: warning
+          message: "protection={{ protection_sensor | default('null') }}, is_protected={{ is_protected }}"
+          level: info
+          logger: "curtain_cycle_protected"
 
       - choose:
           - conditions:
@@ -133,8 +172,18 @@ script:
                   motion_flag: "{{ motion_flag }}"
                   last_dir_select: "{{ last_dir_select }}"
 
+          - conditions:
+              - condition: template
+                value_template: "{{ is_protected }}"
+            sequence:
+              - service: system_log.write
+                data:
+                  message: "BLOCKED (защита {{ protection_sensor }} активна)"
+                  level: warning
+                  logger: "curtain_cycle_protected"
+
   # ============================================================================
-  # 2. СКРИПТЫ ДЛЯ СЦЕН И ГРУПП (с защитой и обновлением состояний)
+  # СКРИПТЫ ДЛЯ СЦЕН И ГРУПП (с защитой и обновлением состояний)
   # ============================================================================
 
   curtain_set_positions:
@@ -143,16 +192,23 @@ script:
       curtains:
         description: "Список словарей: {cover, position, motion_flag, last_dir, protection}"
     sequence:
+      # Читаем пороги из input_number один раз на весь скрипт
+      - variables:
+          closed_threshold: "{{ states('input_number.curtain_closed_threshold') | int(5) }}"
+          open_threshold: "{{ states('input_number.curtain_open_threshold') | int(95) }}"
+
+      - service: system_log.write
+        data:
+          message: "START: devices={{ curtains | length }}, thresholds={{ closed_threshold }}/{{ open_threshold }}"
+          level: info
+          logger: "curtain_set_positions"
+
       - repeat:
           for_each: "{{ curtains }}"
           sequence:
             - variables:
-                is_protected: >
-                  {% if repeat.item.protection is defined and repeat.item.protection %}
-                    {{ is_state(repeat.item.protection, 'on') }}
-                  {% else %}
-                    false
-                  {% endif %}
+                # Прямой template {{ ... }} возвращает bool, а не строку
+                is_protected: "{{ repeat.item.protection is defined and repeat.item.protection is not none and repeat.item.protection != '' and is_state(repeat.item.protection, 'on') }}"
 
             - choose:
                 - conditions:
@@ -163,84 +219,242 @@ script:
                       target: { entity_id: "{{ repeat.item.cover }}" }
                       data: { position: "{{ repeat.item.position }}" }
 
-                    # Обновляем last_dir на основе позиции
                     - service: input_select.select_option
                       target: { entity_id: "{{ repeat.item.last_dir }}" }
                       data:
-                        option: >
-                          {% if repeat.item.position >= 95 %}
+                        option: >-
+                          {% if repeat.item.position >= open_threshold %}
                             opening
-                          {% elif repeat.item.position <= 5 %}
+                          {% elif repeat.item.position <= closed_threshold %}
                             closing
                           {% else %}
                             {{ states(repeat.item.last_dir) }}
                           {% endif %}
 
-                    # Включаем флаг движения
                     - service: input_boolean.turn_on
                       target: { entity_id: "{{ repeat.item.motion_flag }}" }
 
+                    - service: system_log.write
+                      data:
+                        message: "SET: {{ repeat.item.cover }} -> {{ repeat.item.position }}%"
+                        level: info
+                        logger: "curtain_set_positions"
+
+                - conditions:
+                    - condition: template
+                      value_template: "{{ is_protected }}"
+                  sequence:
+                    - service: system_log.write
+                      data:
+                        message: "BLOCKED: {{ repeat.item.cover }} (защита {{ repeat.item.protection }} активна)"
+                        level: warning
+                        logger: "curtain_set_positions"
+
+      - service: system_log.write
+        data:
+          message: "END"
+          level: info
+          logger: "curtain_set_positions"
+
   curtain_group_open_or_stop:
-    alias: "(не вызывать) Группа: открыть всё или стоп"
+    alias: "(не вызывать) Группа: открыть всё или стоп (с защитой)"
     fields:
-      covers: { description: "Список cover entity_id" }
-      motion_flags: { description: "Список input_boolean флагов движения" }
-      last_dirs: { description: "Список input_select для хранения направления" }
+      covers: { description: "Список cover entity_id", required: true }
+      motion_flags: { description: "Список input_boolean флагов движения", required: true }
+      last_dirs: { description: "Список input_select для хранения направления", required: true }
+      protection_sensors:
+        description: "Список датчиков защиты (null если нет защиты)"
+        required: false
     sequence:
       - variables:
-          any_moving: >
+          protections: >-
+            {% if protection_sensors is defined %}
+              {{ protection_sensors }}
+            {% else %}
+              {% set ns = namespace(items=[]) %}
+              {% for i in range(covers | length) %}
+                {% set ns.items = ns.items + [none] %}
+              {% endfor %}
+              {{ ns.items }}
+            {% endif %}
+
+          any_moving: >-
             {% set moving_count = namespace(value=0) %}
-            {% for flag in motion_flags %}
-              {% if is_state(flag, 'on') %}
+            {% for i in range(covers | length) %}
+              {% set prot = protections[i] %}
+              {% set is_protected = prot is not none and prot != '' and is_state(prot, 'on') %}
+              {% if not is_protected and is_state(motion_flags[i], 'on') %}
                 {% set moving_count.value = moving_count.value + 1 %}
               {% endif %}
             {% endfor %}
             {{ moving_count.value > 0 }}
+
+      - service: system_log.write
+        data:
+          message: "START: devices={{ covers | length }}, any_moving={{ any_moving }}"
+          level: info
+          logger: "curtain_group_open_or_stop"
 
       - choose:
           - conditions:
               - condition: template
                 value_template: "{{ any_moving }}"
             sequence:
-              - service: cover.stop_cover
-                target: { entity_id: "{{ covers }}" }
-              - service: input_boolean.turn_off
-                target: { entity_id: "{{ motion_flags }}" }
-              # last_dir не меняем при стопе
+              - repeat:
+                  for_each: "{{ range(covers | length) | list }}"
+                  sequence:
+                    - variables:
+                        idx: "{{ repeat.item }}"
+                        prot: "{{ protections[repeat.item] }}"
+                        is_protected: "{{ prot is not none and prot != '' and is_state(prot, 'on') }}"
+                        is_moving: "{{ is_state(motion_flags[idx], 'on') }}"
+                    - choose:
+                        - conditions:
+                            - condition: template
+                              value_template: "{{ not is_protected and is_moving }}"
+                          sequence:
+                            - service: cover.stop_cover
+                              target: { entity_id: "{{ covers[idx] }}" }
+                            - service: input_boolean.turn_off
+                              target: { entity_id: "{{ motion_flags[idx] }}" }
+                            - service: system_log.write
+                              data:
+                                message: "STOP: {{ covers[idx] }}"
+                                level: info
+                                logger: "curtain_group_open_or_stop"
+
+                        - conditions:
+                            - condition: template
+                              value_template: "{{ is_protected }}"
+                          sequence:
+                            - service: system_log.write
+                              data:
+                                message: "BLOCKED STOP: {{ covers[idx] }} (защита {{ prot }} активна)"
+                                level: warning
+                                logger: "curtain_group_open_or_stop"
+
+                        - conditions:
+                            - condition: template
+                              value_template: "{{ not is_protected and not is_moving }}"
+                          sequence:
+                            - service: system_log.write
+                              data:
+                                message: "SKIP: {{ covers[idx] }} (не движется)"
+                                level: info
+                                logger: "curtain_group_open_or_stop"
 
           - conditions:
               - condition: template
                 value_template: "{{ not any_moving }}"
             sequence:
-              - service: cover.set_cover_position
-                target: { entity_id: "{{ covers }}" }
-                data: { position: 100 }
-              - service: input_boolean.turn_on
-                target: { entity_id: "{{ motion_flags }}" }
-              # Обновляем last_dir для всех устройств
               - repeat:
-                  for_each: "{{ last_dirs }}"
+                  for_each: "{{ range(covers | length) | list }}"
                   sequence:
-                    - service: input_select.select_option
-                      target: { entity_id: "{{ repeat.item }}" }
-                      data: { option: "opening" }
+                    - variables:
+                        idx: "{{ repeat.item }}"
+                        prot: "{{ protections[repeat.item] }}"
+                        is_protected: "{{ prot is not none and prot != '' and is_state(prot, 'on') }}"
+                    - choose:
+                        - conditions:
+                            - condition: template
+                              value_template: "{{ not is_protected }}"
+                          sequence:
+                            - service: cover.set_cover_position
+                              target: { entity_id: "{{ covers[idx] }}" }
+                              data: { position: 100 }
+                            - service: input_boolean.turn_on
+                              target: { entity_id: "{{ motion_flags[idx] }}" }
+                            - service: input_select.select_option
+                              target: { entity_id: "{{ last_dirs[idx] }}" }
+                              data: { option: "opening" }
+                            - service: system_log.write
+                              data:
+                                message: "OPEN: {{ covers[idx] }} -> 100%"
+                                level: info
+                                logger: "curtain_group_open_or_stop"
+
+                        - conditions:
+                            - condition: template
+                              value_template: "{{ is_protected }}"
+                          sequence:
+                            - service: system_log.write
+                              data:
+                                message: "BLOCKED OPEN: {{ covers[idx] }} (защита {{ prot }} активна)"
+                                level: warning
+                                logger: "curtain_group_open_or_stop"
+
+      - service: system_log.write
+        data:
+          message: "END"
+          level: info
+          logger: "curtain_group_open_or_stop"
 
   curtain_group_close:
-    alias: "(не вызывать) Группа: закрыть всё"
+    alias: "(не вызывать) Группа: закрыть всё (с защитой)"
     fields:
-      covers: { description: "Список cover entity_id" }
-      motion_flags: { description: "Список input_boolean флагов движения" }
-      last_dirs: { description: "Список input_select для хранения направления" }
+      covers: { description: "Список cover entity_id", required: true }
+      motion_flags: { description: "Список input_boolean флагов движения", required: true }
+      last_dirs: { description: "Список input_select для хранения направления", required: true }
+      protection_sensors:
+        description: "Список датчиков защиты (null если нет защиты)"
+        required: false
     sequence:
-      - service: cover.set_cover_position
-        target: { entity_id: "{{ covers }}" }
-        data: { position: 0 }
-      - service: input_boolean.turn_on
-        target: { entity_id: "{{ motion_flags }}" }
-      # Обновляем last_dir для всех устройств
+      - variables:
+          protections: >-
+            {% if protection_sensors is defined %}
+              {{ protection_sensors }}
+            {% else %}
+              {% set ns = namespace(items=[]) %}
+              {% for i in range(covers | length) %}
+                {% set ns.items = ns.items + [none] %}
+              {% endfor %}
+              {{ ns.items }}
+            {% endif %}
+
+      - service: system_log.write
+        data:
+          message: "START: devices={{ covers | length }}"
+          level: info
+          logger: "curtain_group_close"
+
       - repeat:
-          for_each: "{{ last_dirs }}"
+          for_each: "{{ range(covers | length) | list }}"
           sequence:
-            - service: input_select.select_option
-              target: { entity_id: "{{ repeat.item }}" }
-              data: { option: "closing" }
+            - variables:
+                idx: "{{ repeat.item }}"
+                prot: "{{ protections[repeat.item] }}"
+                is_protected: "{{ prot is not none and prot != '' and is_state(prot, 'on') }}"
+            - choose:
+                - conditions:
+                    - condition: template
+                      value_template: "{{ not is_protected }}"
+                  sequence:
+                    - service: cover.set_cover_position
+                      target: { entity_id: "{{ covers[idx] }}" }
+                      data: { position: 0 }
+                    - service: input_boolean.turn_on
+                      target: { entity_id: "{{ motion_flags[idx] }}" }
+                    - service: input_select.select_option
+                      target: { entity_id: "{{ last_dirs[idx] }}" }
+                      data: { option: "closing" }
+                    - service: system_log.write
+                      data:
+                        message: "CLOSE: {{ covers[idx] }} -> 0%"
+                        level: info
+                        logger: "curtain_group_close"
+
+                - conditions:
+                    - condition: template
+                      value_template: "{{ is_protected }}"
+                  sequence:
+                    - service: system_log.write
+                      data:
+                        message: "BLOCKED CLOSE: {{ covers[idx] }} (защита {{ prot }} активна)"
+                        level: warning
+                        logger: "curtain_group_close"
+
+      - service: system_log.write
+        data:
+          message: "END"
+          level: info
+          logger: "curtain_group_close"

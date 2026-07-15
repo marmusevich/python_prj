@@ -1,5 +1,5 @@
 # защита штор, объеденить защищаемые шторы в группы
-#
+# /config/packages/curtains/automations/protect.yaml
 
 automation:
   - id: 2000-cover_cabinet_when_door_open
@@ -16,17 +16,18 @@ automation:
             - cover.kabinet_s_zashchioi_ot_otkrytiia_dveri
         action: cover.stop_cover
         data: {}
-      # 2. Логирование в системный журнал HA
+      # Логирование в системный журнал HA
       - action: system_log.write
         data:
           message: "Защита сработала: дверь Кабинета открыта, шторы остановлены"
           level: warning
-      # 3. Уведомление в UI (persistent notification)
-      - action: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Дверь Кабинета открыта - шторы остановлены"
-          notification_id: "curtain_protection_cabinet"
+          logger: "automation.curtain_protection.2000-cover_cabinet_when_door_open"
+      # Уведомление в UI (persistent notification) - отключено
+      # - action: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Дверь Кабинета открыта - шторы остановлены"
+      #     notification_id: "curtain_protection_cabinet"
     mode: single
 
   - id: 2000-cover_spalnya_when_door_open
@@ -43,17 +44,18 @@ automation:
             - cover.spalnia_s_zashchioi_ot_otkrytiia_dveri
         action: cover.stop_cover
         data: {}
-      # 2. Логирование в системный журнал HA
+      # Логирование в системный журнал HA
       - action: system_log.write
         data:
           message: "Защита сработала: дверь Спальни открыта, шторы остановлены"
           level: warning
-      # 3. Уведомление в UI (persistent notification)
-      - action: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Дверь Спальни открыта - шторы остановлены"
-          notification_id: "curtain_protection_spalnia"
+          logger: "automation.curtain_protection.2000-cover_spalnya_when_door_open"
+      # Уведомление в UI (persistent notification) - отключено
+      # - action: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Дверь Спальни открыта - шторы остановлены"
+      #     notification_id: "curtain_protection_spalnia"
     mode: single
 
   - id: 2000-cover_stolovaya_when_door_open
@@ -70,21 +72,22 @@ automation:
             - cover.stolovaia_s_zashchioi_ot_otkrytiia_dveri
         action: cover.stop_cover
         data: {}
-      # 2. Логирование в системный журнал HA
+      # Логирование в системный журнал HA
       - action: system_log.write
         data:
-          message: "Защита сработала: дверь Столовай открыта, шторы остановлены"
+          message: "Защита сработала: дверь Столовой открыта, шторы остановлены"
           level: warning
-      # 3. Уведомление в UI (persistent notification)
-      - action: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Дверь Столовай открыта - шторы остановлены"
-          notification_id: "curtain_protection_stolovaya"
+          logger: "automation.curtain_protection.2000-cover_stolovaya_when_door_open"
+      # Уведомление в UI (persistent notification) - отключено
+      # - action: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Дверь Столовой открыта - шторы остановлены"
+      #     notification_id: "curtain_protection_stolovaya"
     mode: single
 
   # для вентиляции сделаем независимо два тригера с разными группами или одной
-  #    там донастроим
+  # там донастроим
   - id: 2000-cover_gostinnaya_when_vent_1_open
     alias: "Защита: Гостинная - остановить штору при открытии вентиляции 1"
     triggers:
@@ -99,17 +102,18 @@ automation:
             - cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_pravo
         action: cover.stop_cover
         data: {}
-      # 2. Логирование в системный журнал HA
+      # Логирование в системный журнал HA
       - action: system_log.write
         data:
-          message: "Защита сработала: Вентиляции в гостинной открыта, шторы остановлены"
+          message: "Защита сработала: Вентиляция в гостиной открыта (1), шторы остановлены"
           level: warning
-      # 3. Уведомление в UI (persistent notification)
-      - action: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Вентиляции в гостинной открыта - шторы остановлены"
-          notification_id: "curtain_protection_gostinnaya_1"
+          logger: "automation.curtain_protection.2000-cover_gostinnaya_when_vent_1_open"
+      # Уведомление в UI (persistent notification) - отключено
+      # - action: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Вентиляция в гостиной открыта - шторы остановлены"
+      #     notification_id: "curtain_protection_gostinnaya_1"
     mode: single
 
   - id: 2000-cover_gostinnaya_when_vent_2_open
@@ -126,18 +130,16 @@ automation:
             - cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_levo
         action: cover.stop_cover
         data: {}
-      # 2. Логирование в системный журнал HA
+      # Логирование в системный журнал HA
       - action: system_log.write
         data:
-          message: "Защита сработала: Вентиляции в гостинной открыта, шторы остановлены"
+          message: "Защита сработала: Вентиляция в гостиной открыта (2), шторы остановлены"
           level: warning
-      # 3. Уведомление в UI (persistent notification)
-      - action: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Вентиляции в гостинной открыта - шторы остановлены"
-          notification_id: "curtain_protection_gostinnaya_2"
+          logger: "automation.curtain_protection.2000-cover_gostinnaya_when_vent_2_open"
+      # Уведомление в UI (persistent notification) - отключено
+      # - action: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Вентиляция в гостиной открыта - шторы остановлены"
+      #     notification_id: "curtain_protection_gostinnaya_2"
     mode: single
-
-
-
