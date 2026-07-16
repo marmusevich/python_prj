@@ -11,6 +11,9 @@ scene: !include scenes.yaml
 
 logger:
   default: info
+  logs:
+    # Термостаты - debug на период настройки
+    homeassistant.components.generic_thermostat: debug  
 
 ####################################################################################################################################
 # конфигурация модбас

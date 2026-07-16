@@ -18,12 +18,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.kitchen_curtain_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kitchen_scene_1
     mode: single
@@ -38,12 +38,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.kitchen_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kitchen_scene_2
     mode: single
@@ -58,12 +58,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.kitchen_blind_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kitchen_scene_3
     mode: single
@@ -78,12 +78,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.kitchen_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kitchen_all_close
     mode: single
@@ -102,12 +102,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.kitchen_curtain_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kitchen_scene_1
     mode: single
@@ -122,12 +122,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.kitchen_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kitchen_scene_2
     mode: single
@@ -142,12 +142,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.kitchen_blind_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kitchen_scene_3
     mode: single
@@ -162,12 +162,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.kitchen_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kitchen_all_close
     mode: single
@@ -187,12 +187,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.master_bath_curtain_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.master_bath_scene_1
     mode: single
@@ -207,12 +207,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.master_bath_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.master_bath_scene_2
     mode: single
@@ -227,12 +227,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.master_bath_blind_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.master_bath_scene_3
     mode: single
@@ -247,12 +247,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.master_bath_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.master_bath_all_close
     mode: single
@@ -271,12 +271,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.spalnya_curtain_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
     mode: single
@@ -291,12 +291,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.spalnya_tulle_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
     mode: single
@@ -311,12 +311,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.spalnya_blinds_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
     mode: single
@@ -331,12 +331,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.spalnya_all_lp_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
     mode: single
@@ -355,12 +355,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.spalnya_curtain_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
     mode: single
@@ -375,12 +375,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.spalnya_tulle_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
     mode: single
@@ -395,12 +395,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.spalnya_blinds_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
     mode: single
@@ -415,12 +415,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.spalnya_all_lp_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
     mode: single
@@ -439,12 +439,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.spalnya_curtain_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
     mode: single
@@ -459,12 +459,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.spalnya_tulle_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
     mode: single
@@ -479,12 +479,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.spalnya_blinds_lp_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
     mode: single
@@ -499,12 +499,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.spalnya_all_lp_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
     mode: single
@@ -523,12 +523,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.spalnya_balcony_curtain_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
     mode: single
@@ -543,12 +543,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.spalnya_balcony_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
     mode: single
@@ -563,12 +563,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.spalnya_balcony_blinds_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
     mode: single
@@ -583,12 +583,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.spalnya_balcony_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_balcony_all_close
     mode: single
@@ -606,12 +606,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.gostinaya_curtain_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.gostinaya_scene_1
     mode: single
@@ -626,12 +626,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.gostinaya_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.gostinaya_scene_2
     mode: single
@@ -646,12 +646,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.gostinaya_blinds_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.gostinaya_scene_3
     mode: single
@@ -666,12 +666,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.gostinaya_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.gostinaya_all_close
     mode: single
@@ -690,12 +690,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.stolovaya_curtain_all_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.stolovaya_scene_1
     mode: single
@@ -710,12 +710,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.stolovaya_tulle_all_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.stolovaya_scene_2
     mode: single
@@ -730,12 +730,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.stolovaya_blinds_all_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.stolovaya_scene_3
     mode: single
@@ -750,12 +750,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.stolovaya_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.stolovaya_all_close
     mode: single
@@ -774,12 +774,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
-              - service: script.stolovaya_curtain_balcony_only_cycle
+              - service: script.stolovaya_curtain_balcony_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.stolovaya_scene_1
     mode: single
@@ -794,12 +794,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
-              - service: script.stolovaya_tulle_balcony_only_cycle
+              - service: script.stolovaya_tulle_balcony_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.stolovaya_scene_2
     mode: single
@@ -814,12 +814,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
-              - service: script.stolovaya_blinds_balcony_only_cycle
+              - service: script.stolovaya_blinds_balcony_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.stolovaya_scene_3
     mode: single
@@ -834,12 +834,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.stolovaya_balcony_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.stolovaya_balcony_all_close
     mode: single
@@ -859,12 +859,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.kabinet_shtora_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kabinet_scene_1
     mode: single
@@ -879,12 +879,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.kabinet_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kabinet_scene_2
     mode: single
@@ -899,12 +899,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.kabinet_blinds_okno_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kabinet_scene_3
     mode: single
@@ -919,12 +919,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.kabinet_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kabinet_all_close
     mode: single
@@ -943,12 +943,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_single' }}"
             sequence:
               - service: script.kabinet_shtora_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '1_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kabinet_scene_1
     mode: single
@@ -963,12 +963,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_single' }}"
             sequence:
               - service: script.kabinet_tulle_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '2_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kabinet_scene_2
     mode: single
@@ -983,12 +983,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
               - service: script.kabinet_blinds_okno_cycle
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '3_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kabinet_scene_3
     mode: single
@@ -1003,12 +1003,12 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_single' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_single' }}"
             sequence:
               - service: script.kabinet_all_open_or_stop
           - conditions:
               - condition: template
-                value_template: "{{ trigger.payload == '4_double' }}"
+                value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kabinet_all_close
     mode: single

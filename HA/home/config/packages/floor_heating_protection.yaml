@@ -1,0 +1,387 @@
+# /config/packages/curtains/floor_heating_protection.yaml
+
+# ============================================
+# ЗАЩИТА ТЕПЛЫХ ПОЛОВ ОТ ПЕРЕГРЕВА
+# ============================================
+
+# 1. КОНСТАНТЫ И НАСТРОЙКИ
+input_number:
+  floor_overheat_threshold:
+    name: "Порог ОТКЛЮЧЕНИЯ при перегреве (°C)"
+    initial: 33
+    min: 30
+    max: 38
+    step: 1
+    mode: box
+  
+  floor_safe_temp:
+    name: "Порог ВКЛЮЧЕНИЯ после остывания (°C)"
+    initial: 28
+    min: 20
+    max: 29
+    step: 1
+    mode: box
+
+# 2. АВТОМАТИЗАЦИИ
+automation:
+  # ========== МАСТЕР САНУЗЕЛ ==========
+  - alias: "Защита от перегрева - Мастер санузел"
+    id: "floor_overheat_protection_master_sanuzel"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_1
+        above: input_number.floor_overheat_threshold
+    action:
+      # 1. Отключаем реле
+      - action: switch.turn_off
+        target:
+          entity_id: switch.rele_18_1
+      # 2. Отключаем термостат
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.master_sanuzel_termostat
+        data:
+          hvac_mode: "off"
+      # 3. Логирование WARNING
+      - action: system_log.write
+        data:
+          message: >
+            "🔥 ЗАЩИТА СРАБОТАЛА: Мастер санузел - перегрев {{ states('sensor.termopara_100_1') }}°C 
+            (порог {{ states('input_number.floor_overheat_threshold') }}°C). Реле и термостат отключены."
+          level: warning
+          logger: "automation.floor_heating_protection.master_sanuzel"
+      # 4. Уведомление в GUI (ОТДЕЛЬНОЕ для каждой комнаты)
+      - action: persistent_notification.create
+        data:
+          title: "🔥 Перегрев теплого пола"
+          message: |
+            **Мастер санузел**
+            
+            Температура: {{ states('sensor.termopara_100_1') }}°C  
+            Порог: {{ states('input_number.floor_overheat_threshold') }}°C
+            
+            ✅ Реле и термостат отключены
+          notification_id: "floor_overheat_master_sanuzel"
+
+  - alias: "Включение после перегрева - Мастер санузел"
+    id: "floor_recovery_master_sanuzel"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_1
+        below: input_number.floor_safe_temp
+        for: "00:05:00"  # 5 минут ниже порога
+    condition:
+      - condition: state
+        entity_id: climate.master_sanuzel_termostat
+        state: "off"
+    action:
+      # 1. Включаем термостат
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.master_sanuzel_termostat
+        data:
+          hvac_mode: "heat"
+      # 2. Логирование INFO
+      - action: system_log.write
+        data:
+          message: "✅ Восстановление: Мастер санузел - температура упала до {{ states('sensor.termopara_100_1') }}°C. Термостат включен."
+          level: info
+          logger: "automation.floor_heating_protection.master_sanuzel"
+      # 3. Уведомление в GUI
+      - action: persistent_notification.create
+        data:
+          title: "✅ Восстановление работы"
+          message: |
+            **Мастер санузел**
+            
+            Температура: {{ states('sensor.termopara_100_1') }}°C  
+            Порог включения: {{ states('input_number.floor_safe_temp') }}°C
+            
+            ✅ Термостат включен
+          notification_id: "floor_recovery_master_sanuzel"
+
+  # ========== ГОСТЕВОЙ САНУЗЕЛ ==========
+  - alias: "Защита от перегрева - Гостевой санузел"
+    id: "floor_overheat_protection_gostevoi_sanuzel"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_2
+        above: input_number.floor_overheat_threshold
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.rele_18_2
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.gostevoi_sanuzel_termostat
+        data:
+          hvac_mode: "off"
+      - action: system_log.write
+        data:
+          message: >
+            "🔥 ЗАЩИТА СРАБОТАЛА: Гостевой санузел - перегрев {{ states('sensor.termopara_100_2') }}°C 
+            (порог {{ states('input_number.floor_overheat_threshold') }}°C). Реле и термостат отключены."
+          level: warning
+          logger: "automation.floor_heating_protection.gostevoi_sanuzel"
+      - action: persistent_notification.create
+        data:
+          title: " Перегрев теплого пола"
+          message: |
+            **Гостевой санузел**
+            
+            Температура: {{ states('sensor.termopara_100_2') }}°C  
+            Порог: {{ states('input_number.floor_overheat_threshold') }}°C
+            
+            ✅ Реле и термостат отключены
+          notification_id: "floor_overheat_gostevoi_sanuzel"
+
+  - alias: "Включение после перегрева - Гостевой санузел"
+    id: "floor_recovery_gostevoi_sanuzel"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_2
+        below: input_number.floor_safe_temp
+        for: "00:05:00"
+    condition:
+      - condition: state
+        entity_id: climate.gostevoi_sanuzel_termostat
+        state: "off"
+    action:
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.gostevoi_sanuzel_termostat
+        data:
+          hvac_mode: "heat"
+      - action: system_log.write
+        data:
+          message: "✅ Восстановление: Гостевой санузел - температура {{ states('sensor.termopara_100_2') }}°C. Термостат включен."
+          level: info
+          logger: "automation.floor_heating_protection.gostevoi_sanuzel"
+      - action: persistent_notification.create
+        data:
+          title: "✅ Восстановление работы"
+          message: |
+            **Гостевой санузел**
+            
+            Температура: {{ states('sensor.termopara_100_2') }}°C  
+            Порог включения: {{ states('input_number.floor_safe_temp') }}°C
+            
+            ✅ Термостат включен
+          notification_id: "floor_recovery_gostevoi_sanuzel"
+
+  # ========== ПОСТИРОЧНАЯ ==========
+  - alias: "Защита от перегрева - Постирочная"
+    id: "floor_overheat_protection_postirochnaia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_3
+        above: input_number.floor_overheat_threshold
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.rele_18_3
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.postirochnaia_termostat
+        data:
+          hvac_mode: "off"
+      - action: system_log.write
+        data:
+          message: >
+            "🔥 ЗАЩИТА СРАБОТАЛА: Постирочная - перегрев {{ states('sensor.termopara_100_3') }}°C 
+            (порог {{ states('input_number.floor_overheat_threshold') }}°C). Реле и термостат отключены."
+          level: warning
+          logger: "automation.floor_heating_protection.postirochnaia"
+      - action: persistent_notification.create
+        data:
+          title: " Перегрев теплого пола"
+          message: |
+            **Постирочная**
+            
+            Температура: {{ states('sensor.termopara_100_3') }}°C  
+            Порог: {{ states('input_number.floor_overheat_threshold') }}°C
+            
+            ✅ Реле и термостат отключены
+          notification_id: "floor_overheat_postirochnaia"
+
+  - alias: "Включение после перегрева - Постирочная"
+    id: "floor_recovery_postirochnaia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_3
+        below: input_number.floor_safe_temp
+        for: "00:05:00"
+    condition:
+      - condition: state
+        entity_id: climate.postirochnaia_termostat
+        state: "off"
+    action:
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.postirochnaia_termostat
+        data:
+          hvac_mode: "heat"
+      - action: system_log.write
+        data:
+          message: "✅ Восстановление: Постирочная - температура {{ states('sensor.termopara_100_3') }}°C. Термостат включен."
+          level: info
+          logger: "automation.floor_heating_protection.postirochnaia"
+      - action: persistent_notification.create
+        data:
+          title: "✅ Восстановление работы"
+          message: |
+            **Постирочная**
+            
+            Температура: {{ states('sensor.termopara_100_3') }}°C  
+            Порог включения: {{ states('input_number.floor_safe_temp') }}°C
+            
+            ✅ Термостат включен
+          notification_id: "floor_recovery_postirochnaia"
+
+  # ========== КУХНЯ ==========
+  - alias: "Защита от перегрева - Кухня"
+    id: "floor_overheat_protection_kukhnia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_4
+        above: input_number.floor_overheat_threshold
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.rele_18_4
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.kukhnia_termostat
+        data:
+          hvac_mode: "off"
+      - action: system_log.write
+        data:
+          message: >
+            "🔥 ЗАЩИТА СРАБОТАЛА: Кухня - перегрев {{ states('sensor.termopara_100_4') }}°C 
+            (порог {{ states('input_number.floor_overheat_threshold') }}°C). Реле и термостат отключены."
+          level: warning
+          logger: "automation.floor_heating_protection.kukhnia"
+      - action: persistent_notification.create
+        data:
+          title: "🔥 Перегрев теплого пола"
+          message: |
+            **Кухня**
+            
+            Температура: {{ states('sensor.termopara_100_4') }}°C  
+            Порог: {{ states('input_number.floor_overheat_threshold') }}°C
+            
+            ✅ Реле и термостат отключены
+          notification_id: "floor_overheat_kukhnia"
+
+  - alias: "Включение после перегрева - Кухня"
+    id: "floor_recovery_kukhnia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_4
+        below: input_number.floor_safe_temp
+        for: "00:05:00"
+    condition:
+      - condition: state
+        entity_id: climate.kukhnia_termostat
+        state: "off"
+    action:
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.kukhnia_termostat
+        data:
+          hvac_mode: "heat"
+      - action: system_log.write
+        data:
+          message: "✅ Восстановление: Кухня - температура {{ states('sensor.termopara_100_4') }}°C. Термостат включен."
+          level: info
+          logger: "automation.floor_heating_protection.kukhnia"
+      - action: persistent_notification.create
+        data:
+          title: "✅ Восстановление работы"
+          message: |
+            **Кухня**
+            
+            Температура: {{ states('sensor.termopara_100_4') }}°C  
+            Порог включения: {{ states('input_number.floor_safe_temp') }}°C
+            
+            ✅ Термостат включен
+          notification_id: "floor_recovery_kukhnia"
+
+  # ========== СТОЛОВАЯ ==========
+  - alias: "Защита от перегрева - Столовая"
+    id: "floor_overheat_protection_stolovaia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_5
+        above: input_number.floor_overheat_threshold
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.rele_18_5
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.stolovaia_termostat
+        data:
+          hvac_mode: "off"
+      - action: system_log.write
+        data:
+          message: >
+            " ЗАЩИТА СРАБОТАЛА: Столовая - перегрев {{ states('sensor.termopara_100_5') }}°C 
+            (порог {{ states('input_number.floor_overheat_threshold') }}°C). Реле и термостат отключены."
+          level: warning
+          logger: "automation.floor_heating_protection.stolovaia"
+      - action: persistent_notification.create
+        data:
+          title: "🔥 Перегрев теплого пола"
+          message: |
+            **Столовая**
+            
+            Температура: {{ states('sensor.termopara_100_5') }}°C  
+            Порог: {{ states('input_number.floor_overheat_threshold') }}°C
+            
+            ✅ Реле и термостат отключены
+          notification_id: "floor_overheat_stolovaia"
+
+  - alias: "Включение после перегрева - Столовая"
+    id: "floor_recovery_stolovaia"
+    mode: single
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.termopara_100_5
+        below: input_number.floor_safe_temp
+        for: "00:05:00"
+    condition:
+      - condition: state
+        entity_id: climate.stolovaia_termostat
+        state: "off"
+    action:
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.stolovaia_termostat
+        data:
+          hvac_mode: "heat"
+      - action: system_log.write
+        data:
+          message: "✅ Восстановление: Столовая - температура {{ states('sensor.termopara_100_5') }}°C. Термостат включен."
+          level: info
+          logger: "automation.floor_heating_protection.stolovaia"
+      - action: persistent_notification.create
+        data:
+          title: "✅ Восстановление работы"
+          message: |
+            **Столовая**
+            
+            Температура: {{ states('sensor.termopara_100_5') }}°C  
+            Порог включения: {{ states('input_number.floor_safe_temp') }}°C
+            
+            ✅ Термостат включен
+          notification_id: "floor_recovery_stolovaia"
