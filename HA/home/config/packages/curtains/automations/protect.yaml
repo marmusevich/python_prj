@@ -143,3 +143,262 @@ automation:
       #     message: "Вентиляция в гостиной открыта - шторы остановлены"
       #     notification_id: "curtain_protection_gostinnaya_2"
     mode: single
+
+
+# ============================================================================
+# ГОСТИНАЯ: Защита шторы и тюля от вентиляции
+# Если штора/тюль начала двигаться (motion_sensor = on) и вентиляция открыта
+# (protection_sensor = on) - останавливаем устройство
+# ============================================================================
+
+  - id: 2000-cover_gostinaya_curtain_when_vent_open
+    alias: "Защита: Гостиная штора - остановить при открытой вентиляции"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_shtora_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.gostinaia_ventiliatsiia_otkryta
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.gostinaia_shtora
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_shtora_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: вентиляция в гостиной открыта, штора остановлена"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_gostinaya_curtain_when_vent_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Гостиная: вентиляция открыта - штора остановлена"
+          notification_id: "curtain_protection_gostinaya_curtain"
+    mode: single
+
+  - id: 2000-cover_gostinaya_tulle_when_vent_open
+    alias: "Защита: Гостиная тюль - остановить при открытой вентиляции"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.gostinaia_tiul_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.gostinaia_ventiliatsiia_otkryta
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.gostinaia_tiul
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.gostinaya_tyul_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: вентиляция в гостиной открыта, тюль остановлен"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_gostinaya_tulle_when_vent_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Гостиная: вентиляция открыта - тюль остановлен"
+          notification_id: "curtain_protection_gostinaya_tulle"
+    mode: single    
+
+# ============================================================================
+# СТОЛОВАЯ: Защита балконных устройств от двери
+# Если устройство начало двигаться (motion_sensor = on) и дверь открыта
+# (protection_sensor = on) - останавливаем устройство
+# ============================================================================
+
+  - id: 2000-cover_stolovaya_shtory_balkon_when_door_open
+    alias: "Защита: Столовая штора балкон - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_shtory_balkon_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.stolovaia_shtory_balkon
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_shtory_balkon_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Столовой открыта, штора балкон остановлена"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_stolovaya_shtory_balkon_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Столовая: дверь открыта - штора балкон остановлена"
+          notification_id: "curtain_protection_stolovaya_shtory_balkon"
+    mode: single
+
+  - id: 2000-cover_stolovaya_tiul_balkon_when_door_open
+    alias: "Защита: Столовая тюль балкон - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_tiul_balkon_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.stolovaia_tiul_balkon
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_tyul_balkon_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Столовой открыта, тюль балкон остановлен"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_stolovaya_tiul_balkon_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Столовая: дверь открыта - тюль балкон остановлен"
+          notification_id: "curtain_protection_stolovaya_tiul_balkon"
+    mode: single
+
+  - id: 2000-cover_stolovaya_zhaliuzi_balkon_dver_when_door_open
+    alias: "Защита: Столовая жалюзи балкон дверь - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.stolovaia_zhaliuzi_balkon_dver_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.stolovaia_zhaliuzi_balkon_dver
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stolovaya_zhaluzi_balkon_dver_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Столовой открыта, жалюзи балкон дверь остановлены"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_stolovaya_zhaliuzi_balkon_dver_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Столовая: дверь открыта - жалюзи балкон дверь остановлены"
+          notification_id: "curtain_protection_stolovaya_zhaliuzi_balkon_dver"
+    mode: single    
+
+# ============================================================================
+# КАБИНЕТ: Защита шторы, тюля и солнце-двери от двери
+# Если устройство начало двигаться (motion_sensor = on) и дверь открыта
+# (protection_sensor = on) - останавливаем устройство
+# ============================================================================
+
+  - id: 2000-cover_kabinet_shtora_when_door_open
+    alias: "Защита: Кабинет штора - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_shtora_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.kabinet_shtora
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_shtora_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Кабинета открыта, штора остановлена"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_kabinet_shtora_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Кабинет: дверь открыта - штора остановлена"
+          notification_id: "curtain_protection_kabinet_shtora"
+    mode: single
+
+  - id: 2000-cover_kabinet_tiul_when_door_open
+    alias: "Защита: Кабинет тюль - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_tiul_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.kabinet_tiul
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_tyul_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Кабинета открыта, тюль остановлен"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_kabinet_tiul_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Кабинет: дверь открыта - тюль остановлен"
+          notification_id: "curtain_protection_kabinet_tiul"
+    mode: single
+
+  - id: 2000-cover_kabinet_sontse_dver_when_door_open
+    alias: "Защита: Кабинет сонце дверь - остановить при открытой двери"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.kabinet_sontse_dver_dvizhenie
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
+        state: "on"
+    actions:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.kabinet_sontse_dver
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kabinet_sontse_dver_is_moving
+      - service: system_log.write
+        data:
+          message: "Защита сработала: дверь Кабинета открыта, сонце дверь остановлено"
+          level: warning
+          logger: "automation.curtain_protection.2000-cover_kabinet_sontse_dver_when_door_open"
+      # Уведомление в UI (для тестирования)
+      - service: persistent_notification.create
+        data:
+          title: "Защита штор"
+          message: "Кабинет: дверь открыта - сонце дверь остановлено"
+          notification_id: "curtain_protection_kabinet_sontse_dver"
+    mode: single    

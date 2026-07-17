@@ -94,10 +94,10 @@ script:
     sequence:
       - service: script.curtain_cycle_protected
         data:
-          target_cover: "cover.master_sanuzel_shtora"
-          motion_sensor: "binary_sensor.master_sanuzel_shtora_dvizhenie"
-          motion_flag: "input_boolean.master_bath_curtain_is_moving"
-          last_dir_select: "input_select.master_bath_curtain_last_dir"
+          target_cover: cover.master_sanuzel_shtora
+          motion_sensor: binary_sensor.master_sanuzel_shtora_dvizhenie
+          motion_flag: input_boolean.master_bath_curtain_is_moving
+          last_dir_select: input_select.master_bath_curtain_last_dir
 
   master_bath_tulle_cycle:
     alias: "тюль - цикл: Мастер санузел"
@@ -125,7 +125,7 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: "cover.master_sanuzel_shtora", position: 100, motion_flag: "input_boolean.master_bath_curtain_is_moving", last_dir: "input_select.master_bath_curtain_last_dir", protection: null }
+            - { cover: cover.master_sanuzel_shtora, position: 100, motion_flag: input_boolean.master_bath_curtain_is_moving, last_dir: input_select.master_bath_curtain_last_dir, protection: null }
             - { cover: "cover.master_sanuzel_tiul", position: 0, motion_flag: "input_boolean.master_bath_tulle_is_moving", last_dir: "input_select.master_bath_tulle_last_dir", protection: null }
             - { cover: "cover.master_sanuzel_zhaliuzi", position: 0, motion_flag: "input_boolean.master_bath_blind_is_moving", last_dir: "input_select.master_bath_blind_last_dir", protection: null }
 
@@ -235,6 +235,9 @@ script:
             - { cover: "cover.spalnia_balkon_tiul", position: 0, motion_flag: "input_boolean.spalnya_balkon_tiul_is_moving", last_dir: "input_select.spalnya_balkon_tiul_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
             - { cover: "cover.spalnia_zhaluzi_okno_levoe", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_okno_levoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_levoe_last_dir", protection: null }
             - { cover: "cover.spalnia_zhaluzi_okno_pravoe", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_pravoe_last_dir", protection: null }
+            - { cover: "cover.spalnia_balkon_okno", position: 0, motion_flag: "input_boolean.spalnya_balkon_okno_is_moving", last_dir: "input_select.spalnya_balkon_okno_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+            - { cover: "cover.spalnia_zhaliuzi_balkon_dver", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_balkon_dver_is_moving", last_dir: "input_select.spalnya_zhaluzi_balkon_dver_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+
 
   spalnya_scene_2:
     alias: "сцена 2: Спальня"
@@ -248,6 +251,9 @@ script:
             - { cover: "cover.spalnia_balkon_tiul", position: 0, motion_flag: "input_boolean.spalnya_balkon_tiul_is_moving", last_dir: "input_select.spalnya_balkon_tiul_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
             - { cover: "cover.spalnia_zhaluzi_okno_levoe", position: 100, motion_flag: "input_boolean.spalnya_zhaluzi_okno_levoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_levoe_last_dir", protection: null }
             - { cover: "cover.spalnia_zhaluzi_okno_pravoe", position: 100, motion_flag: "input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_pravoe_last_dir", protection: null }
+            - { cover: "cover.spalnia_balkon_okno", position: 100, motion_flag: "input_boolean.spalnya_balkon_okno_is_moving", last_dir: "input_select.spalnya_balkon_okno_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+            - { cover: "cover.spalnia_zhaliuzi_balkon_dver", position: 100, motion_flag: "input_boolean.spalnya_zhaluzi_balkon_dver_is_moving", last_dir: "input_select.spalnya_zhaluzi_balkon_dver_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+
 
   spalnya_scene_3:
     alias: "сцена 3: Спальня"
@@ -261,26 +267,29 @@ script:
             - { cover: "cover.spalnia_balkon_tiul", position: 100, motion_flag: "input_boolean.spalnya_balkon_tiul_is_moving", last_dir: "input_select.spalnya_balkon_tiul_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
             - { cover: "cover.spalnia_zhaluzi_okno_levoe", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_okno_levoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_levoe_last_dir", protection: null }
             - { cover: "cover.spalnia_zhaluzi_okno_pravoe", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving", last_dir: "input_select.spalnya_zhaluzi_okno_pravoe_last_dir", protection: null }
+            - { cover: "cover.spalnia_balkon_okno", position: 0, motion_flag: "input_boolean.spalnya_balkon_okno_is_moving", last_dir: "input_select.spalnya_balkon_okno_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+            - { cover: "cover.spalnia_zhaliuzi_balkon_dver", position: 0, motion_flag: "input_boolean.spalnya_zhaluzi_balkon_dver_is_moving", last_dir: "input_select.spalnya_zhaluzi_balkon_dver_last_dir", protection: "binary_sensor.datchik_dveri_spalnia_1_contact" }
+
 
   spalnya_all_lp_open_or_stop:
     alias: "всё (L+P) - открыть или стоп: Спальня"
     sequence:
       - service: script.curtain_group_open_or_stop
         data:
-          covers: [ cover.spalnia_shtora_ugol, cover.spalnia_balkon_shtora, cover.spalnia_tiul_ugol, cover.spalnia_balkon_tiul, cover.spalnia_zhaluzi_okno_levoe, cover.spalnia_zhaluzi_okno_pravoe ]
-          motion_flags: [ input_boolean.spalnya_shtora_ugol_is_moving, input_boolean.spalnya_balkon_shtora_is_moving, input_boolean.spalnya_tiul_ugol_is_moving, input_boolean.spalnya_balkon_tiul_is_moving, input_boolean.spalnya_zhaluzi_okno_levoe_is_moving, input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving ]
-          last_dirs: [ input_select.spalnya_shtora_ugol_last_dir, input_select.spalnya_balkon_shtora_last_dir, input_select.spalnya_tiul_ugol_last_dir, input_select.spalnya_balkon_tiul_last_dir, input_select.spalnya_zhaluzi_okno_levoe_last_dir, input_select.spalnya_zhaluzi_okno_pravoe_last_dir ]
-          protection_sensors: [ null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, null ]
+          covers: [ cover.spalnia_shtora_ugol, cover.spalnia_balkon_shtora, cover.spalnia_tiul_ugol, cover.spalnia_balkon_tiul, cover.spalnia_zhaluzi_okno_levoe, cover.spalnia_zhaluzi_okno_pravoe, cover.spalnia_balkon_okno, cover.spalnia_zhaliuzi_balkon_dver ]
+          motion_flags: [ input_boolean.spalnya_shtora_ugol_is_moving, input_boolean.spalnya_balkon_shtora_is_moving, input_boolean.spalnya_tiul_ugol_is_moving, input_boolean.spalnya_balkon_tiul_is_moving, input_boolean.spalnya_zhaluzi_okno_levoe_is_moving, input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving, input_boolean.spalnya_balkon_okno_is_moving, input_boolean.spalnya_zhaluzi_balkon_dver_is_moving ]
+          last_dirs: [ input_select.spalnya_shtora_ugol_last_dir, input_select.spalnya_balkon_shtora_last_dir, input_select.spalnya_tiul_ugol_last_dir, input_select.spalnya_balkon_tiul_last_dir, input_select.spalnya_zhaluzi_okno_levoe_last_dir, input_select.spalnya_zhaluzi_okno_pravoe_last_dir, input_select.spalnya_balkon_okno_last_dir, input_select.spalnya_zhaluzi_balkon_dver_last_dir ]
+          protection_sensors: [ null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, null, "binary_sensor.datchik_dveri_spalnia_1_contact", "binary_sensor.datchik_dveri_spalnia_1_contact" ]
 
   spalnya_all_lp_close:
     alias: "всё (L+P) - закрыть: Спальня"
     sequence:
       - service: script.curtain_group_close
         data:
-          covers: [ cover.spalnia_shtora_ugol, cover.spalnia_balkon_shtora, cover.spalnia_tiul_ugol, cover.spalnia_balkon_tiul, cover.spalnia_zhaluzi_okno_levoe, cover.spalnia_zhaluzi_okno_pravoe ]
-          motion_flags: [ input_boolean.spalnya_shtora_ugol_is_moving, input_boolean.spalnya_balkon_shtora_is_moving, input_boolean.spalnya_tiul_ugol_is_moving, input_boolean.spalnya_balkon_tiul_is_moving, input_boolean.spalnya_zhaluzi_okno_levoe_is_moving, input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving ]
-          last_dirs: [ input_select.spalnya_shtora_ugol_last_dir, input_select.spalnya_balkon_shtora_last_dir, input_select.spalnya_tiul_ugol_last_dir, input_select.spalnya_balkon_tiul_last_dir, input_select.spalnya_zhaluzi_okno_levoe_last_dir, input_select.spalnya_zhaluzi_okno_pravoe_last_dir ]
-          protection_sensors: [ null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, null ]
+          covers: [ cover.spalnia_shtora_ugol, cover.spalnia_balkon_shtora, cover.spalnia_tiul_ugol, cover.spalnia_balkon_tiul, cover.spalnia_zhaluzi_okno_levoe, cover.spalnia_zhaluzi_okno_pravoe, cover.spalnia_balkon_okno, cover.spalnia_zhaliuzi_balkon_dver ]
+          motion_flags: [ input_boolean.spalnya_shtora_ugol_is_moving, input_boolean.spalnya_balkon_shtora_is_moving, input_boolean.spalnya_tiul_ugol_is_moving, input_boolean.spalnya_balkon_tiul_is_moving, input_boolean.spalnya_zhaluzi_okno_levoe_is_moving, input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving, input_boolean.spalnya_balkon_okno_is_moving, input_boolean.spalnya_zhaluzi_balkon_dver_is_moving ]
+          last_dirs: [ input_select.spalnya_shtora_ugol_last_dir, input_select.spalnya_balkon_shtora_last_dir, input_select.spalnya_tiul_ugol_last_dir, input_select.spalnya_balkon_tiul_last_dir, input_select.spalnya_zhaluzi_okno_levoe_last_dir, input_select.spalnya_zhaluzi_okno_pravoe_last_dir, input_select.spalnya_balkon_okno_last_dir, input_select.spalnya_zhaluzi_balkon_dver_last_dir ]
+          protection_sensors: [ null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, "binary_sensor.datchik_dveri_spalnia_1_contact", null, null, "binary_sensor.datchik_dveri_spalnia_1_contact", "binary_sensor.datchik_dveri_spalnia_1_contact" ]
 
   # СПАЛЬНЯ: Отдельные скрипты для ПУЛЬТА 5 (БАЛКОН)
   spalnya_balcony_curtain_cycle:
@@ -356,7 +365,7 @@ script:
           motion_sensor: "binary_sensor.gostinaia_shtora_dvizhenie"
           motion_flag: "input_boolean.gostinaya_shtora_is_moving"
           last_dir_select: "input_select.gostinaya_shtora_last_dir"
-          protection_sensor: "binary_sensor.gostinaya_vent_open"
+          protection_sensor: "binary_sensor.gostinaia_ventiliatsiia_otkryta"
 
   gostinaya_tulle_cycle:
     alias: "тюль - цикл: Гостиная"
@@ -367,7 +376,7 @@ script:
           motion_sensor: "binary_sensor.gostinaia_tiul_dvizhenie"
           motion_flag: "input_boolean.gostinaya_tyul_is_moving"
           last_dir_select: "input_select.gostinaya_tyul_last_dir"
-          protection_sensor: "binary_sensor.gostinaya_vent_open"
+          protection_sensor: "binary_sensor.gostinaia_ventiliatsiia_otkryta"
 
   gostinaya_blinds_cycle:
     alias: "жалюзи (1+2+3) - цикл: Гостиная"
@@ -397,8 +406,8 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
-            - { cover: "cover.gostinaia_tiul", position: 0, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
+            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
+            - { cover: "cover.gostinaia_tiul", position: 0, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
             - { cover: "cover.gostinaia_zhaliuzi_tsentr", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_tsentr_is_moving", last_dir: "input_select.gostinaya_zhaluzi_tsentr_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_levo", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_levo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_levo_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_pravo", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_pravo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_pravo_last_dir", protection: null }
@@ -409,8 +418,8 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
-            - { cover: "cover.gostinaia_tiul", position: 0, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
+            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
+            - { cover: "cover.gostinaia_tiul", position: 0, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
             - { cover: "cover.gostinaia_zhaliuzi_tsentr", position: 100, motion_flag: "input_boolean.gostinaya_zhaluzi_tsentr_is_moving", last_dir: "input_select.gostinaya_zhaluzi_tsentr_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_levo", position: 100, motion_flag: "input_boolean.gostinaya_zhaluzi_levo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_levo_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_pravo", position: 100, motion_flag: "input_boolean.gostinaya_zhaluzi_pravo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_pravo_last_dir", protection: null }
@@ -421,8 +430,8 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
-            - { cover: "cover.gostinaia_tiul", position: 100, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaya_vent_open" }
+            - { cover: "cover.gostinaia_shtora", position: 100, motion_flag: "input_boolean.gostinaya_shtora_is_moving", last_dir: "input_select.gostinaya_shtora_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
+            - { cover: "cover.gostinaia_tiul", position: 100, motion_flag: "input_boolean.gostinaya_tyul_is_moving", last_dir: "input_select.gostinaya_tyul_last_dir", protection: "binary_sensor.gostinaia_ventiliatsiia_otkryta" }
             - { cover: "cover.gostinaia_zhaliuzi_tsentr", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_tsentr_is_moving", last_dir: "input_select.gostinaya_zhaluzi_tsentr_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_levo", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_levo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_levo_last_dir", protection: null }
             - { cover: "cover.gostinaia_zhaliuzi_pravo", position: 0, motion_flag: "input_boolean.gostinaya_zhaluzi_pravo_is_moving", last_dir: "input_select.gostinaya_zhaluzi_pravo_last_dir", protection: null }
@@ -435,7 +444,7 @@ script:
           covers: [ cover.gostinaia_shtora, cover.gostinaia_tiul, cover.gostinaia_zhaliuzi_tsentr, cover.gostinaia_zhaliuzi_levo, cover.gostinaia_zhaliuzi_pravo ]
           motion_flags: [ input_boolean.gostinaya_shtora_is_moving, input_boolean.gostinaya_tyul_is_moving, input_boolean.gostinaya_zhaluzi_tsentr_is_moving, input_boolean.gostinaya_zhaluzi_levo_is_moving, input_boolean.gostinaya_zhaluzi_pravo_is_moving ]
           last_dirs: [ input_select.gostinaya_shtora_last_dir, input_select.gostinaya_tyul_last_dir, input_select.gostinaya_zhaluzi_tsentr_last_dir, input_select.gostinaya_zhaluzi_levo_last_dir, input_select.gostinaya_zhaluzi_pravo_last_dir ]
-          protection_sensors: [ "binary_sensor.gostinaya_vent_open", "binary_sensor.gostinaya_vent_open", null, null, null ]
+          protection_sensors: [ "binary_sensor.gostinaia_ventiliatsiia_otkryta", "binary_sensor.gostinaia_ventiliatsiia_otkryta", null, null, null ]
 
   gostinaya_all_close:
     alias: "всё - закрыть: Гостиная"
@@ -445,7 +454,7 @@ script:
           covers: [ cover.gostinaia_shtora, cover.gostinaia_tiul, cover.gostinaia_zhaliuzi_tsentr, cover.gostinaia_zhaliuzi_levo, cover.gostinaia_zhaliuzi_pravo ]
           motion_flags: [ input_boolean.gostinaya_shtora_is_moving, input_boolean.gostinaya_tyul_is_moving, input_boolean.gostinaya_zhaluzi_tsentr_is_moving, input_boolean.gostinaya_zhaluzi_levo_is_moving, input_boolean.gostinaya_zhaluzi_pravo_is_moving ]
           last_dirs: [ input_select.gostinaya_shtora_last_dir, input_select.gostinaya_tyul_last_dir, input_select.gostinaya_zhaluzi_tsentr_last_dir, input_select.gostinaya_zhaluzi_levo_last_dir, input_select.gostinaya_zhaluzi_pravo_last_dir ]
-          protection_sensors: [ "binary_sensor.gostinaya_vent_open", "binary_sensor.gostinaya_vent_open", null, null, null ]
+          protection_sensors: [ "binary_sensor.gostinaia_ventiliatsiia_otkryta", "binary_sensor.gostinaia_ventiliatsiia_otkryta", null, null, null ]
 
   # ============================================================================
   # СТОЛОВАЯ (защита от двери для балконных устройств)
@@ -655,27 +664,23 @@ script:
           last_dir_select: "input_select.kabinet_tyul_last_dir"
           protection_sensor: "binary_sensor.datchik_dveri_kabinet_3_contact"
 
-  kabinet_blinds_okno_cycle:
-    alias: "жалюзи окно - цикл: Кабинет"
+  kabinet_blinds_all_cycle:
+    alias: "жалюзи 1+2 - цикл: Кабинет"
     sequence:
       - service: script.curtain_cycle_protected
         data:
-          target_cover: "cover.kabinet_zhaliuzi_okno"
-          motion_sensor: "binary_sensor.kabinet_zhaliuzi_okno_dvizhenie"
-          motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving"
-          last_dir_select: "input_select.kabinet_zhaluzi_okno_last_dir"
-          protection_sensor: "binary_sensor.datchik_dveri_kabinet_3_contact"
-
-  kabinet_sontse_dver_cycle:
-    alias: "сонце дверь - цикл: Кабинет"
-    sequence:
+          target_cover: cover.kabinet_zhaliuzi_okno
+          motion_sensor: binary_sensor.kabinet_zhaliuzi_okno_dvizhenie
+          motion_flag: input_boolean.kabinet_zhaluzi_okno_is_moving
+          last_dir_select: input_select.kabinet_zhaluzi_okno_last_dir
+          #protection_sensor: binary_sensor.datchik_dveri_kabinet_3_contact
       - service: script.curtain_cycle_protected
         data:
-          target_cover: "cover.kabinet_sontse_dver"
-          motion_sensor: "binary_sensor.kabinet_sontse_dver_dvizhenie"
-          motion_flag: "input_boolean.kabinet_sontse_dver_is_moving"
-          last_dir_select: "input_select.kabinet_sontse_dver_last_dir"
-          protection_sensor: "binary_sensor.datchik_dveri_kabinet_3_contact"
+          target_cover: cover.kabinet_sontse_dver
+          motion_sensor: binary_sensor.kabinet_sontse_dver_dvizhenie
+          motion_flag: input_boolean.kabinet_sontse_dver_is_moving
+          last_dir_select: input_select.kabinet_sontse_dver_last_dir
+          protection_sensor: binary_sensor.datchik_dveri_kabinet_3_contact
 
   kabinet_scene_1:
     alias: "сцена 1: Кабинет"
@@ -685,7 +690,7 @@ script:
           curtains:
             - { cover: "cover.kabinet_shtora", position: 100, motion_flag: "input_boolean.kabinet_shtora_is_moving", last_dir: "input_select.kabinet_shtora_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
             - { cover: "cover.kabinet_tiul", position: 0, motion_flag: "input_boolean.kabinet_tyul_is_moving", last_dir: "input_select.kabinet_tyul_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
-            - { cover: "cover.kabinet_zhaliuzi_okno", position: 0, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
+            - { cover: "cover.kabinet_zhaliuzi_okno", position: 0, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: null }
             - { cover: "cover.kabinet_sontse_dver", position: 0, motion_flag: "input_boolean.kabinet_sontse_dver_is_moving", last_dir: "input_select.kabinet_sontse_dver_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
 
   kabinet_scene_2:
@@ -696,7 +701,7 @@ script:
           curtains:
             - { cover: "cover.kabinet_shtora", position: 100, motion_flag: "input_boolean.kabinet_shtora_is_moving", last_dir: "input_select.kabinet_shtora_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
             - { cover: "cover.kabinet_tiul", position: 0, motion_flag: "input_boolean.kabinet_tyul_is_moving", last_dir: "input_select.kabinet_tyul_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
-            - { cover: "cover.kabinet_zhaliuzi_okno", position: 100, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
+            - { cover: "cover.kabinet_zhaliuzi_okno", position: 100, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: null }
             - { cover: "cover.kabinet_sontse_dver", position: 100, motion_flag: "input_boolean.kabinet_sontse_dver_is_moving", last_dir: "input_select.kabinet_sontse_dver_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
 
   kabinet_scene_3:
@@ -707,7 +712,7 @@ script:
           curtains:
             - { cover: "cover.kabinet_shtora", position: 100, motion_flag: "input_boolean.kabinet_shtora_is_moving", last_dir: "input_select.kabinet_shtora_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
             - { cover: "cover.kabinet_tiul", position: 100, motion_flag: "input_boolean.kabinet_tyul_is_moving", last_dir: "input_select.kabinet_tyul_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
-            - { cover: "cover.kabinet_zhaliuzi_okno", position: 0, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
+            - { cover: "cover.kabinet_zhaliuzi_okno", position: 0, motion_flag: "input_boolean.kabinet_zhaluzi_okno_is_moving", last_dir: "input_select.kabinet_zhaluzi_okno_last_dir", protection: null }
             - { cover: "cover.kabinet_sontse_dver", position: 0, motion_flag: "input_boolean.kabinet_sontse_dver_is_moving", last_dir: "input_select.kabinet_sontse_dver_last_dir", protection: "binary_sensor.datchik_dveri_kabinet_3_contact" }
 
   kabinet_all_open_or_stop:
@@ -718,7 +723,7 @@ script:
           covers: [ cover.kabinet_shtora, cover.kabinet_tiul, cover.kabinet_zhaliuzi_okno, cover.kabinet_sontse_dver ]
           motion_flags: [ input_boolean.kabinet_shtora_is_moving, input_boolean.kabinet_tyul_is_moving, input_boolean.kabinet_zhaluzi_okno_is_moving, input_boolean.kabinet_sontse_dver_is_moving ]
           last_dirs: [ input_select.kabinet_shtora_last_dir, input_select.kabinet_tyul_last_dir, input_select.kabinet_zhaluzi_okno_last_dir, input_select.kabinet_sontse_dver_last_dir ]
-          protection_sensors: [ "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact" ]
+          protection_sensors: [ "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", null, "binary_sensor.datchik_dveri_kabinet_3_contact" ]
 
   kabinet_all_close:
     alias: "всё - закрыть: Кабинет"
@@ -728,4 +733,4 @@ script:
           covers: [ cover.kabinet_shtora, cover.kabinet_tiul, cover.kabinet_zhaliuzi_okno, cover.kabinet_sontse_dver ]
           motion_flags: [ input_boolean.kabinet_shtora_is_moving, input_boolean.kabinet_tyul_is_moving, input_boolean.kabinet_zhaluzi_okno_is_moving, input_boolean.kabinet_sontse_dver_is_moving ]
           last_dirs: [ input_select.kabinet_shtora_last_dir, input_select.kabinet_tyul_last_dir, input_select.kabinet_zhaluzi_okno_last_dir, input_select.kabinet_sontse_dver_last_dir ]
-          protection_sensors: [ "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact" ]
+          protection_sensors: [ "binary_sensor.datchik_dveri_kabinet_3_contact", "binary_sensor.datchik_dveri_kabinet_3_contact", null, "binary_sensor.datchik_dveri_kabinet_3_contact" ]

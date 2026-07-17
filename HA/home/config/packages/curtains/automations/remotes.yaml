@@ -901,7 +901,7 @@ automation:
               - condition: template
                 value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
-              - service: script.kabinet_blinds_okno_cycle
+              - service: script.kabinet_blinds_all_cycle
           - conditions:
               - condition: template
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
@@ -985,7 +985,7 @@ automation:
               - condition: template
                 value_template: "{{ trigger is defined and trigger.payload == '3_single' }}"
             sequence:
-              - service: script.kabinet_blinds_okno_cycle
+              - service: script.kabinet_blinds_all_cycle
           - conditions:
               - condition: template
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
