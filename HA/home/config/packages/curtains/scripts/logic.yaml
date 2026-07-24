@@ -51,8 +51,9 @@ script:
             sequence:
               - service: cover.stop_cover
                 target: { entity_id: "{{ target_cover }}" }
-              - service: input_boolean.turn_off
-                target: { entity_id: "{{ motion_flag }}" }
+# коментируем - борьба с гонкой - пусть автоматизация останавливает при "реальном" останове                
+#              - service: input_boolean.turn_off
+#                target: { entity_id: "{{ motion_flag }}" }
               - service: system_log.write
                 data:
                   message: "STOP: {{ target_cover }} (была в движении)"

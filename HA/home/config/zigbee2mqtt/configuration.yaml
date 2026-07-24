@@ -1,0 +1,190 @@
+version: 5
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://core-mosquitto:1883
+  user: addons
+  password: keeNoo6iodooNia1ThohYoh1aba2oiB6ua9Gu9eechu1Heishei8moodae1icho7
+serial:
+  port: tcp://192.168.0.7:6638
+  adapter: ember
+  baudrate: 115200
+  rtscts: false
+advanced:
+  log_level: debug
+  output: json   # Гарантирует, что Z2M шлет лог-события в понятном для HA формате
+  channel: 11
+  network_key:
+    - 245
+    - 61
+    - 198
+    - 105
+    - 212
+    - 215
+    - 146
+    - 240
+    - 169
+    - 190
+    - 94
+    - 114
+    - 216
+    - 40
+    - 16
+    - 143
+  pan_id: 56219
+  ext_pan_id:
+    - 240
+    - 105
+    - 80
+    - 85
+    - 152
+    - 50
+    - 48
+    - 15
+  enable_external_js: true
+frontend:
+  enabled: true
+  port: 8099
+homeassistant:
+  enabled: true
+external_converters:
+  - external_converters/ts0601_debug.js  
+devices:
+  '0xa4c13895ac983d77':
+    friendly_name: Термометр  мастер санузел (1)
+  '0xa4c1382b45495856':
+    friendly_name: Термометр спальня (2)
+  '0xa4c1384231250eb0':
+    friendly_name: Термометр гостиная (3)
+  '0xa4c13884b4e451e9':
+    friendly_name: Термометр столовая (4)
+  '0xa4c138ab83c9038f':
+    friendly_name: Термометр кухня (5)
+  '0xa4c1387452702877':
+    friendly_name: Термометр кабинет (6)
+  '0x70c59cfffe44efdf':
+    friendly_name: Мастер санузел жалюзи
+    invert_cover: true
+  '0xa4c138e335324942':
+    friendly_name: Кухня тюль
+    invert_cover: true
+  '0xa4c1387689ffae8f':
+    friendly_name: Столовая шторы балкон
+    invert_cover: true
+  '0xa4c138b6a860f9dd':
+    friendly_name: Столовая тюль балкон
+    invert_cover: true
+  '0xa4c138aa59545859':
+    friendly_name: Столовая тюль угловая
+    invert_cover: true
+  '0xa4c13809e9e2dd7f':
+    friendly_name: Кухня штора
+    invert_cover: true
+  '0xa4c138bcf75ef74d':
+    friendly_name: Гостиная штора
+    invert_cover: true
+  '0xa4c138a2b5790910':
+    friendly_name: Кабинет штора
+    invert_cover: true
+  '0x70c59cfffe44ecc4':
+    friendly_name: Гостиная жалюзи центр
+    invert_cover: true
+  '0x70c59cfffe356ff1':
+    friendly_name: Гостиная жалюзи лево
+    invert_cover: true
+  '0xa4c138ae354d52bd':
+    friendly_name: Спальня тюль угол
+    invert_cover: true
+  '0xa4c138c3e8e4af47':
+    friendly_name: Спальня балкон тюль
+    invert_cover: true
+  '0xa4c1384b515e4426':
+    friendly_name: Спальня балкон штора
+    invert_cover: true
+  '0xa4c13811004a07a9':
+    friendly_name: Спальня  штора угол
+    invert_cover: true
+  '0x70c59cfffe4552a2':
+    friendly_name: Гостиная  жалюзи право
+    invert_cover: true
+  '0xa4c1384b694acbc6':
+    friendly_name: Мастер санузел штора
+    invert_cover: true
+  '0xa4c13807b77fdef7':
+    friendly_name: Мастер санузел тюль
+    invert_cover: true
+  '0x70c59cfffe356c96':
+    friendly_name: Столовая жалюзи балкон дверь
+    invert_cover: true
+  '0x70c59cfffe45641d':
+    friendly_name: Столовая жалюзи балкон большой
+    invert_cover: true
+  '0x70c59cfffe4519c6':
+    friendly_name: Столовая жалюзи окно левое
+    invert_cover: true
+  '0x70c59cfffe450fa5':
+    friendly_name: Столовая жалюзи окно правое
+    invert_cover: true
+  '0x70c59cfffe4504c8':
+    friendly_name: Кухня жалюзи
+    invert_cover: true
+  '0x70c59cfffe45589e':
+    friendly_name: Кабинет жалюзи окно
+    invert_cover: true
+  '0x70c59cfffe45527b':
+    friendly_name: Кабинет сонце дверь
+    invert_cover: true
+  '0x70c59cfffe455290':
+    friendly_name: Спальня балкон окно
+    invert_cover: true
+  '0x70c59cfffe45585b':
+    friendly_name: Спальня  жалюзи балкон дверь
+    invert_cover: true
+  '0x70c59cfffe454f5b':
+    friendly_name: Спальня жалюзи окно правое
+    invert_cover: true
+  '0x70c59cfffe44ec59':
+    friendly_name: Спальня жалюзи окно левое
+    invert_cover: true
+  '0xa4c1380693d4b915':
+    friendly_name: Датчик двери спальня (1)
+  '0xa4c138750f623944':
+    friendly_name: Датчик двери столовая (2)
+  '0xa4c1388790286059':
+    friendly_name: Датчик двери кабинет (3)
+  '0xa4c138a3d23d33fe':
+    friendly_name: Пульт штор мастер санузел (1)
+  '0xa4c138e63b40600a':
+    friendly_name: Пульт штор вход спальня (2)
+  '0xa4c1381d03c7c244':
+    friendly_name: Пульт штор спальня кровать слева (3)
+  '0xa4c13807fa8ddd10':
+    friendly_name: Пульт штор спальня кровать справа (4)
+  '0xa4c138e016f4bb7d':
+    friendly_name: Пульт штор балкон спальня (5)
+  '0xa4c138b16127af83':
+    friendly_name: Пульт штор гостиная (6)
+  '0xa4c138f13aa390e6':
+    friendly_name: Пульт штор вход столовая (7)
+  '0xa4c1386504229bff':
+    friendly_name: Пульт штор столовая балкон (8)
+  '0xa4c138aaf9a993bb':
+    friendly_name: Пульт штор кухня (9)
+  '0xa4c138d3e7fc0bc6':
+    friendly_name: Гостиная тюль
+    invert_cover: true
+  '0xa4c138f426eb0ecc':
+    friendly_name: Столовая штора угловая
+    invert_cover: true
+  '0xa4c13833d0cbb7ad':
+    friendly_name: Кабинет тюль
+    invert_cover: true
+  '0xa4c1388fcd9881ac':
+    friendly_name: Пульт штор вход кабинет (10)
+  '0xa4c13884bc09205f':
+    friendly_name: Пульт штор балкон кабинет (11)
+  '0xa4c138e34396ed9a':
+    friendly_name: Пульт штор кухня стол (9.1)
+  '0xa4c13847decdbe51':
+    friendly_name: Датчик вент.2 гостиная (5)
+  '0xa4c138d34bfe20a6':
+    friendly_name: Датчик вент.1 гостиная (4)

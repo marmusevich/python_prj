@@ -357,14 +357,14 @@ script:
         data:
           target_cover: cover.spalnia_tiul_ugol
           motion_sensor: binary_sensor.spalnia_tiul_ugol_dvizhenie
-          motion_flag: input_boolean.spalnya_tiul_ugol_is_moving
-          last_dir_select: input_select.spalnya_tiul_ugol_last_dir
+          motion_flag: input_boolean.spalnya_tyul_ugol_is_moving
+          last_dir_select: input_select.spalnya_tyul_ugol_last_dir
       - service: script.curtain_cycle_protected
         data:
           target_cover: cover.spalnia_balkon_tiul
           motion_sensor: binary_sensor.spalnia_balkon_tiul_dvizhenie
           motion_flag: input_boolean.spalnya_balkon_tyul_is_moving
-          last_dir_select: input_select.spalnya_balkon_tiul_last_dir
+          last_dir_select: input_select.spalnya_balkon_tyul_last_dir
           protection_sensor: binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_blinds_lp_cycle:
@@ -406,15 +406,15 @@ script:
             - {
                 cover: cover.spalnia_tiul_ugol,
                 position: 0,
-                motion_flag: input_boolean.spalnya_tiul_ugol_is_moving,
-                last_dir: input_select.spalnya_tiul_ugol_last_dir,
+                motion_flag: input_boolean.spalnya_tyul_ugol_is_moving,
+                last_dir: input_select.spalnya_tyul_ugol_last_dir,
                 protection: null,
               }
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 0,
                 motion_flag: input_boolean.spalnya_balkon_tyul_is_moving,
-                last_dir: input_select.spalnya_balkon_tiul_last_dir,
+                last_dir: input_select.spalnya_balkon_tyul_last_dir,
                 protection: binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
@@ -469,15 +469,15 @@ script:
             - {
                 cover: cover.spalnia_tiul_ugol,
                 position: 0,
-                motion_flag: input_boolean.spalnya_tiul_ugol_is_moving,
-                last_dir: input_select.spalnya_tiul_ugol_last_dir,
+                motion_flag: input_boolean.spalnya_tyul_ugol_is_moving,
+                last_dir: input_select.spalnya_tyul_ugol_last_dir,
                 protection: null,
               }
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 0,
                 motion_flag: input_boolean.spalnya_balkon_tyul_is_moving,
-                last_dir: input_select.spalnya_balkon_tiul_last_dir,
+                last_dir: input_select.spalnya_balkon_tyul_last_dir,
                 protection: binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
@@ -532,15 +532,15 @@ script:
             - {
                 cover: cover.spalnia_tiul_ugol,
                 position: 100,
-                motion_flag: input_boolean.spalnya_tiul_ugol_is_moving,
-                last_dir: input_select.spalnya_tiul_ugol_last_dir,
+                motion_flag: input_boolean.spalnya_tyul_ugol_is_moving,
+                last_dir: input_select.spalnya_tyul_ugol_last_dir,
                 protection: null,
               }
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 100,
                 motion_flag: input_boolean.spalnya_balkon_tyul_is_moving,
-                last_dir: input_select.spalnya_balkon_tiul_last_dir,
+                last_dir: input_select.spalnya_balkon_tyul_last_dir,
                 protection: binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
@@ -592,7 +592,7 @@ script:
             [
               input_boolean.spalnya_shtora_ugol_is_moving,
               input_boolean.spalnya_balkon_shtora_is_moving,
-              input_boolean.spalnya_tiul_ugol_is_moving,
+              input_boolean.spalnya_tyul_ugol_is_moving,
               input_boolean.spalnya_balkon_tyul_is_moving,
               input_boolean.spalnya_zhaluzi_okno_levoe_is_moving,
               input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving,
@@ -603,8 +603,8 @@ script:
             [
               input_select.spalnya_shtora_ugol_last_dir,
               input_select.spalnya_balkon_shtora_last_dir,
-              input_select.spalnya_tiul_ugol_last_dir,
-              input_select.spalnya_balkon_tiul_last_dir,
+              input_select.spalnya_tyul_ugol_last_dir,
+              input_select.spalnya_balkon_tyul_last_dir,
               input_select.spalnya_zhaluzi_okno_levoe_last_dir,
               input_select.spalnya_zhaluzi_okno_pravoe_last_dir,
               input_select.spalnya_balkon_okno_last_dir,
@@ -642,7 +642,7 @@ script:
             [
               input_boolean.spalnya_shtora_ugol_is_moving,
               input_boolean.spalnya_balkon_shtora_is_moving,
-              input_boolean.spalnya_tiul_ugol_is_moving,
+              input_boolean.spalnya_tyul_ugol_is_moving,
               input_boolean.spalnya_balkon_tyul_is_moving,
               input_boolean.spalnya_zhaluzi_okno_levoe_is_moving,
               input_boolean.spalnya_zhaluzi_okno_pravoe_is_moving,
@@ -653,8 +653,8 @@ script:
             [
               input_select.spalnya_shtora_ugol_last_dir,
               input_select.spalnya_balkon_shtora_last_dir,
-              input_select.spalnya_tiul_ugol_last_dir,
-              input_select.spalnya_balkon_tiul_last_dir,
+              input_select.spalnya_tyul_ugol_last_dir,
+              input_select.spalnya_balkon_tyul_last_dir,
               input_select.spalnya_zhaluzi_okno_levoe_last_dir,
               input_select.spalnya_zhaluzi_okno_pravoe_last_dir,
               input_select.spalnya_balkon_okno_last_dir,
@@ -692,7 +692,7 @@ script:
           target_cover: cover.spalnia_balkon_tiul
           motion_sensor: binary_sensor.spalnia_balkon_tiul_dvizhenie
           motion_flag: input_boolean.spalnya_balkon_tyul_is_moving
-          last_dir_select: input_select.spalnya_balkon_tiul_last_dir
+          last_dir_select: input_select.spalnya_balkon_tyul_last_dir
           protection_sensor: binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_balcony_blinds_cycle:
@@ -735,7 +735,7 @@ script:
           last_dirs:
             [
               input_select.spalnya_balkon_shtora_last_dir,
-              input_select.spalnya_balkon_tiul_last_dir,
+              input_select.spalnya_balkon_tyul_last_dir,
               input_select.spalnya_balkon_okno_last_dir,
               input_select.spalnya_zhaluzi_balkon_dver_last_dir,
             ]
@@ -769,7 +769,7 @@ script:
           last_dirs:
             [
               input_select.spalnya_balkon_shtora_last_dir,
-              input_select.spalnya_balkon_tiul_last_dir,
+              input_select.spalnya_balkon_tyul_last_dir,
               input_select.spalnya_balkon_okno_last_dir,
               input_select.spalnya_zhaluzi_balkon_dver_last_dir,
             ]

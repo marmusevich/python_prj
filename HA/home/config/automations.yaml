@@ -94,3 +94,25 @@
     target:
       entity_id: fan.rele_17_5
   mode: restart
+
+
+- id: 3100-reset_motion_master_sanzuel_shtora_тест
+  alias: "тест Reset: Штора (Движение) - сброс при остановке: Мастер санузел"
+  triggers:
+    - trigger: mqtt
+      topic: "zigbee2mqtt/Мастер санузел штора"
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json.running is defined and trigger.payload_json.running == false }}"
+  actions:
+    - service: mqtt.publish
+      data:
+        topic: "zigbee2mqtt/Мастер санузел штора/set"
+        payload: "STOP"
+    - service: persistent_notification.create
+      data:
+        title: "тест Reset"
+        message: "тест Reset: Штора (Движение) - сброс при остановке: Мастер санузел"
+        notification_id: "3100-reset_motion_master_sanzuel_shtora_тест"
+
+  mode: single

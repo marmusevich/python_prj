@@ -1,0 +1,61 @@
+const tuya = require('zigbee-herdsman-converters/lib/tuya');
+
+// Создаем базовое фабричное расширение для штор Tuya
+const baseExtend = tuya.modernExtend.tuyaBase({
+    cover: {
+        position: {dp: 2},
+        control: {dp: 1}
+    }
+});
+
+// Находим оригинальный фабричный парсер fromZigbee внутри этого расширения
+const originalFz = baseExtend.fromZigbee.find(c => c.cluster === 'manuSpecificTuya');
+
+// Создаем наш кастомный перехватчик (Proxy)
+const customFz = {
+    cluster: 'manuSpecificTuya',
+    type: ['commandDataReport', 'commandDataResponse'],
+    convert: (model, msg, publish, options, meta) => {
+        const rawData = msg.data;
+        
+        // ШПИОНСКИЙ ПАКЕТ: Отправляем привет и сырые дата-поинты в MQTT
+        const payload = {
+            hello_status: "HELLO_FROM_CONVERTER",
+            raw_msg_type: msg.type || "unknown"
+        };
+
+        if (rawData && rawData.dpValues) {
+            payload.custom_debug_dp_values = JSON.stringify(rawData.dpValues);
+        }
+
+        publish(payload);
+
+        // Передаем управление фабричному парсеру Tuya, чтобы штора работала штатно
+        if (originalFz && originalFz.convert) {
+            return originalFz.convert(model, msg, publish, options, meta);
+        }
+        return {};
+    }
+};
+
+// Заменяем оригинальный парсер на наш кастомный в списке расширения
+baseExtend.fromZigbee = baseExtend.fromZigbee.map(c => c.cluster === 'manuSpecificTuya' ? customFz : c);
+
+const definition = {
+    // ЖЕСТКИЙ ФИЛЬТР: Применяем этот конвертер ТОЛЬКО к конкретному IEEE адресу шторы санузла!
+    // Все остальные 29 штор проигнорируют этот файл и будут работать на заводском коде.
+    fingerprint: [
+        {
+            modelID: 'TS0601', 
+            ieeeAddr: '0xa4c1384b694acbc6'
+        }
+    ],
+    model: 'TS0601_cover_custom_debug',
+    vendor: 'Tuya',
+    description: 'Изолированный дебаг-конвертер шторы санузла',
+    
+    // Подключаем модифицированное расширение
+    extend: [baseExtend],
+};
+
+module.exports = definition;

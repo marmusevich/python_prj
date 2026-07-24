@@ -50,7 +50,7 @@ mqtt:
     # ============================================================================
     - name: "Штора (Движение): Кабинет"
       unique_id: kabinet_shtora_running
-      state_topic: "zigbee2mqtt/Кабинет штора"
+      state_topic: "zigbee2mqtt/Кабинет штора"                  
       value_template: "{{ value_json.running == true }}"
       device_class: moving
       payload_on: on
@@ -110,13 +110,13 @@ mqtt:
     # ============================================================================
     # МАСТЕР САНУЗЕЛ
     # ============================================================================
-    - name: "Штора (Движение): Мастер санузел"
-      unique_id: master_sanzuel_shtora_running
-      state_topic: "zigbee2mqtt/Мастер санузел штора"
-      value_template: "{{ value_json.running == true }}"
-      device_class: moving
-      payload_on: on
-      payload_off: off
+    # - name: "Штора (Движение): Мастер санузел"
+    #   unique_id: master_sanzuel_shtora_running
+    #   state_topic: "zigbee2mqtt/Мастер санузел штора"
+    #   value_template: "{{ value_json.running == true }}"
+    #   device_class: moving
+    #   payload_on: on
+    #   payload_off: off
 
     - name: "Тюль (Движение): Мастер санузел"
       unique_id: master_sanzuel_tyul_running
@@ -264,6 +264,47 @@ mqtt:
       unique_id: stolovaya_zhaluzi_okno_pravoe_running
       state_topic: "zigbee2mqtt/Столовая жалюзи окно правое"
       value_template: "{{ value_json.running == true }}"
+      device_class: moving
+      payload_on: on
+      payload_off: off
+
+
+      
+
+      
+
+    - name: "тест2 Штора (Движение): Мастер санузел"
+      unique_id: master_sanzuel_shtora_running_тест2
+      state_topic: "zigbee2mqtt/Мастер санузел штора/set"
+      device_class: moving
+      value_template: >
+        {% if value is defined %}
+          {% if value == 'OPEN' or value == 'CLOSE' %}
+            on
+          {% elif value == 'STOP' %}
+            off
+          {% else %}
+            {{ this.state }}
+          {% endif %}
+        {% else %}
+          {{ this.state }}
+        {% endif %}        
+      payload_on: "on"
+      payload_off: "off"      
+      #off_delay: 16     
+  
+
+
+
+    - name: "Штора (Движение): Мастер санузел"
+      unique_id: master_sanzuel_shtora_running
+      state_topic: "zigbee2mqtt/Мастер санузел штора"
+      value_template: >
+        {% if value_json is defined and value_json.running is defined %}
+          {{ value_json.running == true }}
+        {% else %}
+          {{ this.state }}
+        {% endif %}      
       device_class: moving
       payload_on: on
       payload_off: off

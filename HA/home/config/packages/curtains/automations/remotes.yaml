@@ -2,6 +2,12 @@
 # отловить событие - вызвать связаный мапинг
 #
 
+# возможно надо добавить после "mode: queued" :
+#     mode: queued
+#     max: 3  # не более 3 нажатий в очереди
+#
+
+
 automation:
 
   # ============================================================================
@@ -26,7 +32,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kitchen_scene_1
-    mode: single
+    mode: queued
 
   - id: 2000-pult_09-button_2
     alias: "Пульт штор кухня (9), кнопка 2"
@@ -46,7 +52,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kitchen_scene_2
-    mode: single
+    mode: queued
 
   - id: 2000-pult_09-button_3
     alias: "Пульт штор кухня (9), кнопка 3"
@@ -66,7 +72,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kitchen_scene_3
-    mode: single
+    mode: queued
 
   - id: 2000-pult_09-button_4
     alias: "Пульт штор кухня (9), кнопка 4"
@@ -86,7 +92,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kitchen_all_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 9.1: Пульт штор кухня стол
@@ -110,7 +116,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kitchen_scene_1
-    mode: single
+    mode: queued
 
   - id: 2000-pult_091-button_2
     alias: "Пульт штор кухня стол (9.1), кнопка 2"
@@ -130,7 +136,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kitchen_scene_2
-    mode: single
+    mode: queued
 
   - id: 2000-pult_091-button_3
     alias: "Пульт штор кухня стол (9.1), кнопка 3"
@@ -150,7 +156,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kitchen_scene_3
-    mode: single
+    mode: queued
 
   - id: 2000-pult_091-button_4
     alias: "Пульт штор кухня стол (9.1), кнопка 4"
@@ -170,7 +176,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kitchen_all_close
-    mode: single
+    mode: queued
 
 
 # ============================================================================
@@ -195,7 +201,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.master_bath_scene_1
-    mode: single
+    mode: queued
 
   - id: 2001-pult_01-button_2
     alias: "Пульт штор мастер санузел (1), кнопка 2"
@@ -215,7 +221,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.master_bath_scene_2
-    mode: single
+    mode: queued
 
   - id: 2001-pult_01-button_3
     alias: "Пульт штор мастер санузел (1), кнопка 3"
@@ -235,7 +241,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.master_bath_scene_3
-    mode: single
+    mode: queued
 
   - id: 2001-pult_01-button_4
     alias: "Пульт штор мастер санузел (1), кнопка 4"
@@ -255,7 +261,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.master_bath_all_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 2: Спальня вход (с защитой)
@@ -279,7 +285,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2002-pult_02-button_2
     alias: "Пульт штор вход спальня (2), кнопка 2"
@@ -299,7 +305,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2002-pult_02-button_3
     alias: "Пульт штор вход спальня (2), кнопка 3"
@@ -319,7 +325,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2002-pult_02-button_4
     alias: "Пульт штор вход спальня (2), кнопка 4"
@@ -339,7 +345,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 3: Спальня кровать слева (с защитой)
@@ -363,7 +369,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2003-pult_03-button_2
     alias: "Пульт штор спальня кровать слева (3), кнопка 2"
@@ -383,7 +389,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2003-pult_03-button_3
     alias: "Пульт штор спальня кровать слева (3), кнопка 3"
@@ -403,7 +409,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2003-pult_03-button_4
     alias: "Пульт штор спальня кровать слева (3), кнопка 4"
@@ -423,7 +429,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 4: Спальня кровать справа (с защитой)
@@ -447,7 +453,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2004-pult_04-button_2
     alias: "Пульт штор спальня кровать справа (4), кнопка 2"
@@ -467,7 +473,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2004-pult_04-button_3
     alias: "Пульт штор спальня кровать справа (4), кнопка 3"
@@ -487,7 +493,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2004-pult_04-button_4
     alias: "Пульт штор спальня кровать справа (4), кнопка 4"
@@ -507,7 +513,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_all_lp_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 5: Спальня балкон (только окно P)
@@ -531,7 +537,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.spalnya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2005-pult_05-button_2
     alias: "Пульт штор балкон спальня (5), кнопка 2"
@@ -551,7 +557,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.spalnya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2005-pult_05-button_3
     alias: "Пульт штор балкон спальня (5), кнопка 3"
@@ -571,7 +577,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.spalnya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2005-pult_05-button_4
     alias: "Пульт штор балкон спальня (5), кнопка 4"
@@ -591,7 +597,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.spalnya_balcony_all_close
-    mode: single
+    mode: queued
   # ============================================================================
   # ПУЛЬТ 6: Гостиная (с защитой от вентиляции)
   # ============================================================================
@@ -614,7 +620,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.gostinaya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2006-pult_06-button_2
     alias: "Пульт штор гостиная (6), кнопка 2"
@@ -634,7 +640,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.gostinaya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2006-pult_06-button_3
     alias: "Пульт штор гостиная (6), кнопка 3"
@@ -654,7 +660,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.gostinaya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2006-pult_06-button_4
     alias: "Пульт штор гостиная (6), кнопка 4"
@@ -674,7 +680,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.gostinaya_all_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 7: Столовая вход (управляет всеми устройствами)
@@ -698,7 +704,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.stolovaya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2007-pult_07-button_2
     alias: "Пульт штор вход столовая (7), кнопка 2"
@@ -718,7 +724,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.stolovaya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2007-pult_07-button_3
     alias: "Пульт штор вход столовая (7), кнопка 3"
@@ -738,7 +744,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.stolovaya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2007-pult_07-button_4
     alias: "Пульт штор вход столовая (7), кнопка 4"
@@ -758,7 +764,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.stolovaya_all_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 8: Столовая балкон (управляет только балконными устройствами)
@@ -782,7 +788,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.stolovaya_scene_1
-    mode: single
+    mode: queued
 
   - id: 2008-pult_08-button_2
     alias: "Пульт штор столовая балкон (8), кнопка 2"
@@ -802,7 +808,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.stolovaya_scene_2
-    mode: single
+    mode: queued
 
   - id: 2008-pult_08-button_3
     alias: "Пульт штор столовая балкон (8), кнопка 3"
@@ -822,7 +828,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.stolovaya_scene_3
-    mode: single
+    mode: queued
 
   - id: 2008-pult_08-button_4
     alias: "Пульт штор столовая балкон (8), кнопка 4"
@@ -842,7 +848,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.stolovaya_balcony_all_close
-    mode: single
+    mode: queued
 
     
   # ============================================================================
@@ -867,7 +873,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kabinet_scene_1
-    mode: single
+    mode: queued
 
   - id: 2010-pult_10-button_2
     alias: "Пульт штор вход кабинет (10), кнопка 2"
@@ -887,7 +893,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kabinet_scene_2
-    mode: single
+    mode: queued
 
   - id: 2010-pult_10-button_3
     alias: "Пульт штор вход кабинет (10), кнопка 3"
@@ -907,7 +913,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kabinet_scene_3
-    mode: single
+    mode: queued
 
   - id: 2010-pult_10-button_4
     alias: "Пульт штор вход кабинет (10), кнопка 4"
@@ -927,7 +933,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kabinet_all_close
-    mode: single
+    mode: queued
 
   # ============================================================================
   # ПУЛЬТ 11: Кабинет балкон (с защитой)
@@ -951,7 +957,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '1_double' }}"
             sequence:
               - service: script.kabinet_scene_1
-    mode: single
+    mode: queued
 
   - id: 2011-pult_11-button_2
     alias: "Пульт штор балкон кабинет (11), кнопка 2"
@@ -971,7 +977,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '2_double' }}"
             sequence:
               - service: script.kabinet_scene_2
-    mode: single
+    mode: queued
 
   - id: 2011-pult_11-button_3
     alias: "Пульт штор балкон кабинет (11), кнопка 3"
@@ -991,7 +997,7 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '3_double' }}"
             sequence:
               - service: script.kabinet_scene_3
-    mode: single
+    mode: queued
 
   - id: 2011-pult_11-button_4
     alias: "Пульт штор балкон кабинет (11), кнопка 4"
@@ -1011,6 +1017,6 @@ automation:
                 value_template: "{{ trigger is defined and trigger.payload == '4_double' }}"
             sequence:
               - service: script.kabinet_all_close
-    mode: single
+    mode: queued
 
 
