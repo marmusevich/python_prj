@@ -1,15 +1,17 @@
+//           Штора/тюль
+//-------------------------------------------------------------------
 const tuya = require('zigbee-herdsman-converters/lib/tuya');
 const exposes = require('zigbee-herdsman-converters/lib/exposes');
-const store = require('zigbee-herdsman-converters/lib/store'); // <-- КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: Постоянное хранилище
+const store = require('zigbee-herdsman-converters/lib/store');
 const e = exposes.presets;
 const ea = exposes.access;
 
 // Безопасное логирование
 function log(meta, msg) {
     if (meta && meta.logger && typeof meta.logger.info === 'function') {
-        meta.logger.info(`[meta.logger.info] !!! COVER DEBUG !!! [Кабинет штора] ${msg}`);
+        meta.logger.info(`[COVER][DEBUG]: ${msg}`); // 3тот никогда не сробатывает
     } else {
-        console.log(`[console.log] !!! COVER DEBUG !!! [Кабинет штора] ${msg}`);
+        console.log(`[COVER][DEBUG]: ${msg}`);
     }
 }
 
@@ -18,7 +20,7 @@ const customStateConverter = {
     key: ['state'],
     convertSet: async (entity, key, value, meta) => {
         log(meta, `>>> STATE COMMAND RECEIVED: ${value}`);
-
+        
         let dpValue;
         if (value === 'OPEN') dpValue = 0;
         else if (value === 'CLOSE') dpValue = 2;
@@ -26,7 +28,7 @@ const customStateConverter = {
         else throw new Error(`Unknown state: ${value}`);
 
         log(meta, `>>> SENDING RAW Tuya dataRequest: DP=1, Value=${dpValue}`);
-
+        
         try {
             await entity.command(
                 'manuSpecificTuya',
@@ -41,7 +43,7 @@ const customStateConverter = {
         } catch (error) {
             log(meta, `>>> RAW COMMAND ERROR: ${error.message}`);
         }
-
+        
         // Возвращаем undefined, чтобы Z2M не пытался оптимистично обновить state и не превращал строку в {"0":"O"...}
         return;
     }
@@ -51,19 +53,19 @@ const definition = {
     fingerprint: [
         { modelID: 'TS0601', manufacturerName: '_TZE204_m1wl5fvq' }
     ],
-    model: 'TS0601_cover_v23_global_store',
+    model: 'TS0601_cover_v23',
     vendor: 'Tuya',
     description: 'Штора/тюль (Global Store + Pure Sensor Separation)',
 
     toZigbee: [
         customStateConverter,
-        tuya.tz.datapoints
+        tuya.tz.datapoints 
     ],
-
+    
     fromZigbee: [
         // Штатный парсер пусть сам занимается state и position. Мы его не трогаем.
         tuya.fz.datapoints,
-
+        
         // Наш парсер занимается ТОЛЬКО физическими датчиками движения
         {
             cluster: 'manuSpecificTuya',
@@ -96,7 +98,7 @@ const definition = {
                         state.last_direction = state.direction; // Запоминаем последнее направление
                         stateChanged = true;
                         log(meta, `>>> MOTOR START !!! Physical direction: ${state.direction.toUpperCase()}`);
-
+                        
                         if (state.stopTimer) {
                             clearTimeout(state.stopTimer);
                             state.stopTimer = null;
@@ -106,7 +108,7 @@ const definition = {
                     // Б. DP 3: Обновление позиции. Продлеваем "watchdog" движения.
                     if (dp === 3 && state.running) {
                         if (state.stopTimer) clearTimeout(state.stopTimer);
-
+                        
                         state.stopTimer = setTimeout(() => {
                             // Получаем актуальное состояние из store внутри таймера
                             let currentState = store.getValue(msg.endpoint, 'coverExtra') || state;
@@ -128,7 +130,7 @@ const definition = {
                         // ИСПРАВЛЕНИЕ 3: Мы НАМЕРЕННО не трогаем state.last_direction здесь!
                         stateChanged = true;
                         log(meta, '>>> DEVICE IDLE (DP1=1) !!! FORCE STOP. Мотор сообщил об остановке.');
-
+                        
                         if (state.stopTimer) {
                             clearTimeout(state.stopTimer);
                             state.stopTimer = null;
@@ -139,10 +141,10 @@ const definition = {
                 // ИСПРАВЛЕНИЕ 4: Сохраняем обновленное состояние в глобальное хранилище
                 if (stateChanged) {
                     store.putValue(msg.endpoint, 'coverExtra', state);
-
+                    
                     // ИСПРАВЛЕНИЕ 5: Логируем именно те значения, которые уйдут в датчики
                     log(meta, `PUBLISH SENSOR: running=${state.running}, direction=${state.direction}, last_direction=${state.last_direction}`);
-
+                    
                     return {
                         running: state.running,
                         direction: state.direction,
@@ -157,7 +159,7 @@ const definition = {
     options: [
         exposes.options.invert_cover(),
     ],
-
+    
     exposes: [
         e.cover_position().setAccess('position', ea.STATE_SET),
         e.binary('running', ea.STATE, true, false).withDescription('Штора физически движется'),

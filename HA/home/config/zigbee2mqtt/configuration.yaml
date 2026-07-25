@@ -11,7 +11,7 @@ serial:
   rtscts: false
 advanced:
   log_level: debug
-  output: json   # Гарантирует, что Z2M шлет лог-события в понятном для HA формате
+  output: json
   channel: 11
   network_key:
     - 245
@@ -47,7 +47,8 @@ frontend:
 homeassistant:
   enabled: true
 external_converters:
-  - external_converters/ts0601_debug.js  
+  - external_converters/ts0601_TZE204_m1wl5fvq.js
+  - external_converters/ts0601_TZE200_2odrmqwq.js
 devices:
   '0xa4c13895ac983d77':
     friendly_name: Термометр  мастер санузел (1)
@@ -75,7 +76,7 @@ devices:
     invert_cover: true
   '0xa4c138aa59545859':
     friendly_name: Столовая тюль угловая
-    invert_cover: true
+    invert_cover: false
   '0xa4c13809e9e2dd7f':
     friendly_name: Кухня штора
     invert_cover: true
