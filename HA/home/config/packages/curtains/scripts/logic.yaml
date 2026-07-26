@@ -39,7 +39,7 @@ script:
 
       - service: system_log.write
         data:
-          message: "cover={{ target_cover }}, pos={{ current_pos }}, moving={{ is_moving }}, dir={{ last_dir }}"
+          message: "input ==> cover={{ target_cover }}, pos={{ current_pos }}, moving={{ is_moving }}, dir={{ last_dir }}"
           level: info
           logger: "curtain_cycle"
 

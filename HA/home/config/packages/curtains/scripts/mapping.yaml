@@ -1,5 +1,174 @@
 # /config/packages/curtains/scripts/mapping.yaml
 
+
+
+# ### ШТОРЫ, ЖАЛЮЗИ, ТЮЛЬ (cover)
+# | Friendly Name | Entity ID |
+# |---|---|
+# {% for entity in states.cover | sort(attribute='attributes.friendly_name') %}
+# | {{ entity.attributes.friendly_name }} | `{{ entity.entity_id }}` |
+# {% endfor %}
+# ---
+# ### ДАТЧИКИ ДВИЖЕНИЯ (binary_sensor *running)
+
+# | Friendly Name | Entity ID |
+# |---|---|
+# {% for entity in states.binary_sensor | selectattr('entity_id', 'search', 'running') | sort(attribute='attributes.friendly_name') %}
+# | {{ entity.attributes.friendly_name }} | `{{ entity.entity_id }}` |
+# {% endfor %}
+# ---
+# ### НАПРАВЛЕНИЕ (sensor *direction)
+# | Friendly Name | Entity ID |
+# |---|---|
+# {% for entity in states.sensor | selectattr('entity_id', 'search', 'direction') | sort(attribute='attributes.friendly_name') %}
+# | {{ entity.attributes.friendly_name }} | `{{ entity.entity_id }}` |
+# {% endfor %}
+# ### ШТОРЫ, ЖАЛЮЗИ, ТЮЛЬ (cover)
+# | Friendly Name | Entity ID |
+# | Гостиная Жалюзи (левые) | `cover.gostinaia_zhaliuzi_levo` |
+# | Гостиная Жалюзи (правые) | `cover.gostinaia_zhaliuzi_pravo` |
+# | Гостиная Жалюзи (центр) | `cover.gostinaia_zhaliuzi_tsentr` |
+# | Гостиная Тюль | `cover.gostinaia_tiul` |
+# | Гостиная Штора | `cover.gostinaia_shtora` |
+# | Гостинная с защиой от открытия вентиляции  лево | `cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_levo` |
+# | Гостинная с защиой от открытия вентиляции право | `cover.gostinnaia_s_zashchioi_ot_otkrytiia_ventiliatsii_pravo` |
+# | Жалюзи балкон дверь - спальня | `cover.spalnia_zhaliuzi_balkon_dver` |
+# | Кабинет Жалюзи (дверь) | `cover.kabinet_sontse_dver` |
+# | Кабинет Жалюзи (окно) | `cover.kabinet_zhaliuzi_okno` |
+# | Кабинет с защиой от открытия двери | `cover.kabinet_s_zashchioi_ot_otkrytiia_dveri` |
+# | Кабинет Тюль | `cover.kabinet_tiul` |
+# | Кабинет Штора | `cover.kabinet_shtora` |
+# | Кухня Жалюзи | `cover.kukhnia_zhaliuzi` |
+# | Кухня Тюль | `cover.kukhnia_tiul` |
+# | Кухня Штора | `cover.kukhnia_shtora` |
+# | Мастер санузел Жалюзи | `cover.master_sanuzel_zhaliuzi` |
+# | Мастер санузел Тюль | `cover.master_sanuzel_tiul` |
+# | Мастер санузел Штора | `cover.master_sanuzel_shtora` |
+# | Спальня - с защиой от открытия двери | `cover.spalnia_s_zashchioi_ot_otkrytiia_dveri` |
+# | Спальня Жалюзи (балкон, окно) | `cover.spalnia_balkon_okno` |
+# | Спальня Жалюзи (окно, левые) | `cover.spalnia_zhaluzi_okno_levoe` |
+# | Спальня Жалюзи (окно, правые) | `cover.spalnia_zhaluzi_okno_pravoe` |
+# | Спальня Тюль (балкон) | `cover.spalnia_balkon_tiul` |
+# | Спальня Тюль (угол) | `cover.spalnia_tiul_ugol` |
+# | Спальня Штора (балкон) | `cover.spalnia_balkon_shtora` |
+# | Спальня Штора (угол) | `cover.spalnia_shtora_ugol` |
+# | Столовая Жалюзи (балкон, дверь) | `cover.stolovaia_zhaliuzi_balkon_dver` |
+# | Столовая Жалюзи (балкон, окно) | `cover.stolovaia_zhaliuzi_balkon_bolshoi` |
+# | Столовая Жалюзи (окно, левые) | `cover.stolovaia_zhaliuzi_okno_levoe` |
+# | Столовая Жалюзи (окно, правые) | `cover.stolovaia_zhaliuzi_okno_pravoe` |
+# | Столовая с защиой от открытия двери | `cover.stolovaia_s_zashchioi_ot_otkrytiia_dveri` |
+# | Столовая Тюль (балкон) | `cover.stolovaia_tiul_balkon` |
+# | Столовая Тюль (угловая) | `cover.stolovaia_tiul_uglovaia` |
+# | Столовая Штора (балкон) | `cover.stolovaia_shtory_balkon` |
+# | Столовая Штора (угловая) | `cover.stolovaia_shtora_uglovaia` |
+# ### ДАТЧИКИ ДВИЖЕНИЯ (binary_sensor *running)
+# | Friendly Name | Entity ID |
+# | Гостиная Жалюзи (левые) Running | `binary_sensor.gostinaia_zhaliuzi_levo_running` |
+# | Гостиная Жалюзи (правые) Running | `binary_sensor.gostinaia_zhaliuzi_pravo_running` |
+# | Гостиная Жалюзи (центр) Running | `binary_sensor.gostinaia_zhaliuzi_tsentr_running` |
+# | Гостиная Тюль Running | `binary_sensor.gostinaia_tiul_running` |
+# | Гостиная Штора Running | `binary_sensor.gostinaia_shtora_running` |
+# | Кабинет Жалюзи (дверь) Running | `binary_sensor.kabinet_sontse_dver_running` |
+# | Кабинет Жалюзи (окно) Running | `binary_sensor.kabinet_zhaliuzi_okno_running` |
+# | Кабинет Тюль Running | `binary_sensor.kabinet_tiul_running` |
+# | Кабинет Штора Running | `binary_sensor.kabinet_shtora_running` |
+# | Кухня Жалюзи Running | `binary_sensor.kukhnia_zhaliuzi_running` |
+# | Кухня Тюль Running | `binary_sensor.kukhnia_tiul_running` |
+# | Кухня Штора Running | `binary_sensor.kukhnia_shtora_running` |
+# | Мастер санузел Жалюзи Running | `binary_sensor.master_sanuzel_zhaliuzi_running` |
+# | Мастер санузел Тюль Running | `binary_sensor.master_sanuzel_tiul_running` |
+# | Мастер санузел Штора Running | `binary_sensor.master_sanuzel_shtora_running` |
+# | Спальня Жалюзи (балкон, дверь) Running | `binary_sensor.spalnia_zhaliuzi_balkon_dver_running` |
+# | Спальня Жалюзи (балкон, окно) Running | `binary_sensor.spalnia_balkon_okno_running` |
+# | Спальня Жалюзи (окно, левые) Running | `binary_sensor.spalnia_zhaliuzi_okno_levoe_running` |
+# | Спальня Жалюзи (окно, правые) Running | `binary_sensor.spalnia_zhaliuzi_okno_pravoe_running` |
+# | Спальня Тюль (балкон) Running | `binary_sensor.spalnia_balkon_tiul_running` |
+# | Спальня Тюль (угол) Running | `binary_sensor.spalnia_tiul_ugol_running` |
+# | Спальня Штора (балкон) Running | `binary_sensor.spalnia_balkon_shtora_running` |
+# | Спальня Штора (угол) Running | `binary_sensor.spalnia_shtora_ugol_running` |
+# | Столовая Жалюзи (балкон, дверь) Running | `binary_sensor.stolovaia_zhaliuzi_balkon_dver_running` |
+# | Столовая Жалюзи (балкон, окно) Running | `binary_sensor.stolovaia_zhaliuzi_balkon_bolshoi_running` |
+# | Столовая Жалюзи (окно, левые) Running | `binary_sensor.stolovaia_zhaliuzi_okno_levoe_running` |
+# | Столовая Жалюзи (окно, правые) Running | `binary_sensor.stolovaia_zhaliuzi_okno_pravoe_running` |
+# | Столовая Тюль (балкон) Running | `binary_sensor.stolovaia_tiul_balkon_running` |
+# | Столовая Тюль (угловая) Running | `binary_sensor.stolovaia_tiul_uglovaia_running` |
+# | Столовая Штора (балкон) Running | `binary_sensor.stolovaia_shtory_balkon_running` |
+# | Столовая Штора (угловая) Running | `binary_sensor.stolovaia_shtora_uglovaia_running` |
+# ### НАПРАВЛЕНИЕ (sensor *direction)
+# | Friendly Name | Entity ID |
+# | Гостиная Жалюзи (левые) Direction | `sensor.gostinaia_zhaliuzi_levo_direction` |
+# | Гостиная Жалюзи (левые) Last direction | `sensor.gostinaia_zhaliuzi_levo_last_direction` |
+# | Гостиная Жалюзи (правые) Direction | `sensor.gostinaia_zhaliuzi_pravo_direction` |
+# | Гостиная Жалюзи (правые) Last direction | `sensor.gostinaia_zhaliuzi_pravo_last_direction` |
+# | Гостиная Жалюзи (центр) Direction | `sensor.gostinaia_zhaliuzi_tsentr_direction` |
+# | Гостиная Жалюзи (центр) Last direction | `sensor.gostinaia_zhaliuzi_tsentr_last_direction` |
+# | Гостиная Тюль Direction | `sensor.gostinaia_tiul_direction` |
+# | Гостиная Тюль Last direction | `sensor.gostinaia_tiul_last_direction` |
+# | Гостиная Штора Direction | `sensor.gostinaia_shtora_direction` |
+# | Гостиная Штора Last direction | `sensor.gostinaia_shtora_last_direction` |
+# | Кабинет Жалюзи (дверь) Direction | `sensor.kabinet_sontse_dver_direction` |
+# | Кабинет Жалюзи (дверь) Last direction | `sensor.kabinet_sontse_dver_last_direction` |
+# | Кабинет Жалюзи (окно) Direction | `sensor.kabinet_zhaliuzi_okno_direction` |
+# | Кабинет Жалюзи (окно) Last direction | `sensor.kabinet_zhaliuzi_okno_last_direction` |
+# | Кабинет Тюль Direction | `sensor.kabinet_tiul_direction` |
+# | Кабинет Тюль Last direction | `sensor.kabinet_tiul_last_direction` |
+# | Кабинет Штора Direction | `sensor.kabinet_shtora_direction` |
+# | Кабинет Штора Last direction | `sensor.kabinet_shtora_last_direction` |
+# | Кухня Жалюзи Direction | `sensor.kukhnia_zhaliuzi_direction` |
+# | Кухня Жалюзи Last direction | `sensor.kukhnia_zhaliuzi_last_direction` |
+# | Кухня Тюль Direction | `sensor.kukhnia_tiul_direction` |
+# | Кухня Тюль Last direction | `sensor.kukhnia_tiul_last_direction` |
+# | Кухня Штора Direction | `sensor.kukhnia_shtora_direction` |
+# | Кухня Штора Last direction | `sensor.kukhnia_shtora_last_direction` |
+# | Мастер санузел Жалюзи Direction | `sensor.master_sanuzel_zhaliuzi_direction` |
+# | Мастер санузел Жалюзи Last direction | `sensor.master_sanuzel_zhaliuzi_last_direction` |
+# | Мастер санузел Тюль Direction | `sensor.master_sanuzel_tiul_direction` |
+# | Мастер санузел Тюль Last direction | `sensor.master_sanuzel_tiul_last_direction` |
+# | Мастер санузел Штора Direction | `sensor.master_sanuzel_shtora_direction` |
+# | Мастер санузел Штора Last direction | `sensor.master_sanuzel_shtora_last_direction` |
+# | Спальня Жалюзи (балкон, дверь) Direction | `sensor.spalnia_zhaliuzi_balkon_dver_direction` |
+# | Спальня Жалюзи (балкон, дверь) Last direction | `sensor.spalnia_zhaliuzi_balkon_dver_last_direction` |
+# | Спальня Жалюзи (балкон, окно) Direction | `sensor.spalnia_balkon_okno_direction` |
+# | Спальня Жалюзи (балкон, окно) Last direction | `sensor.spalnia_balkon_okno_last_direction` |
+# | Спальня Жалюзи (окно, левые) Direction | `sensor.spalnia_zhaliuzi_okno_levoe_direction` |
+# | Спальня Жалюзи (окно, левые) Last direction | `sensor.spalnia_zhaliuzi_okno_levoe_last_direction` |
+# | Спальня Жалюзи (окно, правые) Direction | `sensor.spalnia_zhaliuzi_okno_pravoe_direction` |
+# | Спальня Жалюзи (окно, правые) Last direction | `sensor.spalnia_zhaliuzi_okno_pravoe_last_direction` |
+# | Спальня Тюль (балкон) Direction | `sensor.spalnia_balkon_tiul_direction` |
+# | Спальня Тюль (балкон) Last direction | `sensor.spalnia_balkon_tiul_last_direction` |
+# | Спальня Тюль (угол) Direction | `sensor.spalnia_tiul_ugol_direction` |
+# | Спальня Тюль (угол) Last direction | `sensor.spalnia_tiul_ugol_last_direction` |
+# | Спальня Штора (балкон) Direction | `sensor.spalnia_balkon_shtora_direction` |
+# | Спальня Штора (балкон) Last direction | `sensor.spalnia_balkon_shtora_last_direction` |
+# | Спальня Штора (угол) Direction | `sensor.spalnia_shtora_ugol_direction` |
+# | Спальня Штора (угол) Last direction | `sensor.spalnia_shtora_ugol_last_direction` |
+# | Столовая Жалюзи (балкон, дверь) Direction | `sensor.stolovaia_zhaliuzi_balkon_dver_direction` |
+# | Столовая Жалюзи (балкон, дверь) Last direction | `sensor.stolovaia_zhaliuzi_balkon_dver_last_direction` |
+# | Столовая Жалюзи (балкон, окно) Direction | `sensor.stolovaia_zhaliuzi_balkon_bolshoi_direction` |
+# | Столовая Жалюзи (балкон, окно) Last direction | `sensor.stolovaia_zhaliuzi_balkon_bolshoi_last_direction` |
+# | Столовая Жалюзи (окно, левые) Direction | `sensor.stolovaia_zhaliuzi_okno_levoe_direction` |
+# | Столовая Жалюзи (окно, левые) Last direction | `sensor.stolovaia_zhaliuzi_okno_levoe_last_direction` |
+# | Столовая Жалюзи (окно, правые) Direction | `sensor.stolovaia_zhaliuzi_okno_pravoe_direction` |
+# | Столовая Жалюзи (окно, правые) Last direction | `sensor.stolovaia_zhaliuzi_okno_pravoe_last_direction` |
+# | Столовая Тюль (балкон) Direction | `sensor.stolovaia_tiul_balkon_direction` |
+# | Столовая Тюль (балкон) Last direction | `sensor.stolovaia_tiul_balkon_last_direction` |
+# | Столовая Тюль (угловая) Direction | `sensor.stolovaia_tiul_uglovaia_direction` |
+# | Столовая Тюль (угловая) Last direction | `sensor.stolovaia_tiul_uglovaia_last_direction` |
+# | Столовая Штора (балкон) Direction | `sensor.stolovaia_shtory_balkon_direction` |
+# | Столовая Штора (балкон) Last direction | `sensor.stolovaia_shtory_balkon_last_direction` |
+# | Столовая Штора (угловая) Direction | `sensor.stolovaia_shtora_uglovaia_direction` |
+# | Столовая Штора (угловая) Last direction | `sensor.stolovaia_shtora_uglovaia_last_direction` |
+
+
+
+
+
+
+
+
+
+
+
 script:
   # ============================================================================
   # КУХНЯ
