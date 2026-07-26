@@ -1,6 +1,6 @@
 # /config/packages/curtains/scripts/mapping.yaml
 # Маппинг скриптов для пультов и сцен
-# 
+#
 # Архитектура:
 # - Все циклы используют curtain_cycle_group (универсальный скрипт для групп)
 # - Все сцены используют curtain_set_positions (упрощённый, без input_boolean/input_select)
@@ -168,15 +168,9 @@
 # | Столовая Штора (угловая) Direction | `sensor.stolovaia_shtora_uglovaia_direction` |
 # | Столовая Штора (угловая) Last direction | `sensor.stolovaia_shtora_uglovaia_last_direction` |
 
-
-
-
-
-
-
 # /config/packages/curtains/scripts/mapping.yaml
 # Маппинг скриптов для пультов и сцен
-# 
+#
 # Архитектура:
 # - Все циклы используют curtain_cycle_group (универсальный скрипт для групп)
 # - Все сцены используют curtain_set_positions (упрощённый, без input_boolean/input_select)
@@ -257,7 +251,8 @@ script:
     sequence:
       - service: script.curtain_group_open_or_stop
         data:
-          target_covers: [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
+          target_covers:
+            [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
           running_sensors:
             - binary_sensor.kukhnia_shtora_running
             - binary_sensor.kukhnia_tiul_running
@@ -269,7 +264,8 @@ script:
     sequence:
       - service: script.curtain_group_close
         data:
-          target_covers: [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
+          target_covers:
+            [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
           protection_sensors: [null, null, null]
 
   # ============================================================================
@@ -303,7 +299,8 @@ script:
         data:
           target_covers: [cover.master_sanuzel_zhaliuzi]
           running_sensors: [binary_sensor.master_sanuzel_zhaliuzi_running]
-          last_direction_sensors: [sensor.master_sanuzel_zhaliuzi_last_direction]
+          last_direction_sensors:
+            [sensor.master_sanuzel_zhaliuzi_last_direction]
           protection_sensors: [null]
 
   master_bath_scene_1:
@@ -312,9 +309,21 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.master_sanuzel_shtora, position: 100, protection: null }
-            - { cover: cover.master_sanuzel_tiul, position: 0, protection: null }
-            - { cover: cover.master_sanuzel_zhaliuzi, position: 0, protection: null }
+            - {
+                cover: cover.master_sanuzel_shtora,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_tiul,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_zhaliuzi,
+                position: 0,
+                protection: null,
+              }
 
   master_bath_scene_2:
     alias: "сцена 2: Мастер санузел"
@@ -322,9 +331,21 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.master_sanuzel_shtora, position: 100, protection: null }
-            - { cover: cover.master_sanuzel_tiul, position: 0, protection: null }
-            - { cover: cover.master_sanuzel_zhaliuzi, position: 100, protection: null }
+            - {
+                cover: cover.master_sanuzel_shtora,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_tiul,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_zhaliuzi,
+                position: 100,
+                protection: null,
+              }
 
   master_bath_scene_3:
     alias: "сцена 3: Мастер санузел"
@@ -332,9 +353,21 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.master_sanuzel_shtora, position: 100, protection: null }
-            - { cover: cover.master_sanuzel_tiul, position: 100, protection: null }
-            - { cover: cover.master_sanuzel_zhaliuzi, position: 0, protection: null }
+            - {
+                cover: cover.master_sanuzel_shtora,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_tiul,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.master_sanuzel_zhaliuzi,
+                position: 0,
+                protection: null,
+              }
 
   master_bath_all_open_or_stop:
     alias: "всё - открыть или стоп: Мастер санузел"
@@ -424,14 +457,42 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.spalnia_shtora_ugol, position: 100, protection: null }
-            - { cover: cover.spalnia_balkon_shtora, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
+            - {
+                cover: cover.spalnia_shtora_ugol,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
             - { cover: cover.spalnia_tiul_ugol, position: 0, protection: null }
-            - { cover: cover.spalnia_balkon_tiul, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaluzi_okno_levoe, position: 0, protection: null }
-            - { cover: cover.spalnia_zhaluzi_okno_pravoe, position: 0, protection: null }
-            - { cover: cover.spalnia_balkon_okno, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaliuzi_balkon_dver, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
+            - {
+                cover: cover.spalnia_balkon_tiul,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_levoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_pravoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_okno,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaliuzi_balkon_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
 
   spalnya_scene_2:
     alias: "сцена 2: Спальня"
@@ -439,14 +500,42 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.spalnia_shtora_ugol, position: 100, protection: null }
-            - { cover: cover.spalnia_balkon_shtora, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
+            - {
+                cover: cover.spalnia_shtora_ugol,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
             - { cover: cover.spalnia_tiul_ugol, position: 0, protection: null }
-            - { cover: cover.spalnia_balkon_tiul, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaluzi_okno_levoe, position: 100, protection: null }
-            - { cover: cover.spalnia_zhaluzi_okno_pravoe, position: 100, protection: null }
-            - { cover: cover.spalnia_balkon_okno, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaliuzi_balkon_dver, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
+            - {
+                cover: cover.spalnia_balkon_tiul,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_levoe,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_pravoe,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_okno,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaliuzi_balkon_dver,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
 
   spalnya_scene_3:
     alias: "сцена 3: Спальня"
@@ -454,14 +543,46 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.spalnia_shtora_ugol, position: 100, protection: null }
-            - { cover: cover.spalnia_balkon_shtora, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_tiul_ugol, position: 100, protection: null }
-            - { cover: cover.spalnia_balkon_tiul, position: 100, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaluzi_okno_levoe, position: 0, protection: null }
-            - { cover: cover.spalnia_zhaluzi_okno_pravoe, position: 0, protection: null }
-            - { cover: cover.spalnia_balkon_okno, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
-            - { cover: cover.spalnia_zhaliuzi_balkon_dver, position: 0, protection: binary_sensor.datchik_dveri_spalnia_1_contact }
+            - {
+                cover: cover.spalnia_shtora_ugol,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_tiul_ugol,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_tiul,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_levoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_zhaluzi_okno_pravoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.spalnia_balkon_okno,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
+            - {
+                cover: cover.spalnia_zhaliuzi_balkon_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+              }
 
   spalnya_all_lp_open_or_stop:
     alias: "всё (L+P) - открыть или стоп: Спальня"
@@ -645,11 +766,31 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.gostinaia_shtora, position: 100, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_tiul, position: 0, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_zhaliuzi_tsentr, position: 0, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_levo, position: 0, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_pravo, position: 0, protection: null }
+            - {
+                cover: cover.gostinaia_shtora,
+                position: 100,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_tiul,
+                position: 0,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_tsentr,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_levo,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_pravo,
+                position: 0,
+                protection: null,
+              }
 
   gostinaya_scene_2:
     alias: "сцена 2: Гостиная"
@@ -657,11 +798,31 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.gostinaia_shtora, position: 100, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_tiul, position: 0, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_zhaliuzi_tsentr, position: 100, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_levo, position: 100, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_pravo, position: 100, protection: null }
+            - {
+                cover: cover.gostinaia_shtora,
+                position: 100,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_tiul,
+                position: 0,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_tsentr,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_levo,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_pravo,
+                position: 100,
+                protection: null,
+              }
 
   gostinaya_scene_3:
     alias: "сцена 3: Гостиная"
@@ -669,11 +830,31 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.gostinaia_shtora, position: 100, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_tiul, position: 100, protection: binary_sensor.gostinaia_ventiliatsiia_otkryta }
-            - { cover: cover.gostinaia_zhaliuzi_tsentr, position: 0, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_levo, position: 0, protection: null }
-            - { cover: cover.gostinaia_zhaliuzi_pravo, position: 0, protection: null }
+            - {
+                cover: cover.gostinaia_shtora,
+                position: 100,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_tiul,
+                position: 100,
+                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_tsentr,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_levo,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.gostinaia_zhaliuzi_pravo,
+                position: 0,
+                protection: null,
+              }
 
   gostinaya_all_open_or_stop:
     alias: "всё - открыть или стоп: Гостиная"
@@ -728,7 +909,8 @@ script:
         data:
           target_covers: [cover.stolovaia_shtory_balkon]
           running_sensors: [binary_sensor.stolovaia_shtory_balkon_running]
-          last_direction_sensors: [sensor.stolovaia_shtory_balkon_last_direction]
+          last_direction_sensors:
+            [sensor.stolovaia_shtory_balkon_last_direction]
           protection_sensors: [binary_sensor.datchik_dveri_stolovaia_2_contact]
 
   stolovaya_curtain_corner_cycle:
@@ -738,7 +920,8 @@ script:
         data:
           target_covers: [cover.stolovaia_shtora_uglovaia]
           running_sensors: [binary_sensor.stolovaia_shtora_uglovaia_running]
-          last_direction_sensors: [sensor.stolovaia_shtora_uglovaia_last_direction]
+          last_direction_sensors:
+            [sensor.stolovaia_shtora_uglovaia_last_direction]
           protection_sensors: [null]
 
   stolovaya_curtain_all_cycle:
@@ -764,7 +947,8 @@ script:
         data:
           target_covers: [cover.stolovaia_tiul_uglovaia]
           running_sensors: [binary_sensor.stolovaia_tiul_uglovaia_running]
-          last_direction_sensors: [sensor.stolovaia_tiul_uglovaia_last_direction]
+          last_direction_sensors:
+            [sensor.stolovaia_tiul_uglovaia_last_direction]
           protection_sensors: [null]
 
   stolovaya_tulle_all_cycle:
@@ -789,7 +973,7 @@ script:
             - sensor.stolovaia_zhaliuzi_balkon_bolshoi_last_direction
           protection_sensors:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
 
   stolovaya_blinds_window_cycle:
     alias: "жалюзи окно - цикл: Столовая"
@@ -819,14 +1003,46 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.stolovaia_shtory_balkon, position: 100, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_shtora_uglovaia, position: 100, protection: null }
-            - { cover: cover.stolovaia_tiul_balkon, position: 0, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_tiul_uglovaia, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_dver, position: 0, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_bolshoi, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_levoe, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_pravoe, position: 0, protection: null }
+            - {
+                cover: cover.stolovaia_shtory_balkon,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_shtora_uglovaia,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_tiul_balkon,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_tiul_uglovaia,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_levoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_pravoe,
+                position: 0,
+                protection: null,
+              }
 
   stolovaya_scene_2:
     alias: "сцена 2: Столовая"
@@ -834,14 +1050,46 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.stolovaia_shtory_balkon, position: 100, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_shtora_uglovaia, position: 100, protection: null }
-            - { cover: cover.stolovaia_tiul_balkon, position: 0, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_tiul_uglovaia, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_dver, position: 100, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_bolshoi, position: 100, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_levoe, position: 100, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_pravoe, position: 100, protection: null }
+            - {
+                cover: cover.stolovaia_shtory_balkon,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_shtora_uglovaia,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_tiul_balkon,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_tiul_uglovaia,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_dver,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_levoe,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_pravoe,
+                position: 100,
+                protection: null,
+              }
 
   stolovaya_scene_3:
     alias: "сцена 3: Столовая"
@@ -849,14 +1097,46 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.stolovaia_shtory_balkon, position: 100, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_shtora_uglovaia, position: 100, protection: null }
-            - { cover: cover.stolovaia_tiul_balkon, position: 100, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_tiul_uglovaia, position: 100, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_dver, position: 0, protection: binary_sensor.datchik_dveri_stolovaia_2_contact }
-            - { cover: cover.stolovaia_zhaliuzi_balkon_bolshoi, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_levoe, position: 0, protection: null }
-            - { cover: cover.stolovaia_zhaliuzi_okno_pravoe, position: 0, protection: null }
+            - {
+                cover: cover.stolovaia_shtory_balkon,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_shtora_uglovaia,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_tiul_balkon,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_tiul_uglovaia,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_levoe,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.stolovaia_zhaliuzi_okno_pravoe,
+                position: 0,
+                protection: null,
+              }
 
   stolovaya_balcony_all_open_or_stop:
     alias: "балкон - открыть или стоп: Столовая"
@@ -877,7 +1157,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
 
   stolovaya_balcony_all_close:
     alias: "балкон - закрыть: Столовая"
@@ -893,7 +1173,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
 
   stolovaya_all_open_or_stop:
     alias: "всё - открыть или стоп: Столовая"
@@ -924,7 +1204,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - null
 
@@ -948,7 +1228,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - null
 
@@ -1000,10 +1280,26 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.kabinet_shtora, position: 100, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_tiul, position: 0, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_zhaliuzi_okno, position: 0, protection: null }
-            - { cover: cover.kabinet_sontse_dver, position: 0, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
+            - {
+                cover: cover.kabinet_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_tiul,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_zhaliuzi_okno,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.kabinet_sontse_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
 
   kabinet_scene_2:
     alias: "сцена 2: Кабинет"
@@ -1011,10 +1307,26 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.kabinet_shtora, position: 100, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_tiul, position: 0, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_zhaliuzi_okno, position: 100, protection: null }
-            - { cover: cover.kabinet_sontse_dver, position: 100, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
+            - {
+                cover: cover.kabinet_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_tiul,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_zhaliuzi_okno,
+                position: 100,
+                protection: null,
+              }
+            - {
+                cover: cover.kabinet_sontse_dver,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
 
   kabinet_scene_3:
     alias: "сцена 3: Кабинет"
@@ -1022,10 +1334,26 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - { cover: cover.kabinet_shtora, position: 100, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_tiul, position: 100, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
-            - { cover: cover.kabinet_zhaliuzi_okno, position: 0, protection: null }
-            - { cover: cover.kabinet_sontse_dver, position: 0, protection: binary_sensor.datchik_dveri_kabinet_3_contact }
+            - {
+                cover: cover.kabinet_shtora,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_tiul,
+                position: 100,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
+            - {
+                cover: cover.kabinet_zhaliuzi_okno,
+                position: 0,
+                protection: null,
+              }
+            - {
+                cover: cover.kabinet_sontse_dver,
+                position: 0,
+                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+              }
 
   kabinet_all_open_or_stop:
     alias: "всё - открыть или стоп: Кабинет"

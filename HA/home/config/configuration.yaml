@@ -14,6 +14,15 @@ logger:
   logs:
     # Термостаты - debug на период настройки
     homeassistant.components.generic_thermostat: debug  
+    #
+    curtain_cycle: info
+    curtain_cycle_protected: info
+    curtain_set_positions: info
+    curtain_group_open_or_stop: info
+    curtain_group_close: info
+    # Системные логи скриптов глушим до warning
+    homeassistant.components.script: warning
+    homeassistant.components.script.curtain_cycle: warning
 
 ####################################################################################################################################
 # конфигурация модбас
@@ -1192,70 +1201,3 @@ template:
         turn_on:
           - service: script.vykliuchit_ves_svet
 
-  - trigger:
-      - platform: mqtt
-        # Слушаем системный лог-топик Zigbee2MQTT
-        topic: "zigbee2mqtt/bridge/logging"
-    binary_sensor:
-      - name: " ИТОГ Штора (Движение): Мастер санузел"
-        unique_id: master_sanzuel_shtora_moving_perfect
-        device_class: moving
-        state: >
-          {# Превращаем весь текст лога в строку для удобного поиска #}
-          {% set log_msg = trigger.payload_json.message | string if trigger.payload_json.message is defined else trigger.payload | string %}
-          
-          {# Проверяем, относится ли лог к нашей шторе #}
-          {% if 'Мастер санузел штора' in log_msg %}
-            
-            {# Ищем старт движения (появление dp:7) #}
-            {% if '"dp":7' in log_msg and ('[0]' in log_msg or '[1]' in log_msg) %}
-              on
-              
-            {# Ищем остановку (появление dp:1 с буфером [1] или явный текст running:false) #}
-            {% elif ('"dp":1' in log_msg and '[1]' in log_msg) or 'running":false' in log_msg %}
-              off
-              
-            {% else %}
-              {{ this.state if this.state is defined else 'off' }}
-            {% endif %}
-            
-          {% else %}
-            {# Если лог от другого устройства #}
-            {{ this.state if this.state is defined else 'off' }}
-          {% endif %}          
-
-
-  # ГРУППА 1: Слушает системные логи Zigbee2MQTT
-  - trigger:
-      - platform: mqtt
-        topic: "zigbee2mqtt/bridge/logging"
-    binary_sensor:
-      - name: "Штора Тест Отладки 1"
-        unique_id: master_curtain_debug_test-1
-        state: >
-          {# Если в логе есть имя шторы, включаем датчик, иначе сохраняем как есть #}
-          {% if 'Мастер санузел штора' in (trigger.payload | string) %}
-            on
-          {% else %}
-            {{ this.state if this.state is defined else 'off' }}
-          {% endif %}
-        attributes:
-          raw_log: >
-            {# Запоминаем ПАКЕТ НАВСЕГДА и не затираем его сообщениями от других устройств #}
-            {% if 'Мастер санузел штора' in (trigger.payload | string) %}
-              {{ trigger.payload | string }}
-            {% else %}
-              {{ this.attributes.raw_log if this.attributes.raw_log is defined else 'Ожидание первого пакета' }}
-            {% endif %}
-
-  # ГРУППА 2: Слушает топик самого устройства (включая /set)
-  - trigger:
-      - platform: mqtt
-        topic: "zigbee2mqtt/Мастер санузел штора/#"
-    binary_sensor:
-      - name: "Штора Тест Топика Устройства"
-        unique_id: master_curtain_topic_test
-        state: "on"
-        # Записываем сырой JSON топика шторы прямо в атрибут этого датчика
-        attributes:
-          raw_mqtt: "{{ trigger.payload | string }}"

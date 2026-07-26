@@ -15,6 +15,8 @@
 # Обработка unknown:
 # - running: unknown → off (стоит)
 # - last_direction: unknown → closing (начальное состояние после перезагрузки)
+#
+# Исправление: используем tojson (встроенный фильтр Jinja2) вместо to_json
 
 script:
   # ============================================================================
@@ -41,8 +43,9 @@ script:
       # ШАГ 1: Нормализация датчиков и чтение состояний
       # ========================================================================
       - variables:
-          # Создаём список устройств с нормализованными состояниями
-          devices: >-
+          # Создаём JSON-строку со списком устройств, затем конвертируем в список
+          # Используем tojson (встроенный фильтр Jinja2) вместо to_json
+          devices_json: >
             {% set ns = namespace(list=[]) %}
             {% for i in range(target_covers | length) %}
               {% set running_raw = states(running_sensors[i]) %}
@@ -61,19 +64,21 @@ script:
                 'index': i
               }] %}
             {% endfor %}
-            {{ ns.list }}
+            {{ ns.list | tojson }}
+          devices: "{{ devices_json | trim | from_json }}"
           
-          # Нормализуем список защит
-          protections: >-
+          # Нормализуем список защит (JSON → list)
+          protections_json: >
             {% if protection_sensors is defined and protection_sensors is not none %}
-              {{ protection_sensors }}
+              {{ protection_sensors | tojson }}
             {% else %}
               {% set ns = namespace(items=[]) %}
               {% for i in range(target_covers | length) %}
                 {% set ns.items = ns.items + [none] %}
               {% endfor %}
-              {{ ns.items }}
+              {{ ns.items | tojson }}
             {% endif %}
+          protections: "{{ protections_json | trim | from_json }}"
           
           # Пороги из input_number
           closed_threshold: "{{ states('input_number.curtain_closed_threshold') | int(5) }}"
@@ -108,7 +113,7 @@ script:
           # Если хоть одно устройство движется → STOP всем
           - conditions:
               - condition: template
-                value_template: "{{ any_moving }}"
+                value_template: "{{ any_moving | bool }}"
             sequence:
               - repeat:
                   for_each: "{{ devices }}"
@@ -133,30 +138,31 @@ script:
       # ШАГ 3: Проверка защиты для каждого устройства
       # ========================================================================
       - variables:
-          # Создаём список активных и заблокированных устройств
-          active_devices: >-
-            {% set ns = namespace(active=[], blocked=[]) %}
+          # Создаём список активных устройств (JSON → list)
+          active_devices_json: >
+            {% set ns = namespace(active=[]) %}
             {% for device in devices %}
               {% set prot = protections[device.index] %}
-              {% set is_protected = prot is not none and prot != '' and is_state(prot, 'on') %}
-              {% if is_protected %}
-                {% set ns.blocked = ns.blocked + [device] %}
-              {% else %}
+              {% set is_protected = prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') %}
+              {% if not is_protected %}
                 {% set ns.active = ns.active + [device] %}
               {% endif %}
             {% endfor %}
-            {{ ns.active }}
+            {{ ns.active | tojson }}
+          active_devices: "{{ active_devices_json | trim | from_json }}"
           
-          blocked_devices: >-
+          # Создаём список заблокированных устройств (JSON → list)
+          blocked_devices_json: >
             {% set ns = namespace(blocked=[]) %}
             {% for device in devices %}
               {% set prot = protections[device.index] %}
-              {% set is_protected = prot is not none and prot != '' and is_state(prot, 'on') %}
+              {% set is_protected = prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') %}
               {% if is_protected %}
                 {% set ns.blocked = ns.blocked + [device] %}
               {% endif %}
             {% endfor %}
-            {{ ns.blocked }}
+            {{ ns.blocked | tojson }}
+          blocked_devices: "{{ blocked_devices_json | trim | from_json }}"
 
       - service: system_log.write
         data:
@@ -331,12 +337,13 @@ script:
                   {{ repeat.item.protection is defined 
                      and repeat.item.protection is not none 
                      and repeat.item.protection != '' 
+                     and repeat.item.protection != 'none'
                      and is_state(repeat.item.protection, 'on') }}
 
             - choose:
                 - conditions:
                     - condition: template
-                      value_template: "{{ not is_protected }}"
+                      value_template: "{{ not (is_protected | bool) }}"
                   sequence:
                     - service: cover.set_cover_position
                       target: { entity_id: "{{ repeat.item.cover }}" }
@@ -350,7 +357,7 @@ script:
 
                 - conditions:
                     - condition: template
-                      value_template: "{{ is_protected }}"
+                      value_template: "{{ is_protected | bool }}"
                   sequence:
                     - service: system_log.write
                       data:
@@ -390,7 +397,8 @@ script:
       # ШАГ 1: Нормализация датчиков
       # ========================================================================
       - variables:
-          devices: >-
+          # Создаём JSON-строку со списком устройств, затем конвертируем в список
+          devices_json: >
             {% set ns = namespace(list=[]) %}
             {% for i in range(target_covers | length) %}
               {% set running_raw = states(running_sensors[i]) %}
@@ -401,18 +409,21 @@ script:
                 'index': i
               }] %}
             {% endfor %}
-            {{ ns.list }}
+            {{ ns.list | tojson }}
+          devices: "{{ devices_json | trim | from_json }}"
           
-          protections: >-
+          # Нормализуем список защит (JSON → list)
+          protections_json: >
             {% if protection_sensors is defined and protection_sensors is not none %}
-              {{ protection_sensors }}
+              {{ protection_sensors | tojson }}
             {% else %}
               {% set ns = namespace(items=[]) %}
               {% for i in range(target_covers | length) %}
                 {% set ns.items = ns.items + [none] %}
               {% endfor %}
-              {{ ns.items }}
+              {{ ns.items | tojson }}
             {% endif %}
+          protections: "{{ protections_json | trim | from_json }}"
           
           any_moving: >-
             {% set ns = namespace(found=false) %}
@@ -435,7 +446,7 @@ script:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ any_moving }}"
+                value_template: "{{ any_moving | bool }}"
             sequence:
               - repeat:
                   for_each: "{{ devices }}"
@@ -461,19 +472,19 @@ script:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ not any_moving }}"
+                value_template: "{{ not (any_moving | bool) }}"
             sequence:
               - repeat:
                   for_each: "{{ devices }}"
                   sequence:
                     - variables:
                         prot: "{{ protections[repeat.item.index] }}"
-                        is_protected: "{{ prot is not none and prot != '' and is_state(prot, 'on') }}"
+                        is_protected: "{{ prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') }}"
                     
                     - choose:
                         - conditions:
                             - condition: template
-                              value_template: "{{ not is_protected }}"
+                              value_template: "{{ not (is_protected | bool) }}"
                           sequence:
                             - service: cover.set_cover_position
                               target:
@@ -488,7 +499,7 @@ script:
 
                         - conditions:
                             - condition: template
-                              value_template: "{{ is_protected }}"
+                              value_template: "{{ is_protected | bool }}"
                           sequence:
                             - service: system_log.write
                               data:
@@ -521,19 +532,20 @@ script:
         required: false
     sequence:
       # ========================================================================
-      # ШАГ 1: Нормализация списка защит
+      # ШАГ 1: Нормализация списка защит (JSON → list)
       # ========================================================================
       - variables:
-          protections: >-
+          protections_json: >
             {% if protection_sensors is defined and protection_sensors is not none %}
-              {{ protection_sensors }}
+              {{ protection_sensors | tojson }}
             {% else %}
               {% set ns = namespace(items=[]) %}
               {% for i in range(target_covers | length) %}
                 {% set ns.items = ns.items + [none] %}
               {% endfor %}
-              {{ ns.items }}
+              {{ ns.items | tojson }}
             {% endif %}
+          protections: "{{ protections_json | trim | from_json }}"
 
       - service: system_log.write
         data:
@@ -550,12 +562,12 @@ script:
             - variables:
                 idx: "{{ repeat.item }}"
                 prot: "{{ protections[repeat.item] }}"
-                is_protected: "{{ prot is not none and prot != '' and is_state(prot, 'on') }}"
+                is_protected: "{{ prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') }}"
             
             - choose:
                 - conditions:
                     - condition: template
-                      value_template: "{{ not is_protected }}"
+                      value_template: "{{ not (is_protected | bool) }}"
                   sequence:
                     - service: cover.set_cover_position
                       target:
@@ -570,7 +582,7 @@ script:
 
                 - conditions:
                     - condition: template
-                      value_template: "{{ is_protected }}"
+                      value_template: "{{ is_protected | bool }}"
                   sequence:
                     - service: system_log.write
                       data:
