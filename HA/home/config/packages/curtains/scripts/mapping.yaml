@@ -199,12 +199,18 @@ script:
   kitchen_tulle_cycle:
     alias: "тюль - цикл: Кухня"
     sequence:
-      - service: script.curtain_cycle_group
+      # Отключено по запросу заказчика (текстиль не установлен)
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers: [cover.kukhnia_tiul]
+      #     running_sensors: [binary_sensor.kukhnia_tiul_running]
+      #     last_direction_sensors: [sensor.kukhnia_tiul_last_direction]
+      #     protection_sensors: [null]
+      - service: system_log.write
         data:
-          target_covers: [cover.kukhnia_tiul]
-          running_sensors: [binary_sensor.kukhnia_tiul_running]
-          last_direction_sensors: [sensor.kukhnia_tiul_last_direction]
-          protection_sensors: [null]
+          message: "SKIP: kitchen_tulle_cycle - устройство отключено по запросу заказчика (текстиль не установлен)"
+          level: warning
+          logger: "mapping.kitchen_tulle_cycle"      
 
   kitchen_blind_cycle:
     alias: "жалюзи - цикл: Кухня"
@@ -223,7 +229,9 @@ script:
         data:
           curtains:
             - { cover: cover.kukhnia_shtora, position: 100, protection: null }
-            - { cover: cover.kukhnia_tiul, position: 0, protection: null }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- { cover: cover.kukhnia_tiul, position: 0, protection: null }
             - { cover: cover.kukhnia_zhaliuzi, position: 0, protection: null }
 
   kitchen_scene_2:
@@ -233,7 +241,9 @@ script:
         data:
           curtains:
             - { cover: cover.kukhnia_shtora, position: 100, protection: null }
-            - { cover: cover.kukhnia_tiul, position: 0, protection: null }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- { cover: cover.kukhnia_tiul, position: 0, protection: null }
             - { cover: cover.kukhnia_zhaliuzi, position: 100, protection: null }
 
   kitchen_scene_3:
@@ -243,7 +253,9 @@ script:
         data:
           curtains:
             - { cover: cover.kukhnia_shtora, position: 100, protection: null }
-            - { cover: cover.kukhnia_tiul, position: 100, protection: null }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- { cover: cover.kukhnia_tiul, position: 100, protection: null }
             - { cover: cover.kukhnia_zhaliuzi, position: 0, protection: null }
 
   kitchen_all_open_or_stop:
@@ -252,12 +264,23 @@ script:
       - service: script.curtain_group_open_or_stop
         data:
           target_covers:
-            [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
+            - cover.kukhnia_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- cover.kukhnia_tiul
+            -  cover.kukhnia_zhaliuzi
           running_sensors:
             - binary_sensor.kukhnia_shtora_running
-            - binary_sensor.kukhnia_tiul_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- binary_sensor.kukhnia_tiul_running
             - binary_sensor.kukhnia_zhaliuzi_running
-          protection_sensors: [null, null, null]
+          protection_sensors: 
+            - null
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- null
+            - null
 
   kitchen_all_close:
     alias: "всё - закрыть: Кухня"
@@ -265,8 +288,17 @@ script:
       - service: script.curtain_group_close
         data:
           target_covers:
-            [cover.kukhnia_shtora, cover.kukhnia_tiul, cover.kukhnia_zhaliuzi]
-          protection_sensors: [null, null, null]
+            - cover.kukhnia_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- cover.kukhnia_tiul
+            - cover.kukhnia_zhaliuzi
+          protection_sensors: 
+            - null
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- null
+            - null
 
   # ============================================================================
   # МАСТЕР САНУЗЕЛ
@@ -275,12 +307,19 @@ script:
   master_bath_curtain_cycle:
     alias: "штора - цикл: Мастер санузел"
     sequence:
-      - service: script.curtain_cycle_group
+      # важно!!!! - включить в защите - там тоже закоментировано
+      # мотор обесточен
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers: [cover.master_sanuzel_shtora]
+      #     running_sensors: [binary_sensor.master_sanuzel_shtora_running]
+      #     last_direction_sensors: [sensor.master_sanuzel_shtora_last_direction]
+      #     protection_sensors: [null]
+      - service: system_log.write
         data:
-          target_covers: [cover.master_sanuzel_shtora]
-          running_sensors: [binary_sensor.master_sanuzel_shtora_running]
-          last_direction_sensors: [sensor.master_sanuzel_shtora_last_direction]
-          protection_sensors: [null]
+          message: "SKIP: master_bath_curtain_cycle - мотор обесточен"
+          level: warning
+          logger: "mapping.master_bath_curtain_cycle"
 
   master_bath_tulle_cycle:
     alias: "тюль - цикл: Мастер санузел"
@@ -309,11 +348,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.master_sanuzel_shtora,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.master_sanuzel_shtora,
+            #    position: 100,
+            #    protection: null,
+            #  }
             - {
                 cover: cover.master_sanuzel_tiul,
                 position: 0,
@@ -331,11 +372,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.master_sanuzel_shtora,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.master_sanuzel_shtora,
+            #    position: 100,
+            #    protection: null,
+            #  }
             - {
                 cover: cover.master_sanuzel_tiul,
                 position: 0,
@@ -353,11 +396,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.master_sanuzel_shtora,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.master_sanuzel_shtora,
+            #    position: 100,
+            #    protection: null,
+            #  }
             - {
                 cover: cover.master_sanuzel_tiul,
                 position: 100,
@@ -375,14 +420,23 @@ script:
       - service: script.curtain_group_open_or_stop
         data:
           target_covers:
-            - cover.master_sanuzel_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.master_sanuzel_shtora
             - cover.master_sanuzel_tiul
             - cover.master_sanuzel_zhaliuzi
           running_sensors:
-            - binary_sensor.master_sanuzel_shtora_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.master_sanuzel_shtora_running
             - binary_sensor.master_sanuzel_tiul_running
             - binary_sensor.master_sanuzel_zhaliuzi_running
-          protection_sensors: [null, null, null]
+          protection_sensors: 
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- null
+            - null
+            - null
 
   master_bath_all_close:
     alias: "всё - закрыть: Мастер санузел"
@@ -390,10 +444,17 @@ script:
       - service: script.curtain_group_close
         data:
           target_covers:
-            - cover.master_sanuzel_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.master_sanuzel_shtora
             - cover.master_sanuzel_tiul
             - cover.master_sanuzel_zhaliuzi
-          protection_sensors: [null, null, null]
+          protection_sensors:
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- null
+            - null
+            - null
 
   # ============================================================================
   # СПАЛЬНЯ (защита только для балконных устройств)
@@ -724,12 +785,19 @@ script:
   gostinaya_curtain_cycle:
     alias: "штора - цикл: Гостиная"
     sequence:
-      - service: script.curtain_cycle_group
+      # важно!!!! - включить в защите - там тоже закоментировано
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers: [cover.gostinaia_shtora]
+      #     running_sensors: [binary_sensor.gostinaia_shtora_running]
+      #     last_direction_sensors: [sensor.gostinaia_shtora_last_direction]
+      #     protection_sensors: [binary_sensor.gostinaia_ventiliatsiia_otkryta]
+      - service: system_log.write
         data:
-          target_covers: [cover.gostinaia_shtora]
-          running_sensors: [binary_sensor.gostinaia_shtora_running]
-          last_direction_sensors: [sensor.gostinaia_shtora_last_direction]
-          protection_sensors: [binary_sensor.gostinaia_ventiliatsiia_otkryta]
+          message: "SKIP: gostinaya_curtain_cycle - мотор обесточен"
+          level: warning
+          logger: "mapping.gostinaya_curtain_cycle"
+
 
   gostinaya_tulle_cycle:
     alias: "тюль - цикл: Гостиная"
@@ -766,11 +834,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.gostinaia_shtora,
-                position: 100,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.gostinaia_shtora,
+            #    position: 100,
+            #    protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+            #  }
             - {
                 cover: cover.gostinaia_tiul,
                 position: 0,
@@ -798,11 +868,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.gostinaia_shtora,
-                position: 100,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.gostinaia_shtora,
+            #    position: 100,
+            #    protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+            #  }
             - {
                 cover: cover.gostinaia_tiul,
                 position: 0,
@@ -830,11 +902,13 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.gostinaia_shtora,
-                position: 100,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- {
+            #    cover: cover.gostinaia_shtora,
+            #    position: 100,
+            #    protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+            #  }
             - {
                 cover: cover.gostinaia_tiul,
                 position: 100,
@@ -862,19 +936,25 @@ script:
       - service: script.curtain_group_open_or_stop
         data:
           target_covers:
-            - cover.gostinaia_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.gostinaia_shtora
             - cover.gostinaia_tiul
             - cover.gostinaia_zhaliuzi_tsentr
             - cover.gostinaia_zhaliuzi_levo
             - cover.gostinaia_zhaliuzi_pravo
           running_sensors:
-            - binary_sensor.gostinaia_shtora_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.gostinaia_shtora_running
             - binary_sensor.gostinaia_tiul_running
             - binary_sensor.gostinaia_zhaliuzi_tsentr_running
             - binary_sensor.gostinaia_zhaliuzi_levo_running
             - binary_sensor.gostinaia_zhaliuzi_pravo_running
           protection_sensors:
-            - binary_sensor.gostinaia_ventiliatsiia_otkryta
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.gostinaia_ventiliatsiia_otkryta
             - binary_sensor.gostinaia_ventiliatsiia_otkryta
             - null
             - null
@@ -886,13 +966,17 @@ script:
       - service: script.curtain_group_close
         data:
           target_covers:
-            - cover.gostinaia_shtora
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.gostinaia_shtora
             - cover.gostinaia_tiul
             - cover.gostinaia_zhaliuzi_tsentr
             - cover.gostinaia_zhaliuzi_levo
             - cover.gostinaia_zhaliuzi_pravo
           protection_sensors:
-            - binary_sensor.gostinaia_ventiliatsiia_otkryta
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.gostinaia_ventiliatsiia_otkryta
             - binary_sensor.gostinaia_ventiliatsiia_otkryta
             - null
             - null
@@ -905,30 +989,44 @@ script:
   stolovaya_curtain_balcony_cycle:
     alias: "штора балкон - цикл: Столовая"
     sequence:
-      - service: script.curtain_cycle_group
+      # важно!!!! - включить в защите - там тоже закоментировано
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers: [cover.stolovaia_shtory_balkon]
+      #     running_sensors: [binary_sensor.stolovaia_shtory_balkon_running]
+      #     last_direction_sensors:
+      #       [sensor.stolovaia_shtory_balkon_last_direction]
+      #     protection_sensors: [binary_sensor.datchik_dveri_stolovaia_2_contact]
+      - service: system_log.write
         data:
-          target_covers: [cover.stolovaia_shtory_balkon]
-          running_sensors: [binary_sensor.stolovaia_shtory_balkon_running]
-          last_direction_sensors:
-            [sensor.stolovaia_shtory_balkon_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_stolovaia_2_contact]
-
-  stolovaya_curtain_corner_cycle:
-    alias: "штора угловая - цикл: Столовая"
-    sequence:
-      - service: script.curtain_cycle_group
-        data:
-          target_covers: [cover.stolovaia_shtora_uglovaia]
-          running_sensors: [binary_sensor.stolovaia_shtora_uglovaia_running]
-          last_direction_sensors:
-            [sensor.stolovaia_shtora_uglovaia_last_direction]
-          protection_sensors: [null]
+          message: "SKIP: stolovaya_curtain_balcony_cycle - мотор обесточен"
+          level: warning
+          logger: "mapping.stolovaya_curtain_balcony_cycle"
 
   stolovaya_curtain_all_cycle:
     alias: "все шторы - цикл: Столовая"
     sequence:
-      - service: script.stolovaya_curtain_balcony_cycle
-      - service: script.stolovaya_curtain_corner_cycle
+      # важно!!!! - включить в защите - там тоже закоментировано
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers:
+      #       - cover.stolovaia_shtora_uglovaia
+      #       - cover.stolovaia_shtory_balkon
+      #     running_sensors:
+      #       - binary_sensor.stolovaia_shtora_uglovaia_running
+      #       - binary_sensor.stolovaia_shtory_balkon_running
+      #     last_direction_sensors:
+      #       - sensor.stolovaia_shtora_uglovaia_last_direction
+      #       - sensor.stolovaia_shtory_balkon_last_direction
+      #     protection_sensors:
+      #       - null
+      #       - binary_sensor.datchik_dveri_stolovaia_2_contact
+      - service: system_log.write
+        data:
+          message: "SKIP: stolovaya_curtain_all_cycle - мотор обесточен"
+          level: warning
+          logger: "mapping.stolovaya_curtain_all_cycle"
+
 
   stolovaya_tulle_balcony_cycle:
     alias: "тюль балкон - цикл: Столовая"
@@ -940,22 +1038,23 @@ script:
           last_direction_sensors: [sensor.stolovaia_tiul_balkon_last_direction]
           protection_sensors: [binary_sensor.datchik_dveri_stolovaia_2_contact]
 
-  stolovaya_tulle_corner_cycle:
-    alias: "тюль угловая - цикл: Столовая"
-    sequence:
-      - service: script.curtain_cycle_group
-        data:
-          target_covers: [cover.stolovaia_tiul_uglovaia]
-          running_sensors: [binary_sensor.stolovaia_tiul_uglovaia_running]
-          last_direction_sensors:
-            [sensor.stolovaia_tiul_uglovaia_last_direction]
-          protection_sensors: [null]
-
   stolovaya_tulle_all_cycle:
     alias: "весь тюль - цикл: Столовая"
     sequence:
-      - service: script.stolovaya_tulle_balcony_cycle
-      - service: script.stolovaya_tulle_corner_cycle
+      - service: script.curtain_cycle_group
+        data:
+          target_covers:
+            - cover.stolovaia_tiul_balkon
+            - cover.stolovaia_tiul_uglovaia
+          running_sensors:
+            - binary_sensor.stolovaia_tiul_balkon_running
+            - binary_sensor.stolovaia_tiul_uglovaia_running
+          last_direction_sensors:
+            - sensor.stolovaia_tiul_balkon_last_direction
+            - sensor.stolovaia_tiul_uglovaia_last_direction
+          protection_sensors:
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
 
   stolovaya_blinds_balcony_cycle:
     alias: "жалюзи балкон - цикл: Столовая"
@@ -975,27 +1074,31 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
 
-  stolovaya_blinds_window_cycle:
-    alias: "жалюзи окно - цикл: Столовая"
+  stolovaya_blinds_all_cycle:
+    alias: "все жалюзи - цикл: Столовая"
     sequence:
       - service: script.curtain_cycle_group
         data:
           target_covers:
+            - cover.stolovaia_zhaliuzi_balkon_dver
+            - cover.stolovaia_zhaliuzi_balkon_bolshoi
             - cover.stolovaia_zhaliuzi_okno_levoe
             - cover.stolovaia_zhaliuzi_okno_pravoe
           running_sensors:
+            - binary_sensor.stolovaia_zhaliuzi_balkon_dver_running
+            - binary_sensor.stolovaia_zhaliuzi_balkon_bolshoi_running
             - binary_sensor.stolovaia_zhaliuzi_okno_levoe_running
             - binary_sensor.stolovaia_zhaliuzi_okno_pravoe_running
           last_direction_sensors:
+            - sensor.stolovaia_zhaliuzi_balkon_dver_last_direction
+            - sensor.stolovaia_zhaliuzi_balkon_bolshoi_last_direction
             - sensor.stolovaia_zhaliuzi_okno_levoe_last_direction
             - sensor.stolovaia_zhaliuzi_okno_pravoe_last_direction
-          protection_sensors: [null, null]
-
-  stolovaya_blinds_all_cycle:
-    alias: "все жалюзи - цикл: Столовая"
-    sequence:
-      - service: script.stolovaya_blinds_balcony_cycle
-      - service: script.stolovaya_blinds_window_cycle
+          protection_sensors:
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
+            - null      
 
   stolovaya_scene_1:
     alias: "сцена 1: Столовая"
@@ -1003,16 +1106,18 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.stolovaia_shtory_balkon,
-                position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
-              }
-            - {
-                cover: cover.stolovaia_shtora_uglovaia,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            # - {
+            #     cover: cover.stolovaia_shtory_balkon,
+            #     position: 100,
+            #     protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+            #   }
+            # - {
+            #     cover: cover.stolovaia_shtora_uglovaia,
+            #     position: 100,
+            #     protection: null,
+            #   }
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 0,
@@ -1050,16 +1155,18 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.stolovaia_shtory_balkon,
-                position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
-              }
-            - {
-                cover: cover.stolovaia_shtora_uglovaia,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            # - {
+            #     cover: cover.stolovaia_shtory_balkon,
+            #     position: 100,
+            #     protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+            #   }
+            # - {
+            #     cover: cover.stolovaia_shtora_uglovaia,
+            #     position: 100,
+            #     protection: null,
+            #   }
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 0,
@@ -1097,16 +1204,18 @@ script:
       - service: script.curtain_set_positions
         data:
           curtains:
-            - {
-                cover: cover.stolovaia_shtory_balkon,
-                position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
-              }
-            - {
-                cover: cover.stolovaia_shtora_uglovaia,
-                position: 100,
-                protection: null,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            # - {
+            #     cover: cover.stolovaia_shtory_balkon,
+            #     position: 100,
+            #     protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+            #   }
+            # - {
+            #     cover: cover.stolovaia_shtora_uglovaia,
+            #     position: 100,
+            #     protection: null,
+            #   }
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 100,
@@ -1144,17 +1253,23 @@ script:
       - service: script.curtain_group_open_or_stop
         data:
           target_covers:
-            - cover.stolovaia_shtory_balkon
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.stolovaia_shtory_balkon
             - cover.stolovaia_tiul_balkon
             - cover.stolovaia_zhaliuzi_balkon_dver
             - cover.stolovaia_zhaliuzi_balkon_bolshoi
           running_sensors:
-            - binary_sensor.stolovaia_shtory_balkon_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.stolovaia_shtory_balkon_running
             - binary_sensor.stolovaia_tiul_balkon_running
             - binary_sensor.stolovaia_zhaliuzi_balkon_dver_running
             - binary_sensor.stolovaia_zhaliuzi_balkon_bolshoi_running
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
@@ -1165,12 +1280,16 @@ script:
       - service: script.curtain_group_close
         data:
           target_covers:
-            - cover.stolovaia_shtory_balkon
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.stolovaia_shtory_balkon
             - cover.stolovaia_tiul_balkon
             - cover.stolovaia_zhaliuzi_balkon_dver
             - cover.stolovaia_zhaliuzi_balkon_bolshoi
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
@@ -1181,8 +1300,10 @@ script:
       - service: script.curtain_group_open_or_stop
         data:
           target_covers:
-            - cover.stolovaia_shtory_balkon
-            - cover.stolovaia_shtora_uglovaia
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.stolovaia_shtory_balkon
+            #- cover.stolovaia_shtora_uglovaia
             - cover.stolovaia_tiul_balkon
             - cover.stolovaia_tiul_uglovaia
             - cover.stolovaia_zhaliuzi_balkon_dver
@@ -1190,8 +1311,10 @@ script:
             - cover.stolovaia_zhaliuzi_okno_levoe
             - cover.stolovaia_zhaliuzi_okno_pravoe
           running_sensors:
-            - binary_sensor.stolovaia_shtory_balkon_running
-            - binary_sensor.stolovaia_shtora_uglovaia_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.stolovaia_shtory_balkon_running
+            #- binary_sensor.stolovaia_shtora_uglovaia_running
             - binary_sensor.stolovaia_tiul_balkon_running
             - binary_sensor.stolovaia_tiul_uglovaia_running
             - binary_sensor.stolovaia_zhaliuzi_balkon_dver_running
@@ -1199,8 +1322,10 @@ script:
             - binary_sensor.stolovaia_zhaliuzi_okno_levoe_running
             - binary_sensor.stolovaia_zhaliuzi_okno_pravoe_running
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.datchik_dveri_stolovaia_2_contact
+            #- null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
@@ -1214,8 +1339,10 @@ script:
       - service: script.curtain_group_close
         data:
           target_covers:
-            - cover.stolovaia_shtory_balkon
-            - cover.stolovaia_shtora_uglovaia
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.stolovaia_shtory_balkon
+            #- cover.stolovaia_shtora_uglovaia
             - cover.stolovaia_tiul_balkon
             - cover.stolovaia_tiul_uglovaia
             - cover.stolovaia_zhaliuzi_balkon_dver
@@ -1223,8 +1350,10 @@ script:
             - cover.stolovaia_zhaliuzi_okno_levoe
             - cover.stolovaia_zhaliuzi_okno_pravoe
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - null
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- binary_sensor.datchik_dveri_stolovaia_2_contact
+            #- null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
@@ -1249,12 +1378,19 @@ script:
   kabinet_tulle_cycle:
     alias: "тюль - цикл: Кабинет"
     sequence:
-      - service: script.curtain_cycle_group
+      # важно!!!! - включить в защите - там тоже закоментировано
+      # Отключено по запросу заказчика (текстиль не установлен)
+      # - service: script.curtain_cycle_group
+      #   data:
+      #     target_covers: [cover.kabinet_tiul]
+      #     running_sensors: [binary_sensor.kabinet_tiul_running]
+      #     last_direction_sensors: [sensor.kabinet_tiul_last_direction]
+      #     protection_sensors: [binary_sensor.datchik_dveri_kabinet_3_contact]
+      - service: system_log.write
         data:
-          target_covers: [cover.kabinet_tiul]
-          running_sensors: [binary_sensor.kabinet_tiul_running]
-          last_direction_sensors: [sensor.kabinet_tiul_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_kabinet_3_contact]
+          message: "SKIP: kabinet_tulle_cycle - устройство отключено по запросу заказчика (текстиль не установлен)"
+          level: warning
+          logger: "mapping.kabinet_tulle_cycle"
 
   kabinet_blinds_all_cycle:
     alias: "жалюзи 1+2 - цикл: Кабинет"
@@ -1285,11 +1421,13 @@ script:
                 position: 100,
                 protection: binary_sensor.datchik_dveri_kabinet_3_contact,
               }
-            - {
-                cover: cover.kabinet_tiul,
-                position: 0,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            # - {
+            #     cover: cover.kabinet_tiul,
+            #     position: 0,
+            #     protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+            #   }
             - {
                 cover: cover.kabinet_zhaliuzi_okno,
                 position: 0,
@@ -1312,11 +1450,13 @@ script:
                 position: 100,
                 protection: binary_sensor.datchik_dveri_kabinet_3_contact,
               }
-            - {
-                cover: cover.kabinet_tiul,
-                position: 0,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- {
+            #    cover: cover.kabinet_tiul,
+            #    position: 0,
+            #    protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+            #  }
             - {
                 cover: cover.kabinet_zhaliuzi_okno,
                 position: 100,
@@ -1339,11 +1479,13 @@ script:
                 position: 100,
                 protection: binary_sensor.datchik_dveri_kabinet_3_contact,
               }
-            - {
-                cover: cover.kabinet_tiul,
-                position: 100,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
-              }
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен  
+            #- {
+            #    cover: cover.kabinet_tiul,
+            #    position: 100,
+            #    protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+            #  }
             - {
                 cover: cover.kabinet_zhaliuzi_okno,
                 position: 0,
@@ -1362,17 +1504,23 @@ script:
         data:
           target_covers:
             - cover.kabinet_shtora
-            - cover.kabinet_tiul
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- cover.kabinet_tiul
             - cover.kabinet_zhaliuzi_okno
             - cover.kabinet_sontse_dver
           running_sensors:
             - binary_sensor.kabinet_shtora_running
-            - binary_sensor.kabinet_tiul_running
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- binary_sensor.kabinet_tiul_running
             - binary_sensor.kabinet_zhaliuzi_okno_running
             - binary_sensor.kabinet_sontse_dver_running
           protection_sensors:
             - binary_sensor.datchik_dveri_kabinet_3_contact
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- binary_sensor.datchik_dveri_kabinet_3_contact
             - null
             - binary_sensor.datchik_dveri_kabinet_3_contact
 
@@ -1383,11 +1531,15 @@ script:
         data:
           target_covers:
             - cover.kabinet_shtora
-            - cover.kabinet_tiul
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- cover.kabinet_tiul
             - cover.kabinet_zhaliuzi_okno
             - cover.kabinet_sontse_dver
           protection_sensors:
             - binary_sensor.datchik_dveri_kabinet_3_contact
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            # важно!!!! - включить в защите - там тоже закоментировано
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- binary_sensor.datchik_dveri_kabinet_3_contact
             - null
             - binary_sensor.datchik_dveri_kabinet_3_contact

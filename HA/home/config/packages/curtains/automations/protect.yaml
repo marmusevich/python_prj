@@ -19,7 +19,8 @@ automation:
         target:
           entity_id:
             - cover.kabinet_shtora
-            - cover.kabinet_tiul
+            # ОТКЛЮЧЕНО: текстиль не установлен
+            #- cover.kabinet_tiul
             - cover.kabinet_sontse_dver
       # Логирование в системный журнал HA
       - action: system_log.write
@@ -27,7 +28,7 @@ automation:
           message: "Защита сработала: дверь Кабинета открыта, шторы остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_cabinet_when_door_open"
-      # Уведомление в UI (persistent notification) - отключено
+      # Уведомление в UI (persistent notification)
       - action: persistent_notification.create
         data:
           title: "Защита штор"
@@ -60,7 +61,7 @@ automation:
           message: "Защита сработала: дверь Спальни открыта, шторы остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_spalnya_when_door_open"
-      # Уведомление в UI (persistent notification) - отключено
+      # Уведомление в UI (persistent notification)
       - action: persistent_notification.create
         data:
           title: "Защита штор"
@@ -83,7 +84,8 @@ automation:
       - action: cover.stop_cover
         target:
           entity_id:
-            - cover.stolovaia_shtory_balkon
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.stolovaia_shtory_balkon
             - cover.stolovaia_tiul_balkon
             - cover.stolovaia_zhaliuzi_balkon_dver
             - cover.stolovaia_zhaliuzi_balkon_bolshoi
@@ -93,7 +95,7 @@ automation:
           message: "Защита сработала: дверь Столовой открыта, шторы остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_stolovaya_when_door_open"
-      # Уведомление в UI (persistent notification) - отключено
+      # Уведомление в UI (persistent notification)
       - action: persistent_notification.create
         data:
           title: "Защита штор"
@@ -116,7 +118,8 @@ automation:
       - action: cover.stop_cover
         target:
           entity_id:
-            - cover.gostinaia_shtora
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.gostinaia_shtora
             - cover.gostinaia_tiul
       # Логирование в системный журнал HA
       - action: system_log.write
@@ -124,7 +127,7 @@ automation:
           message: "Защита сработала: Вентиляция в гостиной открыта (1), шторы остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_gostinnaya_when_vent_1_open"
-      # Уведомление в UI (persistent notification) - отключено
+      # Уведомление в UI (persistent notification)
       - action: persistent_notification.create
         data:
           title: "Защита штор"
@@ -147,7 +150,8 @@ automation:
       - action: cover.stop_cover
         target:
           entity_id:
-            - cover.gostinaia_shtora
+            # ОТКЛЮЧЕНО: мотор обесточен
+            #- cover.gostinaia_shtora
             - cover.gostinaia_tiul
       # Логирование в системный журнал HA
       - action: system_log.write
@@ -155,7 +159,7 @@ automation:
           message: "Защита сработала: Вентиляция в гостиной открыта (2), шторы остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_gostinnaya_when_vent_2_open"
-      # Уведомление в UI (persistent notification) - отключено
+      # Уведомление в UI (persistent notification)
       - action: persistent_notification.create
         data:
           title: "Защита штор"
@@ -178,22 +182,22 @@ automation:
         entity_id: binary_sensor.gostinaia_ventiliatsiia_otkryta
         state: "on"
     actions:
-      - service: cover.stop_cover
-        target:
-          entity_id: cover.gostinaia_shtora
-      # Удалено: input_boolean.turn_off (больше не используется)
+      # ОТКЛЮЧЕНО: мотор обесточен
+      #- service: cover.stop_cover
+      #  target:
+      #    entity_id: cover.gostinaia_shtora
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: вентиляция в гостиной открыта, штора остановлена"
           level: warning
           logger: "automation.curtain_protection.2000-cover_gostinaya_curtain_when_vent_open"
-      # Уведомление в UI (для тестирования)
-      - service: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Гостиная: вентиляция открыта - штора остановлена"
-          notification_id: "curtain_protection_gostinaya_curtain"
+      # Уведомление в UI
+      # - service: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Гостиная: вентиляция открыта - штора остановлена"
+      #     notification_id: "curtain_protection_gostinaya_curtain"
     mode: single
 
   # ==========================================================================
@@ -213,14 +217,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.gostinaia_tiul
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: вентиляция в гостиной открыта, тюль остановлен"
           level: warning
           logger: "automation.curtain_protection.2000-cover_gostinaya_tulle_when_vent_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -242,22 +245,22 @@ automation:
         entity_id: binary_sensor.datchik_dveri_stolovaia_2_contact
         state: "on"
     actions:
-      - service: cover.stop_cover
-        target:
-          entity_id: cover.stolovaia_shtory_balkon
-      # Удалено: input_boolean.turn_off (больше не используется)
+      # ОТКЛЮЧЕНО: мотор обесточен
+      #- service: cover.stop_cover
+      #  target:
+      #    entity_id: cover.stolovaia_shtory_balkon
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Столовой открыта, штора балкон остановлена"
           level: warning
           logger: "automation.curtain_protection.2000-cover_stolovaya_shtory_balkon_when_door_open"
-      # Уведомление в UI (для тестирования)
-      - service: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Столовая: дверь открыта - штора балкон остановлена"
-          notification_id: "curtain_protection_stolovaya_shtory_balkon"
+      # Уведомление в UI
+      # - service: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Столовая: дверь открыта - штора балкон остановлена"
+      #     notification_id: "curtain_protection_stolovaya_shtory_balkon"
     mode: single
 
   # ==========================================================================
@@ -277,14 +280,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.stolovaia_tiul_balkon
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Столовой открыта, тюль балкон остановлен"
           level: warning
           logger: "automation.curtain_protection.2000-cover_stolovaya_tiul_balkon_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -309,14 +311,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.stolovaia_zhaliuzi_balkon_dver
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Столовой открыта, жалюзи балкон дверь остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_stolovaya_zhaliuzi_balkon_dver_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -341,14 +342,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.kabinet_shtora
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Кабинета открыта, штора остановлена"
           level: warning
           logger: "automation.curtain_protection.2000-cover_kabinet_shtora_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -370,22 +370,21 @@ automation:
         entity_id: binary_sensor.datchik_dveri_kabinet_3_contact
         state: "on"
     actions:
-      - service: cover.stop_cover
-        target:
-          entity_id: cover.kabinet_tiul
-      # Удалено: input_boolean.turn_off (больше не используется)
-      # Логирование в системный журнал HA
+      # ОТКЛЮЧЕНО: текстиль не установлен
+      #- service: cover.stop_cover
+      #  target:
+      #    entity_id: cover.kabinet_tiul
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Кабинета открыта, тюль остановлен"
           level: warning
           logger: "automation.curtain_protection.2000-cover_kabinet_tiul_when_door_open"
-      # Уведомление в UI (для тестирования)
-      - service: persistent_notification.create
-        data:
-          title: "Защита штор"
-          message: "Кабинет: дверь открыта - тюль остановлен"
-          notification_id: "curtain_protection_kabinet_tiul"
+      # Уведомление в UI
+      # - service: persistent_notification.create
+      #   data:
+      #     title: "Защита штор"
+      #     message: "Кабинет: дверь открыта - тюль остановлен"
+      #     notification_id: "curtain_protection_kabinet_tiul"
     mode: single
 
   # ==========================================================================
@@ -405,14 +404,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.kabinet_sontse_dver
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Кабинета открыта, солнце дверь остановлено"
           level: warning
           logger: "automation.curtain_protection.2000-cover_kabinet_sontse_dver_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -437,14 +435,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.spalnia_balkon_shtora
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Спальни открыта, балкон штора остановлена"
           level: warning
           logger: "automation.curtain_protection.2000-cover_spalnya_balkon_shtora_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -469,14 +466,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.spalnia_balkon_tiul
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Спальни открыта, балкон тюль остановлен"
           level: warning
           logger: "automation.curtain_protection.2000-cover_spalnya_balkon_tiul_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -501,14 +497,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.spalnia_balkon_okno
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Спальни открыта, балкон окно остановлено"
           level: warning
           logger: "automation.curtain_protection.2000-cover_spalnya_balkon_okno_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -533,14 +528,13 @@ automation:
       - service: cover.stop_cover
         target:
           entity_id: cover.spalnia_zhaliuzi_balkon_dver
-      # Удалено: input_boolean.turn_off (больше не используется)
       # Логирование в системный журнал HA
       - service: system_log.write
         data:
           message: "Защита сработала: дверь Спальни открыта, жалюзи балкон дверь остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_spalnya_zhaliuzi_balkon_dver_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
@@ -571,7 +565,7 @@ automation:
           message: "Защита сработала: дверь Столовой открыта, жалюзи балкон большой остановлены"
           level: warning
           logger: "automation.curtain_protection.2000-cover_stolovaya_zhaliuzi_balkon_bolshoi_when_door_open"
-      # Уведомление в UI (для тестирования)
+      # Уведомление в UI
       - service: persistent_notification.create
         data:
           title: "Защита штор"
