@@ -13,7 +13,7 @@ logger:
   default: info
   logs:
     # Термостаты - debug на период настройки
-    homeassistant.components.generic_thermostat: debug  
+    homeassistant.components.generic_thermostat: debug
     #
     curtain_cycle: info
     curtain_cycle_protected: info
@@ -384,6 +384,14 @@ modbus:
         verify:
           input_type: coil
 
+      - name: "rele_15_3"
+        slave: 15
+        address: 2
+        unique_id: "_cs8_15_2"
+        write_type: coil
+        verify:
+          input_type: coil
+
       - name: "rele_15_4"
         slave: 15
         address: 3
@@ -508,13 +516,8 @@ modbus:
         verify:
           input_type: coil
 
-      - name: "rele_17_3"
-        slave: 17
-        address: 2
-        unique_id: "_cs8_17_2"
-        write_type: coil
-        verify:
-          input_type: coil
+      # сгорел порт теперь будет на 15_3
+      #- name: "rele_17_3"
 
       - name: "rele_17_4"
         slave: 17
@@ -716,32 +719,6 @@ modbus:
         verify:
           input_type: coil
 
-      ####################################################################################################################################
-      # уточнить используется ли ?
-      # - name: "rele_17_1"
-      #   slave: 17
-      #   address: 0
-      #   unique_id: "_cs8_17_0"
-      #   write_type: coil
-      #   verify:
-      #     input_type: coil
-
-      # - name: "rele_15_3"
-      #   slave: 15
-      #   address: 2
-      #   unique_id: "_cs8_15_2"
-      #   write_type: coil
-      #   verify:
-      #     input_type: coil
-
-      # - name: "rele_14_2"
-      #   slave: 14
-      #   address: 1
-      #   unique_id: "_cs8_14_1"
-      #   write_type: coil
-      #   verify:
-      #     input_type: coil
-
     ####################################################################################################################################
     # === Датчики температуры NT18B07 (7 каналов) ===
     # Регистры 0x0000–0x0006 → адреса 0–6, значение ×10 → делим на 10 (scale: 0.1)
@@ -835,7 +812,7 @@ modbus:
 ####################################################################################################################################
 homeassistant:
   packages: !include_dir_named packages
-  
+
   customize:
     fan.rele_17_5:
       #friendly_name: "Вентилятор" #Гостевой санузел
@@ -851,11 +828,11 @@ homeassistant:
 
     ####################################################################################################################
     light.rele_11_1:
-      #friendly_name: "Люстра" #Холл
+      #friendly_name: "Подвесы" #Холл
       icon: mdi:chandelier
 
     light.rele_11_2:
-      #friendly_name: "Подвесы" #Холл
+      #friendly_name: "Люстра" #Холл
       icon: mdi:ceiling-light-multiple
 
     light.rele_11_3:
@@ -904,7 +881,7 @@ homeassistant:
       icon: mdi:chandelier
 
     light.rele_12_6:
-      #friendly_name: "LED-лента - Подсветка мебели сталовой" #Столовая
+      #friendly_name: "LED-лента - Подсветка мебели столовой" #Столовая
       icon: mdi:led-strip-variant
 
     light.rele_12_7:
@@ -986,6 +963,10 @@ homeassistant:
       #friendly_name: "Подвесы" #Гостевой санузел
       icon: mdi:ceiling-light-multiple
 
+    light.rele_15_3:
+      friendly_name: "LED-лента - подсветка" #Мастер гардероб
+      icon: mdi:led-strip-variant
+
     light.rele_15_4:
       #friendly_name: "Зеркало" #Спальня
       icon: mdi:mirror
@@ -1048,9 +1029,8 @@ homeassistant:
       #friendly_name: "Трэк" #Мастер гардероб
       icon: mdi:track-light
 
-    light.rele_17_3:
-      #friendly_name: "LED-лента" #Мастер гардероб
-      icon: mdi:led-strip-variant
+    # сгорел порт - будет на 15_3
+    #light.rele_17_3:
 
     light.rele_17_4:
       #friendly_name: "Трэк" #Мастер гардероб
@@ -1178,15 +1158,6 @@ homeassistant:
       #friendly_name: "Температура айти щита"
       icon: mdi:alpha-t-box
 
-    # уточнить используется ли ?
-    # switch.rele_15_3:
-    #   friendly_name: "rele_15_3 - не используется ?"
-    #   icon: mdi:progress-question
-
-    # switch.rele_14_2:
-    #   friendly_name: "rele_14_2 - не используется ?"
-    #   icon: mdi:progress-question
-
 ####################################################################################################################################
 # вспомогательные объекты
 ####################################################################################################################################
@@ -1200,4 +1171,3 @@ template:
           - service: script.vykliuchit_ves_svet
         turn_on:
           - service: script.vykliuchit_ves_svet
-

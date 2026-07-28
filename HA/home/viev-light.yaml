@@ -4,321 +4,791 @@ views:
     title: План
     cards:
       - type: picture-elements
-        image: /local/plan/plan_.svg
+        image: /local/plan/colour_2026-06-20.svg
         elements:
           - type: state-icon
             style:
               left: 48%
               top: 25%
-            entity: switch.gostinaia_liustra_1
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_7
             tap_action:
               action: toggle
+            title: гостинная люстра 1
           - type: state-icon
             style:
               left: 48%
-              top: 50%
-            entity: switch.gostinaia_liustra_2
+              top: 34%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_8
             tap_action:
               action: toggle
+            title: гостинная люстра 2
           - type: state-icon
             style:
-              left: 41%
-              top: 50%
-            entity: switch.gostinaia_bra
+              left: 54%
+              top: 52%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_2
             tap_action:
               action: toggle
+            title: гостинная бра
           - type: state-icon
             style:
-              left: 41%
+              left: 81%
+              top: 46%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_1
+            tap_action:
+              action: toggle
+            title: кухня - люстра
+          - type: state-icon
+            style:
+              left: 75%
+              top: 58%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_17_7
+            tap_action:
+              action: toggle
+            title: Кухня - Бра - вход
+          - type: state-icon
+            style:
+              left: 86%
+              top: 40%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_3
+            tap_action:
+              action: toggle
+            title: Кухня - Подвесы - окно
+          - type: state-icon
+            style:
+              left: 87%
+              top: 48%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_4
+            tap_action:
+              action: toggle
+            title: Кухня LED-лента - потолок
+          - type: state-icon
+            style:
+              left: 81%
+              top: 39%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_5
+            tap_action:
+              action: toggle
+            title: Кухня LED-лента - полки
+          - type: state-icon
+            style:
+              left: 79%
+              top: 55%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_6
+            tap_action:
+              action: toggle
+            title: Кухня LED-лента - столешница
+          - type: state-icon
+            style:
+              left: 25%
+              top: 26%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_5
+            tap_action:
+              action: toggle
+            title: Спальня Люстра
+          - type: state-icon
+            style:
+              left: 37%
+              top: 48%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_6
+            tap_action:
+              action: toggle
+            title: Спальня Бра - вход
+          - type: state-icon
+            style:
+              left: 30%
+              top: 44%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_7
+            tap_action:
+              action: toggle
+            title: Спальня Бра кровать 1
+          - type: state-icon
+            style:
+              left: 20%
+              top: 36%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_8
+            tap_action:
+              action: toggle
+            title: Спальня Бра кровать 2
+          - type: state-icon
+            style:
+              left: 22%
+              top: 13%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_2
+            tap_action:
+              action: toggle
+            title: Спальня LED-лента - полки
+          - type: state-icon
+            style:
+              left: 21%
+              top: 27%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_8
+            tap_action:
+              action: toggle
+            title: Спальня Трэк
+          - type: state-icon
+            style:
+              left: 36%
+              top: 28%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_4
+            tap_action:
+              action: toggle
+            title: Спальня Зеркало
+          - type: state-icon
+            style:
+              left: 69%
+              top: 86%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_7
+            tap_action:
+              action: toggle
+            title: Гостевой гардероб LED-лента
+          - type: state-icon
+            style:
+              left: 63%
+              top: 76%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_6
+            tap_action:
+              action: toggle
+            title: Гостевой гардероб Трэк
+          - type: state-icon
+            style:
+              left: 30%
+              top: 60%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_3
+            tap_action:
+              action: toggle
+            title: Мастер гардероб LED-лента - подсветка
+          - type: state-icon
+            style:
+              left: 30%
+              top: 52%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_17_2
+            tap_action:
+              action: toggle
+            title: Мастер гардероб Трэк
+          - type: state-icon
+            style:
+              left: 14%
+              top: 43%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_3
+            tap_action:
+              action: toggle
+            title: Мастер санузел Люстра
+          - type: state-icon
+            style:
+              left: 18%
+              top: 51%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_5
+            tap_action:
+              action: toggle
+            title: Мастер санузел Точки
+          - type: state-icon
+            style:
+              left: 13%
+              top: 50%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_7
+            tap_action:
+              action: toggle
+            title: Мастер санузел Зеркало
+          - type: state-icon
+            style:
+              left: 22%
+              top: 45%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_6
+            tap_action:
+              action: toggle
+            title: Мастер санузел LED-лента - подсветка душа и туалета
+          - type: state-icon
+            style:
+              left: 10%
+              top: 48%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_4
+            tap_action:
+              action: toggle
+            title: Мастер санузел LED-лента - полки
+          - type: state-icon
+            style:
+              left: 47%
+              top: 84%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_6
+            title: Холл и коридор Зеркало
+          - type: state-icon
+            style:
+              left: 47%
+              top: 80%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_2
+            tap_action:
+              action: toggle
+            title: Холл и коридор Люстра
+          - type: state-icon
+            style:
+              left: 59%
+              top: 80%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_1
+            tap_action:
+              action: toggle
+            title: Холл и коридор Подвесы
+          - type: state-icon
+            style:
+              left: 67%
+              top: 56%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_8
+            tap_action:
+              action: toggle
+            title: Постирочная LED-лента
+          - type: state-icon
+            style:
+              left: 66%
+              top: 53%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_7
+            tap_action:
+              action: toggle
+            title: Постирочная Трэк
+          - type: state-icon
+            style:
+              left: 58%
+              top: 57%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_1
+            tap_action:
+              action: toggle
+            title: Гостевой санузел Точки
+          - type: state-icon
+            style:
+              left: 57%
+              top: 66%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_15_2
+            tap_action:
+              action: toggle
+            title: Гостевой санузел Подвесы
+          - type: state-icon
+            style:
+              left: 70%
               top: 30%
-            entity: switch.gostinaia_led_lenta
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_5
+            tap_action:
+              action: toggle
+            title: Столовая Люстра
+          - type: state-icon
+            style:
+              left: 77%
+              top: 28%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_4
+            tap_action:
+              action: toggle
+            title: Столовая Трэк
+          - type: state-icon
+            style:
+              left: 75%
+              top: 19%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_6
+            tap_action:
+              action: toggle
+            title: Столовая LED-лента - мебель
+          - type: state-icon
+            style:
+              left: 61%
+              top: 32%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_3
+            tap_action:
+              action: toggle
+            title: Столовая LED-лента - потолок
+          - type: state-icon
+            style:
+              left: 78%
+              top: 70%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_1
+            tap_action:
+              action: toggle
+            title: кабинет люстра
+          - type: state-icon
+            style:
+              left: 89%
+              top: 64%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_3
+            tap_action:
+              action: toggle
+            title: кабинет - трэк
+          - type: state-icon
+            style:
+              left: 76%
+              top: 82%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_5
+            tap_action:
+              action: toggle
+            title: кабинет лед-лента полки
+          - type: state-icon
+            style:
+              left: 87%
+              top: 58%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_4
+            tap_action:
+              action: toggle
+            title: Кабинет LED-лента - потолок
+          - type: state-icon
+            style:
+              left: 65%
+              top: 10%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_8
+            title: Балкон - Столовая
+          - type: state-icon
+            style:
+              left: 45%
+              top: 14%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_1
+            title: Гостиная LED-лента - мебель
             tap_action:
               action: toggle
           - type: state-icon
             style:
               left: 47%
-              top: 73%
-            entity: switch.gostinaia_trek
+              top: 47%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_12_7
+            title: Гостиная Трэк
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 77%
-              top: 50%
-            entity: switch.kukhnia_liustra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 73%
-              top: 59%
-            entity: switch.kukhnia_vkhod_podvesy
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 86%
-              top: 40%
-            entity: switch.kukhnia_okno_podvesy
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 83%
-              top: 50%
-            entity: switch.kukhnia_potolok_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 81%
-              top: 39%
-            entity: switch.kukhnia_polki_led_lenta_1
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 75%
-              top: 45%
-            entity: switch.kukhnia_polki_led_lenta_2
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 25%
-              top: 26%
-            entity: switch.spalnia_liustra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 37%
-              top: 44%
-            entity: switch.spalnia_vkhod_bra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 20%
-              top: 30%
-            entity: switch.spalnia_krovat_bra_1
+              left: 72%
+              top: 61%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_13_2
+            title: Кухня Точки - вход
             tap_action:
               action: toggle
           - type: state-icon
             style:
               left: 30%
-              top: 40%
-            entity: switch.spalnia_krovat_bra_2
+              top: 10%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_17_4
+            title: Спальня Балкон
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 30%
-              top: 28%
-            entity: switch.spalnia_polki_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 30%
-              top: 18%
-            entity: switch.spalnia_trek
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 20%
+              left: 18%
               top: 20%
-            entity: switch.spalnia_zerkalo
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_16_1
+            title: Спальня LED-лента - потолок
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 67%
-              top: 80%
-            entity: switch.master_garderob_liustra
+              left: 64%
+              top: 67%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_5
+            title: Холл и коридор Трэк (Коридор)
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 63%
-              top: 76%
-            entity: switch.garderob_gostevoi_trek
+              left: 47%
+              top: 64%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_4
+            title: Холл и коридор Трэк (Холл)
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 30%
+              left: 93%
               top: 60%
-            entity: switch.master_garderob_liustra
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_14_8
+            title: Кабинет Балкон
             tap_action:
               action: toggle
           - type: state-icon
             style:
-              left: 30%
-              top: 52%
-            entity: switch.master_garderob_led_lenta_1
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 35%
-              top: 60%
-            entity: switch.master_garderob_trek_2
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 25%
-              top: 60%
-            entity: switch.master_garderob_led_lenta_2
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 17%
-              top: 45%
-            entity: switch.master_sanuzel_liustra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 10%
-              top: 40%
-            entity: switch.master_sanuzel_tochki
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 13%
-              top: 49%
-            entity: switch.master_sanuzel_zerkalo
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 10%
-              top: 34%
-            entity: switch.master_sanuzel_polki_led_lenta_2
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 20%
-              top: 43%
-            entity: switch.master_sanuzel_polki_led_lenta
+              left: 55%
+              top: 85%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_11_3
+            title: Холл и коридор LED-лента
             tap_action:
               action: toggle
           - type: state-icon
             style:
               left: 50%
-              top: 84%
-            entity: switch.kholl_zerkalo
+              top: 5%
+            entity: light.vykliuchit_ves_svet
+            tap_action:
+              action: perform-action
+              perform_action: script.vykliuchit_ves_svet
+              target: {}
+            hold_action:
+              action: perform-action
+              perform_action: script.vykliuchit_ves_svet
+              target: {}
+            title: ВЫключить весь свет
+          - type: action-button
+            style:
+              left: 50%
+              top: 8%
+            action: script.vykliuchit_ves_svet
+            title: Выключить все
           - type: state-icon
             style:
-              left: 47%
-              top: 80%
-            entity: switch.kholl_liustra
+              left: 34%
+              top: 79%
+              ransform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              "--mdc-icon-size": 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: light.rele_17_1
             tap_action:
               action: toggle
-          - type: state-icon
-            style:
-              left: 43%
-              top: 80%
-            entity: switch.kholl_podves
-            tap_action:
+            hold_action:
               action: toggle
-          - type: state-icon
-            style:
-              left: 67%
-              top: 56%
-            entity: switch.postirochnaia_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 66%
-              top: 53%
-            entity: switch.postirochnaia_trek
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 60%
-              top: 63%
-            entity: switch.sanuzel_gostevoi
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 60%
-              top: 58%
-            entity: switch.master_sanuzel_tochki
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 70%
-              top: 30%
-            entity: switch.stolovaia_liustra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 77%
-              top: 30%
-            entity: switch.stolovaia_trek
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 60%
-              top: 30%
-            entity: switch.stolovaia_polki_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 70%
-              top: 38%
-            entity: switch.stolovaia_potolok_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 78%
-              top: 70%
-            entity: switch.kabinet_liustra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 80%
-              top: 78%
-            entity: switch.kabinet_bra
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 89%
-              top: 70%
-            entity: switch.kabinet_trek
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 84%
-              top: 70%
-            entity: switch.kabinet_polki_led_lenta
-            tap_action:
-              action: toggle
-          - type: state-icon
-            style:
-              left: 78%
-              top: 65%
-            entity: switch.kabinet_potolok_led_lenta
-            tap_action:
-              action: toggle
+            title: Электорщитовая - свет
   - type: sections
     sections:
       - type: grid
