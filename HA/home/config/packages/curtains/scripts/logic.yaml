@@ -1,6 +1,6 @@
 # /config/packages/curtains/scripts/logic.yaml
 # Универсальные скрипты управления шторами, жалюзи и тюлем
-# 
+#
 # Архитектура:
 # - curtain_cycle_group: универсальный скрипт цикла для групп устройств (открыть/стоп/закрыть)
 # - curtain_set_positions: скрипт для установки конкретных позиций (сцены)
@@ -22,7 +22,7 @@ script:
   # ============================================================================
   # УНИВЕРСАЛЬНЫЙ СКРИПТ ЦИКЛА ДЛЯ ГРУПП УСТРОЙСТВ
   # ============================================================================
-  
+
   curtain_cycle_group:
     alias: "(не вызывать) Универсальный скрипт цикла для ГРУППЫ устройств"
     fields:
@@ -66,7 +66,6 @@ script:
             {% endfor %}
             {{ ns.list | tojson }}
           devices: "{{ devices_json | trim | from_json }}"
-          
           # Нормализуем список защит (JSON → list)
           protections_json: >
             {% if protection_sensors is defined and protection_sensors is not none %}
@@ -79,7 +78,6 @@ script:
               {{ ns.items | tojson }}
             {% endif %}
           protections: "{{ protections_json | trim | from_json }}"
-          
           # Пороги из input_number
           closed_threshold: "{{ states('input_number.curtain_closed_threshold') | int(5) }}"
           open_threshold: "{{ states('input_number.curtain_open_threshold') | int(95) }}"
@@ -126,7 +124,7 @@ script:
                         message: "STOP: {{ repeat.item.cover }} (групповая остановка)"
                         level: info
                         logger: "curtain_cycle_group"
-              
+
               - service: system_log.write
                 data:
                   message: "END: STOP всем (обнаружено движение)"
@@ -150,7 +148,6 @@ script:
             {% endfor %}
             {{ ns.active | tojson }}
           active_devices: "{{ active_devices_json | trim | from_json }}"
-          
           # Создаём список заблокированных устройств (JSON → list)
           blocked_devices_json: >
             {% set ns = namespace(blocked=[]) %}
@@ -196,7 +193,7 @@ script:
               closing_votes=0,
               opening_votes=0
             ) %}
-            
+
             {# Проверяем все устройства (включая заблокированные) #}
             {% for device in devices %}
               {% if device.position > closed_threshold %}
@@ -218,7 +215,7 @@ script:
                 {% set ns.opening_votes = ns.opening_votes + 1 %}
               {% endif %}
             {% endfor %}
-            
+
             {# Определяем направление #}
             {% if ns.all_closed %}
               opening
@@ -295,7 +292,7 @@ script:
                     - condition: template
                       value_template: >-
                         {{ (group_direction == 'opening' and repeat.item.position >= 100)
-                           or (group_direction == 'closing' and repeat.item.position <= 0) }}
+                          or (group_direction == 'closing' and repeat.item.position <= 0) }}
                   sequence:
                     - service: system_log.write
                       data:
@@ -312,7 +309,7 @@ script:
   # ============================================================================
   # СКРИПТ ДЛЯ УСТАНОВКИ ПОЗИЦИЙ (СЦЕНЫ)
   # ============================================================================
-  
+
   curtain_set_positions:
     alias: "(не вызывать) Универсальный скрипт установки позиций с защитой"
     fields:
@@ -335,10 +332,10 @@ script:
             - variables:
                 is_protected: >-
                   {{ repeat.item.protection is defined 
-                     and repeat.item.protection is not none 
-                     and repeat.item.protection != '' 
-                     and repeat.item.protection != 'none'
-                     and is_state(repeat.item.protection, 'on') }}
+                    and repeat.item.protection is not none 
+                    and repeat.item.protection != '' 
+                    and repeat.item.protection != 'none'
+                    and is_state(repeat.item.protection, 'on') }}
 
             - choose:
                 - conditions:
@@ -379,7 +376,7 @@ script:
   # - Иначе → OPEN всем (position=100)
   # - Защита проверяется для каждого устройства отдельно
   # ============================================================================
-  
+
   curtain_group_open_or_stop:
     alias: "(не вызывать) Группа: открыть всё или стоп (с защитой)"
     fields:
@@ -411,7 +408,6 @@ script:
             {% endfor %}
             {{ ns.list | tojson }}
           devices: "{{ devices_json | trim | from_json }}"
-          
           # Нормализуем список защит (JSON → list)
           protections_json: >
             {% if protection_sensors is defined and protection_sensors is not none %}
@@ -424,7 +420,6 @@ script:
               {{ ns.items | tojson }}
             {% endif %}
           protections: "{{ protections_json | trim | from_json }}"
-          
           any_moving: >-
             {% set ns = namespace(found=false) %}
             {% for device in devices %}
@@ -459,7 +454,7 @@ script:
                         message: "STOP: {{ repeat.item.cover }}"
                         level: info
                         logger: "curtain_group_open_or_stop"
-              
+
               - service: system_log.write
                 data:
                   message: "END: STOP всем (обнаружено движение)"
@@ -480,7 +475,7 @@ script:
                     - variables:
                         prot: "{{ protections[repeat.item.index] }}"
                         is_protected: "{{ prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') }}"
-                    
+
                     - choose:
                         - conditions:
                             - condition: template
@@ -520,7 +515,7 @@ script:
   # - Всегда закрываем все устройства (position=0)
   # - Защита проверяется для каждого устройства отдельно
   # ============================================================================
-  
+
   curtain_group_close:
     alias: "(не вызывать) Группа: закрыть всё (с защитой)"
     fields:
@@ -563,7 +558,7 @@ script:
                 idx: "{{ repeat.item }}"
                 prot: "{{ protections[repeat.item] }}"
                 is_protected: "{{ prot is not none and prot != '' and prot != 'none' and is_state(prot, 'on') }}"
-            
+
             - choose:
                 - conditions:
                     - condition: template
