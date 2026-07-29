@@ -1072,7 +1072,7 @@ script:
             - sensor.stolovaia_zhaliuzi_balkon_bolshoi_last_direction
           protection_sensors:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
 
   stolovaya_blinds_all_cycle:
     alias: "все жалюзи - цикл: Столовая"
@@ -1096,7 +1096,7 @@ script:
             - sensor.stolovaia_zhaliuzi_okno_pravoe_last_direction
           protection_sensors:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
             - null
             - null      
 
@@ -1136,7 +1136,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_okno_levoe,
@@ -1185,7 +1185,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_okno_levoe,
@@ -1234,7 +1234,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_okno_levoe,
@@ -1272,7 +1272,7 @@ script:
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
 
   stolovaya_balcony_all_close:
     alias: "балкон - закрыть: Столовая"
@@ -1292,7 +1292,7 @@ script:
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
 
   stolovaya_all_open_or_stop:
     alias: "всё - открыть или стоп: Столовая"
@@ -1329,7 +1329,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
             - null
             - null
 
@@ -1357,7 +1357,7 @@ script:
             - binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null
             - null
             - null
 
