@@ -1,6 +1,21 @@
 #   http://homeassistant.local:8123/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ######################################################################################
 # ION CS-8
 ######################################################################################
@@ -11,10 +26,6 @@
 ##   slave: 11          # Укажите текущий Slave ID реле, которое хотите сбросить
 ##   address: 171       # Регистр 0x00AB (Сброс к заводским настройкам)
 ##   value: 1           # Можно отправить любое число, оно запустит процесс сброса  
-
-
-
-
 
 
 # Изменить Slave ID
@@ -43,15 +54,6 @@ data:
   slave: 7 		# Slave ID вашего реле (или 0, если хотите отправить широковещательный запрос)
   address: 170 		# Это 0x00AA в десятичном виде
   value: 1 			# Можно писать любое число, устройство все равно перезагрузится
-  
-  
-#сброс к заводским настройкам програмно  
-service: modbus.write_register
-data:
-  hub: modbus_hub
-  slave: 11          # Укажите текущий Slave ID реле, которое хотите сбросить
-  address: 171       # Регистр 0x00AB (Сброс к заводским настройкам)
-  value: 1           # Можно отправить любое число, оно запустит процесс сброса  
   
   
 # задать время авто отключения реле
@@ -91,160 +93,3 @@ data:
   address: 2544
   count: 1  
 
-
-
-
-- service: modbus.write_register
-data:
-  hub: modbus_hub
-  slave: "{{ repeat.item }}"
-  address: 789  # Вход 5
-  value: 773
-
-
-
-
-action: modbus.write_register
-data:
-  hub: modbus_hub
-  slave: 20
-  address: 789
-  value: 773
-
-
-
-
-
-
-
-
-    binary_sensors:
-      - name: "cs8_15_buttons"
-        slave: 15
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_15_buttons_group"
-
-
-   ####################################################################################################################################
-    # === Датчики длинных нажатий (Статусы удержания кнопок) ===
-    # Опрашивает регистр 4097 (0x1001) для каждого реле и создает по 8 сенсоров на модуль автоматически
-    binary_sensors:
-      - name: "cs8_11_buttons"
-        slave: 11
-        address: 4097
-        input_type: holding
-        slave_count: 7  # Создаст автоматические сенсоры от cs8_11_buttons до cs8_11_buttons_7
-        unique_id: "_cs8_11_buttons_group"
-
-      - name: "cs8_12_buttons"
-        slave: 12
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_12_buttons_group"
-
-      - name: "cs8_13_buttons"
-        slave: 13
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_13_buttons_group"
-
-      - name: "cs8_14_buttons"
-        slave: 14
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_14_buttons_group"
-
-      - name: "cs8_15_buttons"
-        slave: 15
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_15_buttons_group"
-
-      - name: "cs8_16_buttons"
-        slave: 16
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_16_buttons_group"
-
-      - name: "cs8_17_buttons"
-        slave: 17
-        address: 4097
-        input_type: holding
-        slave_count: 7
-        unique_id: "_cs8_17_buttons_group"
-        
-        
-        
-activate_all_modbus_hold_functions:
-  alias: "ПРОШИВКА: Включить лонг-пресс на всех реле"
-  sequence:
-    # Повторяем для каждого Slave ID (11, 12, 13, 14, 15, 16, 17)
-    - repeat:
-        for_each: [11, 12, 13, 14, 15, 16, 17]
-        sequence:
-          # Запись правил лонг-пресса для всех 8 входов подряд (регистры 0x0311-0x0318 -> 785-792)
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 785  # Вход 1
-              value: 773    # 0x0305 (Инвертировать вирт.группу 1)
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 786  # Вход 2
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 787  # Вход 3
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 788  # Вход 4
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 789  # Вход 5
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 790  # Вход 6
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 791  # Вход 7 (Кнопка вашей Люстры 1 в гостиной)
-              value: 773
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 792  # Вход 8
-              value: 773
-          # Программная перезагрузка текущего реле модуля для сохранения настроек
-          - service: modbus.write_register
-            data:
-              hub: modbus_hub
-              slave: "{{ repeat.item }}"
-              address: 170  # 0x00AA
-              value: 1
-          # Небольшая пауза, чтобы не перегружать шину RS-485
-          - delay: "00:00:01"
-        
