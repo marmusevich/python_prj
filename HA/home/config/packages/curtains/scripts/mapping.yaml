@@ -476,7 +476,7 @@ script:
             - sensor.spalnia_balkon_shtora_last_direction
           protection_sensors:
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_tulle_lp_cycle:
     alias: "тюль (L+P) - цикл: Спальня"
@@ -494,7 +494,7 @@ script:
             - sensor.spalnia_balkon_tiul_last_direction
           protection_sensors:
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_blinds_lp_cycle:
     alias: "жалюзи (L+P) - цикл: Спальня"
@@ -526,13 +526,13 @@ script:
             - {
                 cover: cover.spalnia_balkon_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - { cover: cover.spalnia_tiul_ugol, position: 0, protection: null }
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaluzi_okno_levoe,
@@ -547,12 +547,12 @@ script:
             - {
                 cover: cover.spalnia_balkon_okno,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaliuzi_balkon_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
 
   spalnya_scene_2:
@@ -569,13 +569,13 @@ script:
             - {
                 cover: cover.spalnia_balkon_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - { cover: cover.spalnia_tiul_ugol, position: 0, protection: null }
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaluzi_okno_levoe,
@@ -590,12 +590,12 @@ script:
             - {
                 cover: cover.spalnia_balkon_okno,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaliuzi_balkon_dver,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
 
   spalnya_scene_3:
@@ -612,7 +612,7 @@ script:
             - {
                 cover: cover.spalnia_balkon_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_tiul_ugol,
@@ -622,7 +622,7 @@ script:
             - {
                 cover: cover.spalnia_balkon_tiul,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaluzi_okno_levoe,
@@ -637,12 +637,12 @@ script:
             - {
                 cover: cover.spalnia_balkon_okno,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
             - {
                 cover: cover.spalnia_zhaliuzi_balkon_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_spalnia_1_contact,
+                protection: null #binary_sensor.datchik_dveri_spalnia_1_contact,
               }
 
   spalnya_all_lp_open_or_stop:
@@ -670,13 +670,13 @@ script:
             - binary_sensor.spalnia_zhaliuzi_balkon_dver_running
           protection_sensors:
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
             - null
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_all_lp_close:
     alias: "всё (L+P) - закрыть: Спальня"
@@ -696,11 +696,11 @@ script:
             - null
             - binary_sensor.datchik_dveri_spalnia_1_contact
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
             - null
             - null
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   # СПАЛЬНЯ: Отдельные скрипты для ПУЛЬТА 5 (БАЛКОН)
   spalnya_balcony_curtain_cycle:
@@ -711,7 +711,7 @@ script:
           target_covers: [cover.spalnia_balkon_shtora]
           running_sensors: [binary_sensor.spalnia_balkon_shtora_running]
           last_direction_sensors: [sensor.spalnia_balkon_shtora_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_spalnia_1_contact]
+          protection_sensors: [null] #[binary_sensor.datchik_dveri_spalnia_1_contact]
 
   spalnya_balcony_tulle_cycle:
     alias: "балкон тюль - цикл: Спальня"
@@ -721,7 +721,7 @@ script:
           target_covers: [cover.spalnia_balkon_tiul]
           running_sensors: [binary_sensor.spalnia_balkon_tiul_running]
           last_direction_sensors: [sensor.spalnia_balkon_tiul_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_spalnia_1_contact]
+          protection_sensors: [null] #[binary_sensor.datchik_dveri_spalnia_1_contact]
 
   spalnya_balcony_blinds_cycle:
     alias: "балкон жалюзи - цикл: Спальня"
@@ -738,8 +738,8 @@ script:
             - sensor.spalnia_balkon_okno_last_direction
             - sensor.spalnia_zhaliuzi_balkon_dver_last_direction
           protection_sensors:
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_balcony_all_open_or_stop:
     alias: "балкон - открыть или стоп: Спальня"
@@ -757,10 +757,10 @@ script:
             - binary_sensor.spalnia_balkon_okno_running
             - binary_sensor.spalnia_zhaliuzi_balkon_dver_running
           protection_sensors:
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   spalnya_balcony_all_close:
     alias: "балкон - закрыть: Спальня"
@@ -773,10 +773,10 @@ script:
             - cover.spalnia_balkon_okno
             - cover.spalnia_zhaliuzi_balkon_dver
           protection_sensors:
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
-            - binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
+            - null #binary_sensor.datchik_dveri_spalnia_1_contact
 
   # ============================================================================
   # ГОСТИНАЯ (защита от вентиляции для шторы и тюля)
@@ -807,7 +807,7 @@ script:
           target_covers: [cover.gostinaia_tiul]
           running_sensors: [binary_sensor.gostinaia_tiul_running]
           last_direction_sensors: [sensor.gostinaia_tiul_last_direction]
-          protection_sensors: [binary_sensor.gostinaia_ventiliatsiia_otkryta]
+          protection_sensors: [null] # [binary_sensor.gostinaia_ventiliatsiia_otkryta]
 
   gostinaya_blinds_cycle:
     alias: "жалюзи (1+2+3) - цикл: Гостиная"
@@ -844,7 +844,7 @@ script:
             - {
                 cover: cover.gostinaia_tiul,
                 position: 0,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+                protection: null # binary_sensor.gostinaia_ventiliatsiia_otkryta,
               }
             - {
                 cover: cover.gostinaia_zhaliuzi_tsentr,
@@ -878,7 +878,7 @@ script:
             - {
                 cover: cover.gostinaia_tiul,
                 position: 0,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+                protection: null # binary_sensor.gostinaia_ventiliatsiia_otkryta,
               }
             - {
                 cover: cover.gostinaia_zhaliuzi_tsentr,
@@ -912,7 +912,7 @@ script:
             - {
                 cover: cover.gostinaia_tiul,
                 position: 100,
-                protection: binary_sensor.gostinaia_ventiliatsiia_otkryta,
+                protection: null #binary_sensor.gostinaia_ventiliatsiia_otkryta,
               }
             - {
                 cover: cover.gostinaia_zhaliuzi_tsentr,
@@ -955,7 +955,7 @@ script:
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.gostinaia_ventiliatsiia_otkryta
-            - binary_sensor.gostinaia_ventiliatsiia_otkryta
+            - null #binary_sensor.gostinaia_ventiliatsiia_otkryta
             - null
             - null
             - null
@@ -977,7 +977,7 @@ script:
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.gostinaia_ventiliatsiia_otkryta
-            - binary_sensor.gostinaia_ventiliatsiia_otkryta
+            - null #binary_sensor.gostinaia_ventiliatsiia_otkryta
             - null
             - null
             - null
@@ -1036,7 +1036,7 @@ script:
           target_covers: [cover.stolovaia_tiul_balkon]
           running_sensors: [binary_sensor.stolovaia_tiul_balkon_running]
           last_direction_sensors: [sensor.stolovaia_tiul_balkon_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_stolovaia_2_contact]
+          protection_sensors: [null] #[binary_sensor.datchik_dveri_stolovaia_2_contact]
 
   stolovaya_tulle_all_cycle:
     alias: "весь тюль - цикл: Столовая"
@@ -1053,7 +1053,7 @@ script:
             - sensor.stolovaia_tiul_balkon_last_direction
             - sensor.stolovaia_tiul_uglovaia_last_direction
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
 
   stolovaya_blinds_balcony_cycle:
@@ -1071,7 +1071,7 @@ script:
             - sensor.stolovaia_zhaliuzi_balkon_dver_last_direction
             - sensor.stolovaia_zhaliuzi_balkon_bolshoi_last_direction
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
 
   stolovaya_blinds_all_cycle:
@@ -1095,7 +1095,7 @@ script:
             - sensor.stolovaia_zhaliuzi_okno_levoe_last_direction
             - sensor.stolovaia_zhaliuzi_okno_pravoe_last_direction
           protection_sensors:
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - null
             - null      
@@ -1121,7 +1121,7 @@ script:
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_tiul_uglovaia,
@@ -1131,7 +1131,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
@@ -1170,7 +1170,7 @@ script:
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_tiul_uglovaia,
@@ -1180,7 +1180,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_dver,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
@@ -1219,7 +1219,7 @@ script:
             - {
                 cover: cover.stolovaia_tiul_balkon,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_tiul_uglovaia,
@@ -1229,7 +1229,7 @@ script:
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_stolovaia_2_contact,
+                protection: null #binary_sensor.datchik_dveri_stolovaia_2_contact,
               }
             - {
                 cover: cover.stolovaia_zhaliuzi_balkon_bolshoi,
@@ -1270,8 +1270,8 @@ script:
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
 
   stolovaya_balcony_all_close:
@@ -1290,8 +1290,8 @@ script:
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
 
   stolovaya_all_open_or_stop:
@@ -1326,9 +1326,9 @@ script:
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
             #- null
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - null
             - null
@@ -1354,9 +1354,9 @@ script:
             # ОТКЛЮЧЕНО: мотор обесточен
             #- binary_sensor.datchik_dveri_stolovaia_2_contact
             #- null
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
-            - binary_sensor.datchik_dveri_stolovaia_2_contact
+            - null #binary_sensor.datchik_dveri_stolovaia_2_contact
             - null
             - null
             - null
@@ -1373,7 +1373,7 @@ script:
           target_covers: [cover.kabinet_shtora]
           running_sensors: [binary_sensor.kabinet_shtora_running]
           last_direction_sensors: [sensor.kabinet_shtora_last_direction]
-          protection_sensors: [binary_sensor.datchik_dveri_kabinet_3_contact]
+          protection_sensors: [null] #[binary_sensor.datchik_dveri_kabinet_3_contact]
 
   kabinet_tulle_cycle:
     alias: "тюль - цикл: Кабинет"
@@ -1408,7 +1408,7 @@ script:
             - sensor.kabinet_sontse_dver_last_direction
           protection_sensors:
             - null
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            - null #binary_sensor.datchik_dveri_kabinet_3_contact
 
   kabinet_scene_1:
     alias: "сцена 1: Кабинет"
@@ -1419,7 +1419,7 @@ script:
             - {
                 cover: cover.kabinet_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null #binary_sensor.datchik_dveri_kabinet_3_contact,
               }
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: текстиль не установлен
@@ -1436,7 +1436,7 @@ script:
             - {
                 cover: cover.kabinet_sontse_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null #binary_sensor.datchik_dveri_kabinet_3_contact,
               }
 
   kabinet_scene_2:
@@ -1448,7 +1448,7 @@ script:
             - {
                 cover: cover.kabinet_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null #binary_sensor.datchik_dveri_kabinet_3_contact,
               }
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: текстиль не установлен
@@ -1465,7 +1465,7 @@ script:
             - {
                 cover: cover.kabinet_sontse_dver,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null #binary_sensor.datchik_dveri_kabinet_3_contact,
               }
 
   kabinet_scene_3:
@@ -1477,7 +1477,7 @@ script:
             - {
                 cover: cover.kabinet_shtora,
                 position: 100,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null # binary_sensor.datchik_dveri_kabinet_3_contact,
               }
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: текстиль не установлен  
@@ -1494,7 +1494,7 @@ script:
             - {
                 cover: cover.kabinet_sontse_dver,
                 position: 0,
-                protection: binary_sensor.datchik_dveri_kabinet_3_contact,
+                protection: null #binary_sensor.datchik_dveri_kabinet_3_contact,
               }
 
   kabinet_all_open_or_stop:
@@ -1517,12 +1517,12 @@ script:
             - binary_sensor.kabinet_zhaliuzi_okno_running
             - binary_sensor.kabinet_sontse_dver_running
           protection_sensors:
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            - null # binary_sensor.datchik_dveri_kabinet_3_contact
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: текстиль не установлен
             #- binary_sensor.datchik_dveri_kabinet_3_contact
             - null
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            - null # binary_sensor.datchik_dveri_kabinet_3_contact
 
   kabinet_all_close:
     alias: "всё - закрыть: Кабинет"
@@ -1537,9 +1537,9 @@ script:
             - cover.kabinet_zhaliuzi_okno
             - cover.kabinet_sontse_dver
           protection_sensors:
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            - null # binary_sensor.datchik_dveri_kabinet_3_contact
             # важно!!!! - включить в защите - там тоже закоментировано
             # ОТКЛЮЧЕНО: текстиль не установлен
             #- binary_sensor.datchik_dveri_kabinet_3_contact
             - null
-            - binary_sensor.datchik_dveri_kabinet_3_contact
+            - null # binary_sensor.datchik_dveri_kabinet_3_contact

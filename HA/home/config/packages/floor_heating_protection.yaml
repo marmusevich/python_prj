@@ -835,7 +835,7 @@ automation:
             Температура: {{ states('sensor.termopara_100_4') }}°C  
             Порог: {{ states('input_number.floor_overheat_threshold') }}°C
             
-             Реле заблокировано защитой
+            Реле заблокировано защитой
           notification_id: "floor_overheat_kukhnia"
 
   # ========== ЗАЩИТА РЕЛЕ - СТОЛОВАЯ ==========

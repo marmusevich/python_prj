@@ -9,9 +9,9 @@ const legacy = require('zigbee-herdsman-converters/lib/legacy');
 
 function log(meta, msg) {
     if (meta && meta.logger && typeof meta.logger.info === 'function') {
-        meta.logger.info(`[COVER][DEBUG] : ${msg}`);
+        meta.logger.info(`[COVER][DEBUG] (Мастер санузел Тюль) : ${msg}`);
     } else {
-        console.log(`[COVER][DEBUG] : ${msg}`);
+        console.log(`[COVER][DEBUG] (Мастер санузел Тюль) : ${msg}`);
     }
 }
 
@@ -19,7 +19,7 @@ const definition = {
     fingerprint: [
         { modelID: 'TS0601', manufacturerName: '_TZE204_m1wl5fvq' }
     ],
-    model: 'TS0601_cover_v28',
+    model: 'TS0601_cover_v29',
     vendor: 'Tuya',
     description: 'Штора/тюль',
 

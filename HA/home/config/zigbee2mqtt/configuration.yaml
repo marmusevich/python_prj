@@ -85,7 +85,7 @@ devices:
     invert_cover: true
   '0xa4c138a2b5790910':
     friendly_name: Кабинет Штора
-    invert_cover: true
+    invert_cover: false
   '0x70c59cfffe44ecc4':
     friendly_name: Гостиная Жалюзи (центр)
     invert_cover: true
@@ -109,9 +109,6 @@ devices:
     invert_cover: true
   '0xa4c1384b694acbc6':
     friendly_name: Мастер санузел Штора
-    invert_cover: true
-  '0xa4c13807b77fdef7':
-    friendly_name: Мастер санузел Тюль
     invert_cover: true
   '0x70c59cfffe356c96':
     friendly_name: Столовая Жалюзи (балкон, дверь)
@@ -189,3 +186,6 @@ devices:
     friendly_name: Датчик вент.2 гостиная (5)
   '0xa4c138d34bfe20a6':
     friendly_name: Датчик вент.1 гостиная (4)
+  '0xa4c13807b77fdef7':
+    friendly_name: Мастер санузел Тюль
+    invert_cover: true
