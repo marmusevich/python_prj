@@ -95,3 +95,58 @@
       entity_id: fan.rele_17_5
   mode: restart
 
+
+- id: 'long_press_kitchen_shutdown'
+  alias: "Свет: Кухня — Выключить всё по удержанию"
+  description: "Отключает весь свет кухни при удержании кнопок на реле 13 (контакты 1-6) или реле 17 (контакт 7)"
+  triggers:
+    - trigger: state
+      entity_id:
+        - sensor.cs8_13_long_press_status
+        - sensor.cs8_17_long_press_status
+      note: "Мониторим только новые статус-сенсоры удержания для кухни"
+  conditions:
+    # 1. Отсекаем событие отпускания кнопки (когда в регистр прилетает 0)
+    - condition: template
+      value_template: "{{ trigger.to_state.state | int(0) > 0 }}"
+      note: "Игнорируем нули"
+    
+    # 2. Логика распределения «ИЛИ» между двумя реле
+    - condition: or
+      conditions:
+        # Если удержание произошло на реле 13, проверяем контакты 1-6 (маска: 1+2+4+8+16+32 = 63)
+        - condition: template
+          value_template: >
+            {{ trigger.entity_id == 'sensor.cs8_13_long_press_status' and 
+              (trigger.to_state.state | int(0) | bitwise_and(1 + 2 + 4 + 8 + 16 + 32)) > 0 }}
+          note: "Проверка контактов 1-6 на реле 13"
+        
+        # Если удержание произошло на реле 17, проверяем контакт 7 (маска: 64)
+        - condition: template
+          value_template: >
+            {{ trigger.entity_id == 'sensor.cs8_17_long_press_status' and 
+              (trigger.to_state.state | int(0) | bitwise_and(64)) > 0 }}
+          note: "Проверка контакта 7 на реле 17"
+      note: "Пропускаем автоматизацию дальше, если сработал нужный бит на нужном реле"
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.rele_13_1
+          - light.rele_13_2
+          - light.rele_13_3
+          - light.rele_13_4
+          - light.rele_13_5
+          - light.rele_13_6
+          - light.rele_17_7
+      note: "Гасим все линии света на кухне одновременно"
+    - action: system_log.write
+      note: "Пишем кастомный лог работы Modbus-кнопок Кухни"
+      data:
+        level: info
+        logger: "automation.long_press_kitchen_shutdown"
+        message: >
+          Зафиксировано длинное нажатие группы кухни в {{ now().strftime('%H:%M:%S') }}
+          Код сработавшего комбо кнопок: {{ trigger.to_state.state }}
+  mode: restart
+

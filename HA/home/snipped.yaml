@@ -2,20 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ######################################################################################
 # ION CS-8
 ######################################################################################
@@ -93,3 +79,110 @@ data:
   address: 2544
   count: 1  
 
+
+
+
+
+
+варианты автоматизации лонг пресса
+
+
+
+- id: '1790857068522'
+  alias: автоматизация по значению сенсора (Новый синтаксис)
+  description: Удержание кнопок 1, 2, 3 или 8
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.cs8_7_status_register_shifted
+    note: Ловим любое изменение регистра статуса кнопок
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | int(0) > 0 }}'
+    note: Отсекаем событие, когда кнопку отпустили (ноль)
+  - condition: template
+    value_template: '{{ (trigger.to_state.state | int(0) | bitwise_and(1 + 2 + 4 +
+      128)) > 0 }}'
+    note: Проверяем маску кнопок 1, 2, 3 и 8 через побитовое И
+  actions:
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.rele_1
+      - light.rele_2
+      - light.rele_3
+      - light.rele_8
+    note: Выключаем нужный свет
+    enabled: true
+    data: {}
+  - action: persistent_notification.create
+    data:
+      title: Modbus
+      message: "Зафиксировано длинное нажатие в {{ now().strftime('%H:%M:%S')}} \n
+        Код сработавшего комбо кнопок: {{ trigger.to_state.state }}"
+    - action: system_log.write
+      data:
+      message: "Зафиксировано длинное нажатие группы кухни в {{ now().strftime('%H:%M:%S')}} \n
+        Код сработавшего комбо кнопок: {{ trigger.to_state.state }}"
+      level: info
+      logger: "automation.floor_heating_protection.stolovaia"
+       
+  mode: restart
+  
+  
+  
+    - action: system_log.write
+    data:
+      message: "Зафиксировано длинное нажатие группы кухни в {{ now().strftime('%H:%M:%S')}} \n
+        Код сработавшего комбо кнопок: {{ trigger.to_state.state }}"
+      level: info
+      logger: "automation.floor_heating_protection.stolovaia"
+  
+  
+  
+  
+  
+
+
+- id: 'long_press_kitchen_shutdown'
+  alias: "Свет: Кухня — Выключить всё по удержанию"
+  description: "Отрезает весь свет кухни при удержании кнопок на реле 13 (1-6) или реле 17 (7)"
+  triggers:
+    - trigger: state
+      entity_id:
+        - sensor.cs8_13_status_register_shifted
+        - sensor.cs8_17_status_register_shifted
+      note: "Следим только за реле, к которым физически подключена кухня"
+  conditions:
+    # 1. Отсекаем отпускание кнопки (ноль)
+    - condition: template
+      value_template: "{{ trigger.to_state.state | int(0) > 0 }}"
+    
+    # 2. Магическое условие "ИЛИ" для двух разных реле
+    - condition: or
+      conditions:
+        # Если это реле 13, проверяем контакты 1-6 (маска 1+2+4+8+16+32 = 63)
+        - condition: template
+          value_template: >
+            {{ trigger.entity_id == 'sensor.cs8_13_status_register_shifted' and 
+               (trigger.to_state.state | int(0) | bitwise_and(63)) > 0 }}
+        
+        # Если это реле 17, проверяем контакт 7 (маска 64)
+        - condition: template
+          value_template: >
+            {{ trigger.entity_id == 'sensor.cs8_17_status_register_shifted' and 
+               (trigger.to_state.state | int(0) | bitwise_and(64)) > 0 }}
+      note: "Автоматизация пропустит дальше только если биты совпали на нужном реле"
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.rele_13_1
+          - light.rele_13_2
+          - light.rele_13_3
+          - light.rele_13_4
+          - light.rele_13_5
+          - light.rele_13_6
+          - light.rele_17_7
+      note: "Гасим всю кухню"
+  mode: restart
