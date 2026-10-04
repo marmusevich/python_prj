@@ -40,7 +40,7 @@ views:
           - type: state-icon
             style:
               left: 78%
-              top: 48%
+              top: 49%
               transform: translate(-50%, -50%) scale(0.8)
               transform-origin: center
               --mdc-icon-size: 24px
@@ -252,8 +252,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_5
-            title: '    Конвертер (низ) - балкон столовой'
+            entity: climate.stolovaia_konverter
+            title: '    Конвертер столовой'
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 90%
@@ -265,8 +266,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_2
-            title: Кабинет - Конвертер (низ)
+            entity: climate.kabinet_konverter
+            title: Кабинет - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 53%
@@ -278,8 +280,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_6
-            title: Гостиная - Конвертер (низ)
+            entity: climate.gostinnaia_konverter
+            title: Гостиная - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 87%
@@ -291,8 +294,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_7
-            title: Кухня - Конвертер (низ)
+            entity: climate.kukhnia_konverter
+            title: Кухня - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 7%
@@ -304,8 +308,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_3
-            title: Мастер санузел - Конвертер (низ)
+            entity: climate.master_sanuzel_konvertor
+            title: Мастер санузел - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 30%
@@ -317,8 +322,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_6
-            title: Спальня - Конвертер (низ) - балкон спальня
+            entity: climate.spalnia_konverter
+            title: Спальня - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 80%
@@ -330,8 +336,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_7
-            title: Столовая - Конвертер (низ)
+            entity: climate.stolovaia_konverter
+            title: Столовая - Конвертер
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 12%
@@ -343,8 +350,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_3
-            title: Спальня  - Конвертер (низ) - окно
+            entity: climate.spalnia_konverter
+            title: 'Спальня  - Конвертер '
+            icon: mdi:heat-wave
           - type: state-icon
             style:
               left: 90%
@@ -356,8 +364,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_5
+            entity: climate.kabinet_radiator
             title: Кабинет - Радиатор
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 86%
@@ -369,8 +378,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_1
+            entity: climate.kukhnia_radiator
             title: Кухня - Радиатор
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 9%
@@ -382,8 +392,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_4
+            entity: climate.master_sanuzel_radiator
             title: Мастер санузел - Радиатор
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 20%
@@ -395,8 +406,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_2
-            title: Спальня  - Радиатор - балкон
+            entity: climate.spalnia_radiator
+            title: Спальня  - Радиатор
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 24%
@@ -408,8 +420,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_1
-            title: Спальня - Радиатор - окно
+            entity: climate.spalnia_radiator
+            title: 'Спальня - Радиатор '
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 78%
@@ -421,8 +434,9 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_19_4
-            title: Столовая - Радиатор (правый и левый)
+            entity: climate.stolovaia_radiator
+            title: Столовая - Радиатор
+            icon: mdi:radiator
           - type: state-icon
             style:
               left: 44%
@@ -434,8 +448,87 @@ views:
               border-radius: 50%
               padding: 0px
               box-shadow: 0 0 1px rgba(0,0,0,0.3)
-            entity: switch.rele_20_8
-            title: Гостиная - Радиатор - (правый и левый)
+            entity: climate.gostinnaia_radiator
+            title: 'Гостиная - Радиатор '
+            icon: mdi:radiator
+          - type: state-label
+            style:
+              left: 26%
+              top: 24%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: update.termometr_zigbee_2
+            title: термометр - спальня
+          - type: state-label
+            style:
+              left: 14%
+              top: 37%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: update.termometr_zigbee_1
+            title: термометр - санузел
+          - type: state-label
+            style:
+              left: 78%
+              top: 45%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: update.0xa4c138ab83c9038f
+            title: термометр - кухня
+          - type: state-label
+            style:
+              left: 70%
+              top: 24%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: sensor.0xa4c13884b4e451e9_temperature
+            title: термометр - столовая
+          - type: state-label
+            style:
+              left: 48%
+              top: 50%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: update.0xa4c1384231250eb0
+            title: термометр - гостинная
+          - type: state-label
+            style:
+              left: 80%
+              top: 70%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
+              font-size: 14px
+              font-weight: bold
+              background: rgba(135, 255, 255, 1)
+              border-radius: 15%
+              padding: 0px
+            entity: update.0xa4c1387452702877
+            title: термометр - кабинет
   - type: sections
     sections:
       - type: grid
@@ -458,19 +551,118 @@ views:
         cards:
           - type: heading
             heading_style: title
-            heading: Приборы отопления
+            heading: Приборы отопления Гостинная
+          - type: tile
+            entity: update.0xa4c1384231250eb0
+          - type: thermostat
+            entity: climate.gostinnaia_konverter
+          - type: thermostat
+            entity: climate.gostinnaia_radiator
           - type: tile
             entity: switch.rele_20_6
-            features:
-              - type: toggle
           - type: tile
             entity: switch.rele_20_8
-            features:
-              - type: toggle
       - type: grid
         cards:
           - type: heading
-            heading: Новый раздел
+            heading: Приборы отопления  Спальня
+            heading_style: title
+          - type: tile
+            entity: update.termometr_zigbee_2
+          - type: thermostat
+            entity: climate.spalnia_konverter
+          - type: thermostat
+            entity: climate.spalnia_radiator
+          - type: tile
+            entity: switch.rele_19_3
+          - type: tile
+            entity: switch.rele_19_6
+          - type: tile
+            entity: switch.spalnia_konvertory
+          - type: tile
+            entity: switch.spalnia_radiatory
+          - type: tile
+            entity: switch.rele_19_2
+          - type: tile
+            entity: switch.rele_19_1
+      - type: grid
+        cards:
+          - type: heading
+            heading: Приборы отопления - Кухня
+            heading_style: title
+          - type: tile
+            entity: update.0xa4c138ab83c9038f
+          - type: thermostat
+            entity: climate.kukhnia_konverter
+          - type: thermostat
+            entity: climate.kukhnia_radiator
+          - type: tile
+            entity: switch.rele_20_7
+          - type: tile
+            entity: switch.rele_20_1
+      - type: grid
+        cards:
+          - type: heading
+            heading: Приборы отопления  - Столовая
+            heading_style: title
+          - type: tile
+            entity: update.0xa4c13884b4e451e9
+          - type: thermostat
+            entity: climate.stolovaia_konverter
+          - type: thermostat
+            entity: climate.stolovaia_radiator
+          - type: tile
+            entity: switch.rele_19_7
+          - type: tile
+            entity: switch.rele_19_5
+          - type: tile
+            entity: switch.stolovaia_konvertery
+          - type: tile
+            entity: switch.rele_19_4
+      - type: grid
+        cards:
+          - type: heading
+            heading: Приборы отопления - Кабинет
+            heading_style: title
+          - type: tile
+            entity: update.0xa4c1387452702877
+          - type: thermostat
+            entity: climate.kabinet_konverter
+          - type: thermostat
+            entity: climate.kabinet_radiator
+          - type: tile
+            entity: switch.rele_20_2
+          - type: tile
+            entity: switch.rele_20_5
+      - type: grid
+        cards:
+          - type: heading
+            heading: 'Приборы отопления '
+            heading_style: title
+          - type: tile
+            entity: update.termometr_zigbee_1
+          - type: thermostat
+            entity: climate.master_sanuzel_konvertor
+          - type: thermostat
+            entity: climate.master_sanuzel_radiator
+          - type: tile
+            entity: switch.rele_20_3
+          - type: tile
+            entity: switch.rele_20_4
+          - type: tile
+            entity: switch.rele_19_8
+          - type: tile
+            entity: fan.rele_17_6
+          - type: tile
+            entity: >-
+              input_number.vremia_raboty_ventiliatsii_master_sanuzla_min_0_ne_otkliuchat
+            features:
+              - type: numeric-input
+      - type: grid
+        cards:
+          - type: heading
+            heading: ИТ шит
+            heading_style: title
           - type: tile
             entity: sensor.termopara_100_7
             features:
