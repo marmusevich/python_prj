@@ -4,108 +4,438 @@ views:
     title: План
     cards:
       - type: picture-elements
-        image: /local/plan/plan_.svg
+        image: /local/plan/colour_2026-06-20.svg
         elements:
+          - type: image
+            style:
+              left: 79%
+              top: 48.1%
+              width: 20%
+              pointer-events: none
+            entity: switch.rele_18_4
+            hold_action:
+              action: none
+            state_filter:
+              'on': brightness(100%) saturate(1.0) opacity(50%)
+              'off': opacity(0%)
+            image:
+              media_content_id: /local/plan/kyhnya_tp_2026-06-20.svg
+            tap_action:
+              action: none
+            title: Кухня  - реле
           - type: state-label
             style:
               left: 78%
-              top: 50%
-              ransform: translate(-50%, -50%)
-              color: "#ffffff"
+              top: 53%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
               font-size: 14px
               font-weight: bold
-              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
-            entity: sensor.kukhnia_teplyi_pol
-            prefix: "Пол "
+              background: rgba(255, 255, 255, 1)
+              border-radius: 5%
+              padding: 0px
+            entity: sensor.termopara_100_4
+            prefix: 'Пол '
+            title: Кухня  - температура пола
           - type: state-icon
             style:
               left: 78%
               top: 48%
-              ransform: translate(-50%, -50%)
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
             entity: climate.kukhnia_termostat
             icon: mdi:heating-coil
             tap_action:
               action: more-info
+            title: Кухня - термостат
+          - type: image
+            style:
+              left: 58.8%
+              top: 60.5%
+              width: 9.1%
+              pointer-events: none
+            entity: switch.rele_18_2
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            state_filter:
+              'on': brightness(100%) saturate(1.0) opacity(50%)
+              'off': opacity(0%)
+            image:
+              media_content_id: /local/plan/gostevoi sanyzel_tp_2026-06-20.svg
+            title: Гостевой санузел  - реле
           - type: state-label
             style:
               left: 58%
-              top: 61%
-              ransform: translate(-50%, -50%)
-              color: "#ffffff"
+              top: 66%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
               font-size: 14px
               font-weight: bold
-              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
-            entity: sensor.gostevoi_sanuzel_teplyi_pol
-            prefix: "Пол "
+              background: rgba(255, 255, 255, 1)
+              border-radius: 5%
+              padding: 0px
+            entity: sensor.termopara_100_2
+            prefix: 'Пол '
+            title: Гостевой санузел  - температура пола
           - type: state-icon
             style:
               left: 58%
-              top: 59%
-              ransform: translate(-50%, -50%)
+              top: 62%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
             entity: climate.gostevoi_sanuzel_termostat
             icon: mdi:heating-coil
             tap_action:
               action: more-info
+            title: Гостевой санузел - термостат
+          - type: image
+            style:
+              left: 13.5%
+              top: 43.8%
+              width: 14.5%
+              pointer-events: none
+            entity: switch.rele_18_1
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            state_filter:
+              'on': brightness(100%) saturate(1.0) opacity(50%)
+              'off': opacity(0%)
+            image:
+              media_content_id: /local/plan/master sanyzel_tp_2026-06-20.svg
+            title: Мастер санузел - реле
           - type: state-label
             style:
-              left: 15%
-              top: 44%
-              ransform: translate(-50%, -50%)
-              color: "#ffffff"
+              left: 14%
+              top: 45%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
               font-size: 14px
               font-weight: bold
-              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
-            entity: sensor.master_sanuzel_teplyi_pol
-            prefix: "Пол "
+              background: rgba(255, 255, 255, 1)
+              border-radius: 5%
+              padding: 0px
+            entity: sensor.termopara_100_1
+            prefix: 'Пол '
+            title: Мастер санузел - температура пола
           - type: state-icon
             style:
-              left: 15%
-              top: 42%
-              ransform: translate(-50%, -50%)
+              left: 14%
+              top: 41%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
             entity: climate.master_sanuzel_termostat
             icon: mdi:heating-coil
             tap_action:
               action: more-info
+            title: Мастер санузел - термостат
+          - type: image
+            style:
+              left: 66.5%
+              top: 55.0%
+              width: 7.5%
+              pointer-events: none
+            entity: switch.rele_18_3
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            state_filter:
+              'on': brightness(100%) saturate(1.0) opacity(50%)
+              'off': opacity(0%)
+            image:
+              media_content_id: /local/plan/postirochnaya_tp_2026-06-20.svg
+            title: Постирочная - реле
           - type: state-label
             style:
               left: 67%
-              top: 56%
-              ransform: translate(-50%, -50%)
-              color: "#ffffff"
+              top: 58%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
               font-size: 14px
               font-weight: bold
-              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
-            entity: sensor.postirochnaia_teplyi_pol
-            prefix: "Пол "
+              background: rgba(255, 255, 255, 1)
+              border-radius: 5%
+              padding: 0px
+            entity: sensor.termopara_100_3
+            prefix: 'Пол '
+            title: Постирочная - температура пола
           - type: state-icon
             style:
               left: 67%
               top: 54%
-              ransform: translate(-50%, -50%)
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
             entity: climate.postirochnaia_termostat
             icon: mdi:heating-coil
             tap_action:
               action: more-info
+            title: Постирочная - термостат
+          - type: image
+            style:
+              left: 71%
+              top: 32%
+              width: 25%
+              pointer-events: none
+            entity: switch.rele_18_5
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            state_filter:
+              'on': brightness(100%) saturate(1.0) opacity(50%)
+              'off': opacity(0%)
+            image:
+              media_content_id: /local/plan/stolovaya_tp_2026-06-20_.svg
+            title: Столовая - реле
           - type: state-label
             style:
               left: 70%
-              top: 30%
-              ransform: translate(-50%, -50%)
-              color: "#ffffff"
+              top: 32%
+              transform: translate(-50%, -50%)
+              color: '#1f1f1f'
               font-size: 14px
               font-weight: bold
-              text-shadow: 1px 1px 4px rgba(0,0,0,0.9)
-            entity: sensor.stolovaia_teplyi_pol
-            prefix: "Пол "
+              background: rgba(255, 255, 255, 1)
+              border-radius: 5%
+              padding: 0px
+            entity: sensor.termopara_100_5
+            prefix: 'Пол '
+            title: Столовая - температура пола
           - type: state-icon
             style:
               left: 70%
               top: 28%
-              ransform: translate(-50%, -50%)
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
             entity: climate.stolovaia_termostat
             icon: mdi:heating-coil
             tap_action:
               action: more-info
+            title: Столовая - термостат
+          - type: state-icon
+            style:
+              left: 70%
+              top: 17%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_5
+            title: '    Конвертер (низ) - балкон столовой'
+          - type: state-icon
+            style:
+              left: 90%
+              top: 67%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_2
+            title: Кабинет - Конвертер (низ)
+          - type: state-icon
+            style:
+              left: 53%
+              top: 13%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_6
+            title: Гостиная - Конвертер (низ)
+          - type: state-icon
+            style:
+              left: 87%
+              top: 47%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_7
+            title: Кухня - Конвертер (низ)
+          - type: state-icon
+            style:
+              left: 7%
+              top: 39%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_3
+            title: Мастер санузел - Конвертер (низ)
+          - type: state-icon
+            style:
+              left: 30%
+              top: 15%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_6
+            title: Спальня - Конвертер (низ) - балкон спальня
+          - type: state-icon
+            style:
+              left: 80%
+              top: 30%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_7
+            title: Столовая - Конвертер (низ)
+          - type: state-icon
+            style:
+              left: 12%
+              top: 23%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_3
+            title: Спальня  - Конвертер (низ) - окно
+          - type: state-icon
+            style:
+              left: 90%
+              top: 60%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_5
+            title: Кабинет - Радиатор
+          - type: state-icon
+            style:
+              left: 86%
+              top: 40%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_1
+            title: Кухня - Радиатор
+          - type: state-icon
+            style:
+              left: 9%
+              top: 33%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_4
+            title: Мастер санузел - Радиатор
+          - type: state-icon
+            style:
+              left: 20%
+              top: 12%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_2
+            title: Спальня  - Радиатор - балкон
+          - type: state-icon
+            style:
+              left: 24%
+              top: 13%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_1
+            title: Спальня - Радиатор - окно
+          - type: state-icon
+            style:
+              left: 78%
+              top: 20%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_19_4
+            title: Столовая - Радиатор (правый и левый)
+          - type: state-icon
+            style:
+              left: 44%
+              top: 13%
+              transform: translate(-50%, -50%) scale(0.8)
+              transform-origin: center
+              --mdc-icon-size: 24px
+              background: rgba(255, 255, 255, 0.9)
+              border-radius: 50%
+              padding: 0px
+              box-shadow: 0 0 1px rgba(0,0,0,0.3)
+            entity: switch.rele_20_8
+            title: Гостиная - Радиатор - (правый и левый)
   - type: sections
     sections:
       - type: grid
@@ -124,6 +454,34 @@ views:
           - type: thermostat
             entity: climate.kukhnia_termostat
         column_span: 4
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: Приборы отопления
+          - type: tile
+            entity: switch.rele_20_6
+            features:
+              - type: toggle
+          - type: tile
+            entity: switch.rele_20_8
+            features:
+              - type: toggle
+      - type: grid
+        cards:
+          - type: heading
+            heading: Новый раздел
+          - type: tile
+            entity: sensor.termopara_100_7
+            features:
+              - type: trend-graph
+          - type: tile
+            entity: >-
+              input_number.vremia_raboty_ventiliatsii_master_garderop_shchitovaia_min_0_ne_otkliuchat
+            features:
+              - type: numeric-input
+          - type: tile
+            entity: binary_sensor.temperatura_it_shchita_slishkom_vysoka
     max_columns: 4
     title: Оборудование
     icon: mdi:cog
