@@ -130,3 +130,439 @@ program_ion_kitchen_long_press:
         slave: "{{ slave_kitchen_add }}"
         address: 0x00AA
         value: 0x0001
+
+program_ion_dining_room_long_press:
+  alias: "ION CS-8: Настройка Long Press — СТОЛОВАЯ"
+  description: "Записывает настройки 0x0206 для активных контактов столовой (Реле 12)"
+  variables:
+    target_slave: 12
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 3 (DI3) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0313
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 4 (DI4) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0314
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 5 (DI5) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0315
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 6 (DI6) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0316
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 8 (DI8) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0318
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x00AA
+        value: 0x0001
+
+program_ion_office_long_press:
+  alias: "ION CS-8: Настройка Long Press — КАБИНЕТ"
+  description: "Записывает настройки 0x0206 для активных контактов кабинета (Реле 14)"
+  variables:
+    target_slave: 14
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 14 -> КОНТАКТ 1 (DI1) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0311
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 14 -> КОНТАКТ 3 (DI3) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0313
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 14 -> КОНТАКТ 4 (DI4) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0314
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 14 -> КОНТАКТ 5 (DI5) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0315
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 14 -> КОНТАКТ 8 (DI8) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0318
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x00AA
+        value: 0x0001
+
+program_ion_hall_long_press:
+  alias: "ION CS-8: Настройка Long Press — ХОЛЛ"
+  description: "Записывает настройки 0x0206 для активных контактов холла (Реле 11)"
+  variables:
+    target_slave: 11
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 1 (DI1) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0311
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 2 (DI2) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0312
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 3 (DI3) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0313
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 4 (DI4) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0314
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 5 (DI5) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0315
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 6 (DI6) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x0316
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ"
+      data:
+        hub: modbus_hub
+        slave: "{{ target_slave }}"
+        address: 0x00AA
+        value: 0x0001
+
+program_ion_living_room_long_press:
+  alias: "ION CS-8: Настройка Long Press — ГОСТИНАЯ"
+  description: "Записывает настройки 0x0206 для активных контактов гостиной (Реле 11 и 12)"
+  variables:
+    slave_11: 11
+    slave_12: 12
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 7 (DI7) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_11 }}"
+        address: 0x0317
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 11 -> КОНТАКТ 8 (DI8) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_11 }}"
+        address: 0x0318
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 11"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_11 }}"
+        address: 0x00AA
+        value: 0x0001
+    - delay: "00:00:00.500"
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 1 (DI1) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_12 }}"
+        address: 0x0311
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 2 (DI2) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_12 }}"
+        address: 0x0312
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 12 -> КОНТАКТ 7 (DI7) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_12 }}"
+        address: 0x0317
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 12"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_12 }}"
+        address: 0x00AA
+        value: 0x0001
+
+program_ion_bathroom_long_press:
+  alias: "ION CS-8: Настройка Long Press — САНУЗЕЛ"
+  description: "Записывает настройки для активных контактов санузла (Реле 16 и 17)"
+  variables:
+    slave_16: 16
+    slave_17: 17
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 3 (DI3) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0313
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 4 (DI4) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0314
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 5 (DI5) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0315
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 6 (DI6) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0316
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 7 (DI7) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0317
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 16"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x00AA
+        value: 0x0001
+    - delay: "00:00:00.500"
+    - action: modbus.write_register
+      note: "МОДУЛЬ 17 -> КОНТАКТ 6 (DI6) -> 0x0207 (Виртуальная группа 3)"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_17 }}"
+        address: 0x0316
+        value: 0x0207
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 17"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_17 }}"
+        address: 0x00AA
+        value: 0x0001
+
+program_ion_bedroom_long_press:
+  alias: "ION CS-8: Настройка Long Press — СПАЛЬНЯ"
+  description: "Записывает настройки для активных контактов спальни (Реле 15, 16 и 17)"
+  variables:
+    slave_15: 15
+    slave_16: 16
+    slave_17: 17
+  sequence:
+    - action: modbus.write_register
+      note: "МОДУЛЬ 15 -> КОНТАКТ 4 (DI4) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x0314
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 15 -> КОНТАКТ 5 (DI5) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x0315
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 15 -> КОНТАКТ 6 (DI6) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x0316
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 15 -> КОНТАКТ 7 (DI7) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x0317
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 15 -> КОНТАКТ 8 (DI8) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x0318
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 15"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_15 }}"
+        address: 0x00AA
+        value: 0x0001
+    - delay: "00:00:00.500"
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 1 (DI1) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0311
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 2 (DI2) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0312
+        value: 0x0206
+    - action: modbus.write_register
+      note: "МОДУЛЬ 16 -> КОНТАКТ 8 (DI8) -> 0x0206"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x0318
+        value: 0x0206
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 16"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_16 }}"
+        address: 0x00AA
+        value: 0x0001
+    - delay: "00:00:00.500"
+    - action: modbus.write_register
+      note: "МОДУЛЬ 17 -> КОНТАКТ 4 (DI4) -> 0x0208 (Виртуальная группа 4)"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_17 }}"
+        address: 0x0314
+        value: 0x0208
+    - delay: "00:00:00.300"
+    - action: modbus.write_register
+      note: "ПЕРЕЗАГРУЗКА МОДУЛЯ 17"
+      data:
+        hub: modbus_hub
+        slave: "{{ slave_17 }}"
+        address: 0x00AA
+        value: 0x0001
+
+set_all_ion_releys_long_press_time:
+  alias: "ION CS-8: Установка времени Long Press (Все реле)"
+  description: "Устанавливает одинаковое время удержания кнопок для всех модулей от 11 до 17"
+  
+  # Объявляем константу времени удержания (в миллисекундах)
+  variables:
+    hold_time_ms: 2500  # ← Поменяйте на 2000, если 2.5 сек покажется слишком много
+
+  sequence:
+    - repeat:
+        note: |
+          =========================================================================
+          СПРАВОЧНИК ПО НАСТРОЙКЕ ВРЕМЕНИ УДЕРЖАНИЯ (РЕГИСТР 0x0104 / 260)
+          =========================================================================
+          
+          * Диапазон возможных значений: от 500 до 5000 мс (от 0.5 до 5.0 секунд)
+          * Заводское значение по умолчанию: 1500 мс (1.5 секунды)
+          * Текущая настройка: зашиваем значение из константы во все модули
+          
+          =========================================================================
+          ПРОЦЕСС: Циклический перебор боевых реле с ID 11 по 17
+        for_each:
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+        sequence:
+          # Шаг 1: Запись нового времени удержания в регистр 0x0104
+          - action: modbus.write_register
+            data:
+              hub: modbus_hub
+              slave: "{{ repeat.item }}"
+              address: 0x0104
+              value: "{{ hold_time_ms }}"
+            note: "Запись таймера во все входы модуля"
+
+          # Шаг 2: Короткая пауза для стабильности шины перед перезагрузкой
+          - delay: "00:00:00.200"
+
+          # Шаг 3: Программная перезагрузка текущего модуля для применения настроек
+          - action: modbus.write_register
+            data:
+              hub: modbus_hub
+              slave: "{{ repeat.item }}"
+              address: 0x00AA
+              value: 0x0001
+            note: "Перезагрузка модуля для применения параметров"
+
+          # Шаг 4: Пауза между модулями, чтобы они успели загрузиться и не забивали шину
+          - delay: "00:00:00.800"

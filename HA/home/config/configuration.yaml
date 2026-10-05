@@ -809,19 +809,19 @@ modbus:
 
       ####################################################################################################################################
       # === Датчики длительного нажатия на реле CS-8
-      # - name: "cs8_11_long_press_status"
-      #   slave: 11
-      #   address: 4096
-      #   input_type: input
-      #   unique_id: "_cs8_11_long_press_status"
-      #   scan_interval: 1
+      - name: "cs8_11_long_press_status"
+        slave: 11
+        address: 4096
+        input_type: input
+        unique_id: "_cs8_11_long_press_status"
+        scan_interval: 1
 
-      # - name: "cs8_12_long_press_status"
-      #   slave: 12
-      #   address: 4096
-      #   input_type: input
-      #   unique_id: "_cs8_12_long_press_status"
-      #   scan_interval: 1
+      - name: "cs8_12_long_press_status"
+        slave: 12
+        address: 4096
+        input_type: input
+        unique_id: "_cs8_12_long_press_status"
+        scan_interval: 1
 
       - name: "cs8_13_long_press_status"
         slave: 13
@@ -830,26 +830,26 @@ modbus:
         unique_id: "_cs8_13_long_press_status"
         scan_interval: 1
 
-      # - name: "cs8_14_long_press_status"
-      #   slave: 14
-      #   address: 4096
-      #   input_type: input
-      #   unique_id: "_cs8_14_long_press_status"
-      #   scan_interval: 1
+      - name: "cs8_14_long_press_status"
+        slave: 14
+        address: 4096
+        input_type: input
+        unique_id: "_cs8_14_long_press_status"
+        scan_interval: 1
 
-      # - name: "cs8_15_long_press_status"
-      #   slave: 15
-      #   address: 4096
-      #   input_type: input
-      #   unique_id: "_cs8_15_long_press_status"
-      #   scan_interval: 1
+      - name: "cs8_15_long_press_status"
+        slave: 15
+        address: 4096
+        input_type: input
+        unique_id: "_cs8_15_long_press_status"
+        scan_interval: 1
 
-      # - name: "cs8_16_long_press_status"
-      #   slave: 16
-      #   address: 4096
-      #   input_type: input
-      #   unique_id: "_cs8_16_long_press_status"
-      #   scan_interval: 1
+      - name: "cs8_16_long_press_status"
+        slave: 16
+        address: 4096
+        input_type: input
+        unique_id: "_cs8_16_long_press_status"
+        scan_interval: 1
 
       - name: "cs8_17_long_press_status"
         slave: 17
